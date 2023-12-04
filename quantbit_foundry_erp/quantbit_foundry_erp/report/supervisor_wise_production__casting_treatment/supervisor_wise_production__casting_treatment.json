@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-11-28 11:11:43.531517",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-11-28 14:34:58.196264",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Supervisor Wise Production  Casting Treatment",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "query": "select a.supervisor,a.supervisor_name,a.treatment_date,a.treatment_time,a.shift,a.shift_time,a.casting_treatment,\nb.item_code,b.item_name,b.pouring,b.available_quantity,b.processed_quantity,b.quantity,b.casting_weight\nfrom `tabCasting Treatment` a\nleft join `tabCasting Treatment Casting Item` b on a.name = b.parent",
+ "ref_doctype": "Casting Treatment",
+ "report_name": "Supervisor Wise Production  Casting Treatment",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

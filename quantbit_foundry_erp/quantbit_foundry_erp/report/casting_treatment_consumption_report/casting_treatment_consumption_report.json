@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-11-28 11:02:31.319499",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[[\"Casting Treatment\",\"docstatus\",\"like\",\"%1%\",false]],\"fields\":[[\"name\",\"Casting Treatment\"],[\"docstatus\",\"Casting Treatment\"],[\"pouring\",\"Casting Treatment Raw Item\"],[\"item_code\",\"Casting Treatment Raw Item\"],[\"item_name\",\"Casting Treatment Raw Item\"],[\"raw_item_name\",\"Casting Treatment Raw Item\"],[\"source_warehouse\",\"Casting Treatment Raw Item\"],[\"available_quantity\",\"Casting Treatment Raw Item\"],[\"total_quantity\",\"Casting Treatment Raw Item\"],[\"raw_item_code\",\"Casting Treatment Raw Item\"]],\"order_by\":\"`tabCasting Treatment`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"docstatus\":120,\"Casting Treatment Raw Item:pouring\":120,\"Casting Treatment Raw Item:item_code\":120,\"Casting Treatment Raw Item:item_name\":120,\"Casting Treatment Raw Item:raw_item_name\":120,\"Casting Treatment Raw Item:source_warehouse\":120,\"Casting Treatment Raw Item:available_quantity\":120,\"Casting Treatment Raw Item:total_quantity\":120,\"Casting Treatment Raw Item:raw_item_code\":120},\"group_by\":null}",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-11-28 14:34:59.187774",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Treatment Consumption Report",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "ref_doctype": "Casting Treatment",
+ "report_name": "Casting Treatment Consumption Report",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-11-24 17:36:41.009654",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[[\"Casting Treatment\",\"docstatus\",\"=\",\"1\",false],[\"Casting Treatment\",\"casting_treatment\",\"=\",\"Knock Out\",false]],\"fields\":[[\"name\",\"Casting Treatment\"],[\"docstatus\",\"Casting Treatment\"],[\"company\",\"Casting Treatment\"],[\"available_quantity\",\"Casting Treatment Raw Item\"],[\"total_quantity\",\"Casting Treatment Raw Item\"],[\"item_code\",\"Casting Treatment Casting Item\"],[\"item_name\",\"Casting Treatment Casting Item\"],[\"available_quantity\",\"Casting Treatment Casting Item\"],[\"processed_quantity\",\"Casting Treatment Casting Item\"],[\"pouring\",\"Casting Treatment Casting Item\"],[\"quantity\",\"Casting Treatment Casting Item\"],[\"casting_weight\",\"Casting Treatment Casting Item\"],[\"raw_item_code\",\"Casting Treatment Raw Item\"],[\"item_code\",\"Casting Treatment Quantity Details\"],[\"item_name\",\"Casting Treatment Quantity Details\"],[\"pouring\",\"Casting Treatment Quantity Details\"],[\"sales_order\",\"Casting Treatment Quantity Details\"],[\"ok_quantity\",\"Casting Treatment Quantity Details\"],[\"cr_quantity\",\"Casting Treatment Quantity Details\"],[\"rw_quantity\",\"Casting Treatment Quantity Details\"],[\"total_quantity\",\"Casting Treatment Quantity Details\"],[\"rejection_reason\",\"Casting Treatment Rejected Items Reasons\"],[\"item_code\",\"Casting Treatment Rejected Items Reasons\"],[\"item_name\",\"Casting Treatment Rejected Items Reasons\"],[\"pouring\",\"Casting Treatment Rejected Items Reasons\"],[\"rejection_type\",\"Casting Treatment Rejected Items Reasons\"],[\"qty\",\"Casting Treatment Rejected Items Reasons\"],[\"target_warehouse\",\"Casting Treatment Rejected Items Reasons\"]],\"order_by\":\"`tabCasting Treatment`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"docstatus\":120,\"company\":120,\"Casting Treatment Raw Item:available_quantity\":120,\"Casting Treatment Raw Item:total_quantity\":120,\"Casting Treatment Casting Item:item_code\":120,\"Casting Treatment Casting Item:item_name\":120,\"Casting Treatment Casting Item:available_quantity\":120,\"Casting Treatment Casting Item:processed_quantity\":120,\"Casting Treatment Casting Item:pouring\":120,\"Casting Treatment Casting Item:quantity\":120,\"Casting Treatment Casting Item:casting_weight\":120,\"Casting Treatment Raw Item:raw_item_code\":120,\"Casting Treatment Quantity Details:item_code\":120,\"Casting Treatment Quantity Details:item_name\":120,\"Casting Treatment Quantity Details:pouring\":120,\"Casting Treatment Quantity Details:sales_order\":120,\"Casting Treatment Quantity Details:ok_quantity\":120,\"Casting Treatment Quantity Details:cr_quantity\":120,\"Casting Treatment Quantity Details:rw_quantity\":120,\"Casting Treatment Quantity Details:total_quantity\":120,\"Casting Treatment Rejected Items Reasons:rejection_reason\":120,\"Casting Treatment Rejected Items Reasons:item_code\":120,\"Casting Treatment Rejected Items Reasons:item_name\":120,\"Casting Treatment Rejected Items Reasons:pouring\":120,\"Casting Treatment Rejected Items Reasons:rejection_type\":120,\"Casting Treatment Rejected Items Reasons:qty\":120,\"Casting Treatment Rejected Items Reasons:target_warehouse\":120},\"group_by\":null}",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-11-27 18:05:07.480683",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Knock off Report",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "query": "",
+ "ref_doctype": "Casting Treatment",
+ "report_name": "Knock off Report",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

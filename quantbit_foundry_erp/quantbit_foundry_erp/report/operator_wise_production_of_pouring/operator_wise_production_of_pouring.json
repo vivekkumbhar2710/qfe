@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-11-28 11:09:58.327889",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-11-28 14:34:58.302743",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Operator Wise Production of Pouring",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "query": "select a.operator \"Operator\",a.operator_name \"Operator Name\",a.name \"Pouring Id\",a.heat_date 'Heat Date',a.furnece \"Furnece\",a.shift \"Shift\",a.shift_time 'Shift Time',b.item_code \"Item Code\" ,b.item_name \"Item Name\",b.pattern \"Pattern\",\nb.quantitybox 'Quantitybox',b.total_quantity 'Total Quantity',b.casting_weight 'Casting Weight',\nb.rr_weight 'RR Weight',b.rr_weight_total 'RR Weight Total',b.total_weight 'Total Weight'\nfrom `tabPouring` a\nleft join\n`tabCasting Details` b on a.name = b.parent",
+ "ref_doctype": "Pouring",
+ "report_name": "Operator Wise Production of Pouring",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

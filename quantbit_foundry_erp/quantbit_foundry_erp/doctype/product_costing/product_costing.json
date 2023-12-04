@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-06 14:32:38.401626",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "casting_details",
+  "section_break_imxfr",
+  "column_break_ruukc",
+  "column_break_km1ca",
+  "column_break_nofqh",
+  "total_weight",
+  "section_break_hn3uv",
+  "select_grade",
+  "grade_mix",
+  "overheads",
+  "section_break_mnfyw",
+  "total_grade_mixture_cost",
+  "column_break_5emtk",
+  "total_overheads",
+  "column_break_xioy9",
+  "estimated_product_costing",
+  "column_break_rr0sk",
+  "cost_per_kg"
+ ],
+ "fields": [
+  {
+   "fieldname": "casting_details",
+   "fieldtype": "Table",
+   "label": "Casting Details",
+   "options": "Product Costing Casting Details"
+  },
+  {
+   "fieldname": "grade_mix",
+   "fieldtype": "Table",
+   "label": "Grade Mix",
+   "options": "Product Costing Grade Mix",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overheads",
+   "fieldtype": "Table",
+   "label": "Overheads",
+   "options": "Product Costing Overheads"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "naming_series",
+   "options": "PDC-"
+  },
+  {
+   "fieldname": "section_break_imxfr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ruukc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_km1ca",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_nofqh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "label": "Total Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_hn3uv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "select_grade",
+   "fieldtype": "Link",
+   "label": "Select Grade",
+   "options": "Grade Master"
+  },
+  {
+   "fieldname": "estimated_product_costing",
+   "fieldtype": "Currency",
+   "label": "Estimated Product Costing"
+  },
+  {
+   "fieldname": "total_overheads",
+   "fieldtype": "Currency",
+   "label": "Total Overheads Cost"
+  },
+  {
+   "fieldname": "total_grade_mixture_cost",
+   "fieldtype": "Currency",
+   "label": "Total Grade Mixture Cost"
+  },
+  {
+   "fieldname": "section_break_mnfyw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_5emtk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xioy9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rr0sk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cost_per_kg",
+   "fieldtype": "Currency",
+   "label": "Cost Per KG"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-06 16:55:05.576616",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Product Costing",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

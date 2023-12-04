@@ -1,0 +1,36 @@
+{
+ "based_on": "heat_date",
+ "chart_name": "Poring",
+ "chart_type": "Sum",
+ "color": "#ed1a1a",
+ "creation": "2023-11-21 21:29:04.423980",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Pouring",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[]",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "modified": "2023-11-21 21:29:04.423980",
+ "modified_by": "rakesh.chougule@erpdata.in",
+ "module": "Quantbit Foundry ERP",
+ "name": "Poring",
+ "number_of_groups": 0,
+ "owner": "rakesh.chougule@erpdata.in",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Daily",
+ "timeseries": 1,
+ "timespan": "Last Week",
+ "type": "Bar",
+ "use_report_chart": 0,
+ "value_based_on": "total_pouring_weight",
+ "y_axis": []
+}

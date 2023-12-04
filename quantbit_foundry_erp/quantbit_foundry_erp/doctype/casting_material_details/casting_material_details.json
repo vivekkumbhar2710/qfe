@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-21 16:03:01.876880",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "column_break_cjwcp",
+  "item_name",
+  "section_break_nx3pr",
+  "weight",
+  "column_break_0pvbc",
+  "qty",
+  "column_break_pkxvv",
+  "uom",
+  "column_break_hrsjs",
+  "grade"
+ ],
+ "fields": [
+  {
+   "fetch_from": "material_name.weight",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight Per Unit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity Per Box",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "UOM"
+  },
+  {
+   "fieldname": "column_break_cjwcp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nx3pr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_0pvbc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pkxvv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "column_break_hrsjs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.custom_grade",
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Grade Master",
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-22 10:12:21.584270",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Material Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

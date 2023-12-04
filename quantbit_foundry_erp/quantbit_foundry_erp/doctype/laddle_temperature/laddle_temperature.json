@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-23 17:08:46.877456",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "laddle",
+  "first_box_temp",
+  "last_box_temp",
+  "weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "laddle",
+   "fieldtype": "Link",
+   "label": "Laddle",
+   "options": "Laddle Master"
+  },
+  {
+   "fieldname": "first_box_temp",
+   "fieldtype": "Float",
+   "label": "First Box Temprature"
+  },
+  {
+   "fieldname": "last_box_temp",
+   "fieldtype": "Float",
+   "label": "Last Box Temprature"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "precision": "2"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-24 13:17:41.500237",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Laddle Temperature",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

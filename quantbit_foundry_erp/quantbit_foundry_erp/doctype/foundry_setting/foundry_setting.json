@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:company",
+ "creation": "2023-11-01 16:18:54.356791",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "pouring_default_warehouse_tab",
+  "tw_casting",
+  "column_break_eup4v",
+  "sw_charge",
+  "column_break_slf3v",
+  "sw_core",
+  "column_break_j0a4l",
+  "sw_sand",
+  "casting_treatment__default_warehouse_section",
+  "ct_tw_casting",
+  "column_break_pru0d",
+  "ct_sw_raw",
+  "column_break_pv810",
+  "ct_tw_rejected",
+  "rr_item_setting_section",
+  "rr_item",
+  "column_break_e8tsy",
+  "rr_item_name",
+  "column_break_rjvlh",
+  "rr_item_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "pouring_default_warehouse_tab",
+   "fieldtype": "Section Break",
+   "label": "Pouring Default Warehouse"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "unique": 1
+  },
+  {
+   "fieldname": "tw_casting",
+   "fieldtype": "Link",
+   "label": "Defoult Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "sw_charge",
+   "fieldtype": "Link",
+   "label": "Defoult Source Warehouse For Change Mix",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "sw_core",
+   "fieldtype": "Link",
+   "label": "Defoult Source Warehouse For  Core",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "casting_treatment__default_warehouse_section",
+   "fieldtype": "Section Break",
+   "label": "Casting Treatment  Default Warehouse"
+  },
+  {
+   "fieldname": "ct_tw_casting",
+   "fieldtype": "Link",
+   "label": "Defoult Target Warehouse for Casting Items",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "ct_sw_raw",
+   "fieldtype": "Link",
+   "label": "Default Source Warehouse for Raw Items",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "ct_tw_rejected",
+   "fieldtype": "Link",
+   "label": "Defoult Target Warehouse for Rejected Items",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_eup4v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_slf3v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pru0d",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pv810",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rr_item_setting_section",
+   "fieldtype": "Section Break",
+   "label": "RR Item Setting"
+  },
+  {
+   "fieldname": "column_break_e8tsy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "rr_item.item_name",
+   "fieldname": "rr_item_name",
+   "fieldtype": "Data",
+   "label": "RR Item Name"
+  },
+  {
+   "fieldname": "rr_item",
+   "fieldtype": "Link",
+   "label": "Select RR Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_rjvlh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rr_item_warehouse",
+   "fieldtype": "Link",
+   "label": "RR Item Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_j0a4l",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sw_sand",
+   "fieldtype": "Link",
+   "label": "Molding Sand Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-28 13:31:48.247917",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Foundry Setting",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

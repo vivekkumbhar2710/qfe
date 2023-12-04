@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-11-24 17:26:12.521121",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Pouring\"],[\"docstatus\",\"Pouring\"],[\"casting_item_code\",\"Core  Details\"],[\"item_code\",\"Core  Details\"],[\"item_name\",\"Core  Details\"],[\"uom\",\"Core  Details\"],[\"warehouse\",\"Core  Details\"],[\"stock\",\"Core  Details\"],[\"qty\",\"Core  Details\"],[\"pattern\",\"Core  Details\"],[\"heat_date\",\"Pouring\"],[\"furnece\",\"Pouring\"],[\"supervisor\",\"Pouring\"],[\"operator\",\"Pouring\"],[\"contractor\",\"Pouring\"],[\"shift\",\"Pouring\"],[\"supervisor_name\",\"Pouring\"],[\"operator_name\",\"Pouring\"],[\"contractor_name\",\"Pouring\"],[\"shift_time\",\"Pouring\"],[\"branch_name\",\"Pouring\"],[\"charge_mix\",\"Pouring\"],[\"heat_no\",\"Pouring\"],[\"grade\",\"Pouring\"],[\"grade_type\",\"Pouring\"],[\"total_consumed_weight\",\"Pouring\"],[\"total_rr_weight\",\"Pouring\"],[\"total_pouring_weight\",\"Pouring\"],[\"total_weight_difference\",\"Pouring\"],[\"poring_time_start\",\"Pouring\"],[\"poring_time_end\",\"Pouring\"],[\"power_reading_initial\",\"Pouring\"],[\"power_reading_final\",\"Pouring\"]],\"order_by\":\"`tabPouring`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"docstatus\":120,\"Core  Details:casting_item_code\":120,\"Core  Details:item_code\":120,\"Core  Details:item_name\":120,\"Core  Details:uom\":120,\"Core  Details:warehouse\":120,\"Core  Details:stock\":120,\"Core  Details:qty\":120,\"Core  Details:pattern\":120,\"heat_date\":120,\"furnece\":120,\"supervisor\":120,\"operator\":120,\"contractor\":120,\"shift\":120,\"supervisor_name\":120,\"operator_name\":120,\"contractor_name\":120,\"shift_time\":120,\"branch_name\":120,\"charge_mix\":120,\"heat_no\":120,\"grade\":120,\"grade_type\":120,\"total_consumed_weight\":120,\"total_rr_weight\":120,\"total_pouring_weight\":120,\"total_weight_difference\":120,\"poring_time_start\":120,\"poring_time_end\":120,\"power_reading_initial\":120,\"power_reading_final\":120},\"group_by\":null,\"chart_args\":{\"chart_type\":\"bar\",\"x_axis\":\"heat_date\",\"y_axes\":[\"Casting Details:total_quantity\"]}}",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-11-28 14:35:01.692997",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Furnace Wise Production Report",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "ref_doctype": "Pouring",
+ "report_name": "Furnace Wise Production Report",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

@@ -1,0 +1,342 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-11-03 11:10:30.407858",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "company",
+  "treatment_date",
+  "treatment_time",
+  "column_break_c0zar",
+  "shift",
+  "shift_time",
+  "casting_treatment",
+  "select_pouring",
+  "column_break_gvb1f",
+  "supervisor",
+  "operator",
+  "contractor",
+  "column_break_on2tf",
+  "supervisor_name",
+  "operator_name",
+  "contractor_name",
+  "branch_name",
+  "section_break_uqige",
+  "casting_item",
+  "section_break_xnhff",
+  "column_break_lr3co",
+  "column_break_ybjh6",
+  "total_quantity",
+  "column_break_itwo5",
+  "total_weight",
+  "section_break_xbsec",
+  "raw_item",
+  "quantity_details",
+  "section_break_n4jlf",
+  "sum_of_ok_quantity",
+  "column_break_1iixl",
+  "sum_of_cr_quantity",
+  "column_break_lcklo",
+  "sum_of_rw_quantity",
+  "column_break_f9bil",
+  "sum_of_total_quantity",
+  "column_break_volbj",
+  "sum_of_total_weight",
+  "section_break_bxogz",
+  "get_rejection",
+  "rejected_items_reasons",
+  "additional_cost_details",
+  "downtime_reasons_details",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CST-"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "treatment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Treatment Date",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "treatment_time",
+   "fieldtype": "Time",
+   "label": "Treatment Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift Master",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "shift.minutes",
+   "fieldname": "shift_time",
+   "fieldtype": "Int",
+   "label": "Shift Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_c0zar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "operator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "contractor",
+   "fieldtype": "Link",
+   "label": "Contractor",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "column_break_on2tf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "supervisor.employee_name",
+   "fieldname": "supervisor_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name"
+  },
+  {
+   "fetch_from": "operator.employee_name",
+   "fieldname": "operator_name",
+   "fieldtype": "Data",
+   "label": "Operator Name"
+  },
+  {
+   "fetch_from": "contractor.supplier_name",
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name"
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Link",
+   "label": "Branch Name",
+   "options": "Casting Details"
+  },
+  {
+   "fieldname": "column_break_gvb1f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_uqige",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "downtime_reasons_details",
+   "fieldtype": "Table",
+   "label": "Downtime Reasons Details",
+   "options": "Casting Treatment Downtime Reasons Details"
+  },
+  {
+   "fieldname": "additional_cost_details",
+   "fieldtype": "Table",
+   "label": "Additional Cost Details",
+   "options": "Casting Treatment Additional Cost Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Casting Treatment",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "select_pouring",
+   "fieldtype": "Table MultiSelect",
+   "label": "Select Pouring",
+   "options": "Pouring Multi select"
+  },
+  {
+   "fieldname": "casting_item",
+   "fieldtype": "Table",
+   "label": "Casting Item",
+   "options": "Casting Treatment Casting Item"
+  },
+  {
+   "fieldname": "raw_item",
+   "fieldtype": "Table",
+   "label": "Raw Item",
+   "options": "Casting Treatment Raw Item"
+  },
+  {
+   "fieldname": "quantity_details",
+   "fieldtype": "Table",
+   "label": "Quantity Details",
+   "options": "Casting Treatment Quantity Details"
+  },
+  {
+   "fieldname": "rejected_items_reasons",
+   "fieldtype": "Table",
+   "label": "Rejected Items Reasons",
+   "options": "Casting Treatment Rejected Items Reasons"
+  },
+  {
+   "fieldname": "casting_treatment",
+   "fieldtype": "Link",
+   "label": "Casting Treatment",
+   "options": "Casting Treatment Master"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_xnhff",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_itwo5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xbsec",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lr3co",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "label": "Total Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_ybjh6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_n4jlf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sum_of_total_quantity",
+   "fieldtype": "Float",
+   "label": "Sum Of Total Quantity",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_bxogz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_volbj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sum_of_total_weight",
+   "fieldtype": "Float",
+   "label": "Sum Of Total Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_1iixl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_f9bil",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "get_rejection",
+   "fieldtype": "Button",
+   "label": "Get Rejection"
+  },
+  {
+   "fieldname": "sum_of_ok_quantity",
+   "fieldtype": "Float",
+   "label": "Sum of OK Quantity"
+  },
+  {
+   "fieldname": "sum_of_cr_quantity",
+   "fieldtype": "Float",
+   "label": "Sum of CR Quantity"
+  },
+  {
+   "fieldname": "column_break_lcklo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sum_of_rw_quantity",
+   "fieldtype": "Data",
+   "label": "Sum of RW Quantity"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Stock Entry",
+   "link_fieldname": "custom_casting_treatment"
+  }
+ ],
+ "modified": "2023-11-27 15:29:23.199913",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Treatment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,43 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-11-28 10:50:16.478949",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-11-28 14:35:00.702988",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Production Summary Per Month With Nos And Weight",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "query": "select b.heat_date \"Date\",a.item_code \"Item Code\",a.item_name \"Item Name\",a.pattern \"Pattern\",a.quantitybox 'Quantitybox',a.short_quantity 'Short Quantity',a.total_quantity 'Total Quantity',a.casting_weight 'Casting Weight',a.rr_weight 'rr weight',a.total_weight 'Total Weight',a.casting_treatment_quantity  \"Casting Treatment Quantity\"\nfrom `tabCasting Details` a\nleft join `tabPouring` b on a.parent =  b.name \nwhere heat_date between %(from_date)s and %(to_date)s",
+ "ref_doctype": "Pouring",
+ "report_name": "Production Summary Per Month With Nos And Weight",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

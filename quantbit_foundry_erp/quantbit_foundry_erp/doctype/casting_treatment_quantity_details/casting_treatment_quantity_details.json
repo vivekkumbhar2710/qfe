@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-03 11:16:25.527536",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "column_break_3kbf1",
+  "item_name",
+  "section_break_w5vra",
+  "pouring",
+  "sales_order",
+  "column_break_xdysn",
+  "ok_quantity",
+  "column_break_90xs6",
+  "cr_quantity",
+  "section_break_mayqv",
+  "rw_quantity",
+  "column_break_m4cez",
+  "total_quantity",
+  "column_break_gsrzs",
+  "weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3kbf1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "section_break_w5vra",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pouring",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pouring",
+   "options": "Pouring",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xdysn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ok_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "OK Quantity",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_90xs6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cr_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "CR Quantity",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_mayqv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_m4cez",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Quantity",
+   "precision": "2",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gsrzs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rw_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "RW Quantiry",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-06 11:39:41.675072",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Treatment Quantity Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

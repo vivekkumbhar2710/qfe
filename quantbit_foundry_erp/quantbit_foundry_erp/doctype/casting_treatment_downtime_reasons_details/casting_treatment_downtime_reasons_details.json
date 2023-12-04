@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-04 17:42:40.074106",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "downtime_reason",
+  "column_break_iszpo",
+  "time_in_mn",
+  "column_break_v7rve",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "downtime_reason",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Downtime Reason",
+   "options": "Rejection Reason Master"
+  },
+  {
+   "fieldname": "column_break_iszpo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "time_in_mn",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Time in MN"
+  },
+  {
+   "fieldname": "column_break_v7rve",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remark"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-04 17:42:40.074106",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Treatment Downtime Reasons Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

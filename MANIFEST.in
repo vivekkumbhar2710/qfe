@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include quantbit_foundry_erp *.css
+recursive-include quantbit_foundry_erp *.csv
+recursive-include quantbit_foundry_erp *.html
+recursive-include quantbit_foundry_erp *.ico
+recursive-include quantbit_foundry_erp *.js
+recursive-include quantbit_foundry_erp *.json
+recursive-include quantbit_foundry_erp *.md
+recursive-include quantbit_foundry_erp *.png
+recursive-include quantbit_foundry_erp *.py
+recursive-include quantbit_foundry_erp *.svg
+recursive-include quantbit_foundry_erp *.txt
+recursive-exclude quantbit_foundry_erp *.pyc

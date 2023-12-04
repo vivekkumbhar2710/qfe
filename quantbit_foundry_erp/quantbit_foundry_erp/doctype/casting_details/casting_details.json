@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-23 14:27:44.357394",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "column_break_u4aho",
+  "item_name",
+  "column_break_ntdwq",
+  "pattern",
+  "column_break_oze55",
+  "sales_order",
+  "section_break_m5owa",
+  "quantitybox",
+  "column_break_l4ncq",
+  "short_quantity",
+  "column_break_apiqw",
+  "total_quantity",
+  "column_break_wue55",
+  "casting_weight",
+  "column_break_ksdsg",
+  "rr_weight",
+  "rr_weight_total",
+  "total_weight",
+  "section_break_up6ga",
+  "target_warehouse",
+  "section_break_nkyvd",
+  "casting_treatment_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "pattern",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pattern Code",
+   "options": "Pattern Master",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "short_quantity",
+   "fieldtype": "Int",
+   "label": "Short Quantity"
+  },
+  {
+   "fieldname": "quantitybox",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity Per Box",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Int",
+   "label": "Total Quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "casting_weight",
+   "fieldtype": "Float",
+   "label": "Casting Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rr_weight",
+   "fieldtype": "Float",
+   "label": "RR Weight Per Unit",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Weight",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_m5owa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_l4ncq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_apiqw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wue55",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ksdsg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Casting Item Code",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Casting Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_u4aho",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ntdwq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_up6ga",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_oze55",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "casting_treatment_quantity",
+   "fieldtype": "Float",
+   "label": "Casting Treatment Quantity",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_nkyvd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "rr_weight_total",
+   "fieldtype": "Float",
+   "label": "RR Weight For Total Quantity",
+   "precision": "2",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-24 13:11:54.568407",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

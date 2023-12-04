@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-03 10:59:58.611751",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rejection_reason",
+  "item_code",
+  "item_name",
+  "pouring",
+  "rejection_type",
+  "qty",
+  "target_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Rejection Reason ",
+   "options": "Rejection Reason Master",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rejection_type",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "label": "Rejection Type",
+   "options": "Rejection Type Master",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pouring",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pouring ID",
+   "options": "Pouring",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Finished Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Finished Item Name",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-27 15:34:47.014326",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Casting Treatment Rejected Items Reasons",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
