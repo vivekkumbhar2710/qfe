@@ -132,6 +132,15 @@ frappe.ui.form.on('Casting Treatment Casting Item', {
     }
 });
 
+frappe.ui.form.on('Casting Treatment Casting Item', {
+    quantity: function(frm) {
+        frm.call({
+			method:'update_raw',
+			doc:frm.doc,
+		})
+    }
+});
+
 // ============================================================= Casting Treatment Raw Item ================================================= 
 
 frappe.ui.form.on('Casting Treatment Raw Item', {

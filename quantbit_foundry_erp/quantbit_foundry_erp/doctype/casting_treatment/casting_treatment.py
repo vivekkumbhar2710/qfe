@@ -1,5 +1,5 @@
 # Copyright (c) 2023, Quantbit Technologies Pvt ltd and contributors
-# For license information, please see license.txt
+# For license information, please see license.txt y
 
 import frappe
 from frappe.model.document import Document
@@ -8,6 +8,7 @@ class CastingTreatment(Document):
 
 
 	def before_save(self):
+		self.update_raw()
 		self.validate_total_quentity()
 		self.validate_rejections()
 
@@ -24,7 +25,7 @@ class CastingTreatment(Document):
 			for d in self.get("select_pouring"):
 				items_doc= frappe.get_all("Casting Details" ,
 													filters = {"parent": str(d.pouring)},
-													fields = ["item_code","item_name","total_quantity","total_weight","target_warehouse","casting_weight","pattern","sales_order","casting_treatment_quantity"])
+													fields = ["name","item_code","item_name","total_quantity","target_warehouse","casting_weight","pattern","sales_order","casting_treatment_quantity"])
 				for i in items_doc:
 					self.append("casting_item",{
 							'item_code': i.item_code ,
@@ -32,11 +33,12 @@ class CastingTreatment(Document):
 							'pouring': d.pouring,
 							'source_warehouse': i.target_warehouse ,
 							'available_quantity': self.get_available_quantity(i.item_code , i.target_warehouse ),
-							'quantity': (i.total_quantity - i.casting_treatment_quantity) ,
-							'weight': i.total_weight ,
+							'quantity': i.total_quantity  ,
+							'weight': i.casting_weight * i.total_quantity ,
 							'target_warehouse':cttwcasting,
 							"casting_weight": i.casting_weight,
-							"sales_order":i.sales_order
+							"sales_order":i.sales_order,
+							"reference_id": i.name,
 						},),
 
 
@@ -45,22 +47,35 @@ class CastingTreatment(Document):
 							'item_name': i.item_name,
 							'pouring': d.pouring,
 							'sales_order' : i.sales_order,
+							'reference_id':i.name,
 			
 						},),
 
 					casting_treatment = frappe.get_all("Casting Treatment Details" ,
 													filters = {"parent": i.pattern , 'casting_items_code': i.item_code , 'casting_treatment' : self.casting_treatment },
 													fields = ["casting_treatment","casting_items_code","casting_item_name","raw_item_code","raw_item_name","required_quantity"])
+		
+
 					for ct in casting_treatment:
+						raw_uom = frappe.get_value("Item",ct.raw_item_code,"stock_uom")
+						if raw_uom:
+							if raw_uom =='Nos':
+								temp_total_quantity = ct.required_quantity * (i.total_quantity)
+								total_quantity = int(temp_total_quantity) + (1 if temp_total_quantity % 1 != 0 else 0)
+							else:
+								total_quantity = ct.required_quantity * (i.total_quantity)
+
 						self.append("raw_item",{
 								'item_code': ct.casting_items_code ,
 								'item_name': ct.casting_item_name,
 								'pouring': d.pouring,
 								'raw_item_code':ct.raw_item_code,
 								"raw_item_name": ct.raw_item_name,
-								"total_quantity": ct.required_quantity * (i.total_quantity - i.casting_treatment_quantity),
+								'required_quantity_per_unit':ct.required_quantity,
+								"total_quantity": total_quantity,
 								"source_warehouse" : ctswraw ,
 								"available_quantity": self.get_available_quantity(ct.raw_item_code ,ctswraw),
+								'reference_id':i.name,
 
 				
 							},),
@@ -70,6 +85,39 @@ class CastingTreatment(Document):
 
 		else:
 			frappe.throw("Please select Both Pouring and Casting Treatment")
+
+
+
+
+	@frappe.whitelist()
+	def update_raw(self):
+		casting_item = self.get("casting_item")
+		for d in casting_item :
+			if d.quantity:
+				total_quantity = frappe.get_value("Casting Details", d.reference_id ,'total_quantity')
+				if d.quantity > total_quantity:
+					frappe.throw(f"You Can Not Set 'Quantity' More Than {total_quantity} ")
+				if d.casting_weight:
+					d.weight = d.quantity * d.casting_weight
+				if d.pouring and d.reference_id:
+					raw_item = self.get("raw_item" , filters = {'reference_id': d.reference_id})
+					for r in raw_item:
+						raw_uom = frappe.get_value("Item",r.raw_item_code,"stock_uom")
+						if raw_uom:
+							if raw_uom =='Nos':
+								temp_total_quantity = r.required_quantity_per_unit * d.quantity
+								total_quantity = int(temp_total_quantity) + (1 if temp_total_quantity % 1 != 0 else 0)
+							else:
+								total_quantity = r.required_quantity_per_unit * d.quantity
+
+
+
+						r.total_quantity = total_quantity
+
+
+
+		self.calculate_total_weight_quentity()
+			
 
 	@frappe.whitelist()
 	def set_available_qty(self ,table_name ,item_code , warehouse ,field_name):

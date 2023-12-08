@@ -9,13 +9,18 @@ frappe.ui.form.on('Pouring', {
 // ============================================================= Pouring =================================================
 frappe.ui.form.on('Pouring', {
     refresh: function(frm) {
-        frm.fields_dict['furnece'].$input.css('background-color', '#8FC5FF');
-        frm.fields_dict['supervisor'].$input.css('background-color', '#8FC5FF');
-        frm.fields_dict['operator'].$input.css('background-color', '#8FC5FF');
-        frm.fields_dict['contractor'].$input.css('background-color', '#8FC5FF');
-        frm.fields_dict['shift'].$input.css('background-color', '#8FC5FF');
+        frm.fields_dict['furnece'].$input.css('background-color', '#D2E9FB');
+        frm.fields_dict['supervisor'].$input.css('background-color', '#D2E9FB');
+        frm.fields_dict['operator'].$input.css('background-color', '#D2E9FB');
+        frm.fields_dict['contractor'].$input.css('background-color', '#D2E9FB');
+        frm.fields_dict['shift'].$input.css('background-color', '#D2E9FB');
+		// frm.fields_dict['pattern_details'].grid.get_field('pattern_code').$input.each(function(i, element) {
+        //     $(element).css('background-color', '#D2E9FB'); });
     }
 });
+
+
+
 
 frappe.ui.form.on('Pouring', {
     grade: function(frm) {

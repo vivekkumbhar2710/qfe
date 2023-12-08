@@ -21,7 +21,10 @@
   "column_break_fkmjr",
   "available_quantity",
   "column_break_8rbgi",
-  "total_quantity"
+  "required_quantity_per_unit",
+  "total_quantity",
+  "section_break_pc52l",
+  "reference_id"
  ],
  "fields": [
   {
@@ -113,12 +116,29 @@
   {
    "fieldname": "column_break_8rbgi",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "required_quantity_per_unit",
+   "fieldtype": "Float",
+   "label": "Required Quantity Per Unit",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_pc52l",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Data",
+   "label": "Reference ID",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-11-06 11:39:09.372596",
+ "modified": "2023-12-06 15:55:12.216570",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Raw Item",

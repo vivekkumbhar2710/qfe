@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "field:grade_name",
  "creation": "2023-10-30 18:29:21.220180",
  "default_view": "List",
  "doctype": "DocType",
@@ -9,6 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "grade_name",
   "column_break_vbln4",
   "company",
   "section_break_vfhff",
@@ -49,15 +50,22 @@
   {
    "fieldname": "section_break_vfhff",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "grade_name",
+   "fieldtype": "Data",
+   "label": "Grade Name",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-23 13:26:36.217032",
+ "modified": "2023-12-04 12:34:24.414696",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Grade Master",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

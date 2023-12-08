@@ -343,7 +343,7 @@
   {
    "fieldname": "furnece",
    "fieldtype": "Link",
-   "label": "Furnece",
+   "label": "Furnace",
    "options": "Furnece Master",
    "reqd": 1
   },
@@ -450,9 +450,16 @@
   {
    "link_doctype": "Material Request",
    "link_fieldname": "custom_custom_pouring"
+  },
+  {
+   "is_child_table": 1,
+   "link_doctype": "Pouring Multi select",
+   "link_fieldname": "pouring",
+   "parent_doctype": "Casting Treatment",
+   "table_fieldname": "select_pouring"
   }
  ],
- "modified": "2023-11-28 14:06:35.143226",
+ "modified": "2023-12-07 10:34:58.760085",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pouring",

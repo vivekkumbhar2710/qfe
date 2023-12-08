@@ -133,6 +133,11 @@ frappe.ui.form.on('Casting Material Details', {
                     }
                 }
 			});
+
+            frm.call({
+                method:'set_weight',
+                doc:frm.doc,
+            });
         
     }
 });

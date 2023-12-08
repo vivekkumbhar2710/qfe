@@ -22,7 +22,9 @@
   "column_break_m4cez",
   "total_quantity",
   "column_break_gsrzs",
-  "weight"
+  "weight",
+  "section_break_cred2",
+  "reference_id"
  ],
  "fields": [
   {
@@ -122,12 +124,22 @@
    "label": "Sales Order",
    "options": "Sales Order",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_cred2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Data",
+   "label": "Reference ID",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-11-06 11:39:41.675072",
+ "modified": "2023-12-06 15:56:49.006089",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Quantity Details",
