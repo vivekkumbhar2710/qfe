@@ -1,0 +1,26 @@
+[
+ {
+  "company": "Alpha Foundries Pvt. Ltd.",
+  "docstatus": 0,
+  "doctype": "Rejection Type Master",
+  "modified": "2023-12-15 11:00:30.906565",
+  "name": "Temporary",
+  "type": "Temporary"
+ },
+ {
+  "company": "Alpha Foundries Pvt. Ltd.",
+  "docstatus": 0,
+  "doctype": "Rejection Type Master",
+  "modified": "2023-12-15 11:00:55.328922",
+  "name": "CR",
+  "type": "CR"
+ },
+ {
+  "company": "Alpha Foundries Pvt. Ltd.",
+  "docstatus": 0,
+  "doctype": "Rejection Type Master",
+  "modified": "2023-12-15 11:00:47.056501",
+  "name": "RW",
+  "type": "RW"
+ }
+]

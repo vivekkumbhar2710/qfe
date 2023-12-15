@@ -8,6 +8,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "company",
+  "column_break_il9t6",
   "hours",
   "column_break_5vtii",
   "minutes",
@@ -44,11 +46,22 @@
    "label": "Shift",
    "options": "1\n2\n3\n4\n5\n6",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_il9t6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company ",
+   "options": "Company",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-30 12:40:30.801942",
+ "modified": "2023-12-12 16:16:30.017093",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Shift Master",

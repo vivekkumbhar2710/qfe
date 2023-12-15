@@ -6,6 +6,9 @@ frappe.ui.form.on('Pouring', {
 
 	// }
 });
+
+
+
 // ============================================================= Pouring =================================================
 frappe.ui.form.on('Pouring', {
     refresh: function(frm) {
@@ -18,6 +21,7 @@ frappe.ui.form.on('Pouring', {
         //     $(element).css('background-color', '#D2E9FB'); });
     }
 });
+
 
 
 
@@ -132,6 +136,9 @@ frappe.ui.form.on('Pouring', {
 	
 			}
 		});
+
+
+
 
 // ============================================================= Pattern Details =================================================
 

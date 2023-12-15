@@ -11,10 +11,15 @@ class CastingTreatment(Document):
 		self.update_raw()
 		self.validate_total_quentity()
 		self.validate_rejections()
+		self.validate_casting_quantity()
 
 	def before_submit(self):
 		self.manifacturing_stock_entry()
 		self.transfer_stock_entry()
+		self.updating_treatment_analysis()
+
+	def before_cancel(self):
+		self.updating_treatment_analysis_on_cancle()
 
 	@frappe.whitelist()
 	def get_pouring (self):
@@ -22,63 +27,88 @@ class CastingTreatment(Document):
 
 			cttwcasting = frappe.get_value("Foundry Setting",self.company,"ct_tw_casting") 
 			ctswraw = frappe.get_value("Foundry Setting",self.company,"ct_sw_raw")
+ 
+
 			for d in self.get("select_pouring"):
 				items_doc= frappe.get_all("Casting Details" ,
 													filters = {"parent": str(d.pouring)},
 													fields = ["name","item_code","item_name","total_quantity","target_warehouse","casting_weight","pattern","sales_order","casting_treatment_quantity"])
 				for i in items_doc:
-					self.append("casting_item",{
-							'item_code': i.item_code ,
-							'item_name': i.item_name,
-							'pouring': d.pouring,
-							'source_warehouse': i.target_warehouse ,
-							'available_quantity': self.get_available_quantity(i.item_code , i.target_warehouse ),
-							'quantity': i.total_quantity  ,
-							'weight': i.casting_weight * i.total_quantity ,
-							'target_warehouse':cttwcasting,
-							"casting_weight": i.casting_weight,
-							"sales_order":i.sales_order,
-							"reference_id": i.name,
-						},),
+					casting_treatment_analysis = frappe.get_all("Casting Treatment Analysis" ,
+													filters = {"parent": str(d.pouring), "casting_treatment": self.casting_treatment,'reference_id':i.name ,"casting_item_code": i.item_code,"pattern":i.pattern},
+													fields = ["treatment_remaining_quantity",'name','treatment_no','source_warehouse','target_warehouse'])
+					treatmentable_quantity = 0
+					name_reference=''
+					next_treatment=''
+					for k in casting_treatment_analysis:
+						treatmentable_quantity = k.treatment_remaining_quantity
+						name_reference = str(k.name)
+						source_warehouse = k.source_warehouse
+						target_warehouse = k.target_warehouse
+						c_t_a = frappe.get_all("Casting Treatment Analysis" ,
+													filters = {"parent": str(d.pouring), "treatment_no": (k.treatment_no +1),'reference_id':i.name ,"casting_item_code": i.item_code,"pattern":i.pattern},
+													fields = ["treatment_remaining_quantity",'name',])
+						if c_t_a:
+							for n in c_t_a:
+								next_treatment =n.name
 
-
-					self.append("quantity_details",{
-							'item_code': i.item_code ,
-							'item_name': i.item_name,
-							'pouring': d.pouring,
-							'sales_order' : i.sales_order,
-							'reference_id':i.name,
-			
-						},),
-
-					casting_treatment = frappe.get_all("Casting Treatment Details" ,
-													filters = {"parent": i.pattern , 'casting_items_code': i.item_code , 'casting_treatment' : self.casting_treatment },
-													fields = ["casting_treatment","casting_items_code","casting_item_name","raw_item_code","raw_item_name","required_quantity"])
-		
-
-					for ct in casting_treatment:
-						raw_uom = frappe.get_value("Item",ct.raw_item_code,"stock_uom")
-						if raw_uom:
-							if raw_uom =='Nos':
-								temp_total_quantity = ct.required_quantity * (i.total_quantity)
-								total_quantity = int(temp_total_quantity) + (1 if temp_total_quantity % 1 != 0 else 0)
-							else:
-								total_quantity = ct.required_quantity * (i.total_quantity)
-
-						self.append("raw_item",{
-								'item_code': ct.casting_items_code ,
-								'item_name': ct.casting_item_name,
+					if treatmentable_quantity != 0:
+						self.append("casting_item",{
+								'item_code': i.item_code ,
+								'item_name': i.item_name,
 								'pouring': d.pouring,
-								'raw_item_code':ct.raw_item_code,
-								"raw_item_name": ct.raw_item_name,
-								'required_quantity_per_unit':ct.required_quantity,
-								"total_quantity": total_quantity,
-								"source_warehouse" : ctswraw ,
-								"available_quantity": self.get_available_quantity(ct.raw_item_code ,ctswraw),
-								'reference_id':i.name,
+								'source_warehouse':source_warehouse if source_warehouse else i.target_warehouse ,
+								'available_quantity': self.get_available_quantity(i.item_code , i.target_warehouse ),
+								'treatmentable_quantity':treatmentable_quantity,
+								'quantity': treatmentable_quantity  ,
+								'weight': i.casting_weight * i.total_quantity ,
+								'target_warehouse':target_warehouse if target_warehouse else cttwcasting,
+								"casting_weight": i.casting_weight,
+								"sales_order":i.sales_order,
+								"reference_id": i.name,
+								"name_reference":name_reference,
+								"next_treatment_id": next_treatment
+							},),
 
+
+						self.append("quantity_details",{
+								'item_code': i.item_code ,
+								'item_name': i.item_name,
+								'pouring': d.pouring,
+								'sales_order' : i.sales_order,
+								'reference_id':i.name,
 				
 							},),
+
+						casting_treatment = frappe.get_all("Casting Treatment Details" ,
+														filters = {"parent": i.pattern , 'casting_items_code': i.item_code , 'casting_treatment' : self.casting_treatment },
+														fields = ["casting_treatment","casting_items_code","casting_item_name","raw_item_code","raw_item_name","required_quantity"])
+			
+						
+						for ct in casting_treatment:
+							total_quantity = 0
+							raw_uom = frappe.get_value("Item",ct.raw_item_code,"stock_uom")
+							if raw_uom:
+								if raw_uom =='Nos':
+									temp_total_quantity = ct.required_quantity * (i.total_quantity)
+									total_quantity = int(temp_total_quantity) + (1 if temp_total_quantity % 1 != 0 else 0)
+								else:
+									total_quantity = ct.required_quantity * (i.total_quantity)
+							if ct.raw_item_code:
+								self.append("raw_item",{
+										'item_code': ct.casting_items_code ,
+										'item_name': ct.casting_item_name,
+										'pouring': d.pouring,
+										'raw_item_code':ct.raw_item_code,
+										"raw_item_name": ct.raw_item_name,
+										'required_quantity_per_unit':ct.required_quantity,
+										"total_quantity": total_quantity,
+										"source_warehouse" : ctswraw ,
+										"available_quantity": self.get_available_quantity(ct.raw_item_code ,ctswraw),
+										'reference_id':i.name,
+
+						
+									},),
 
 
 			self.calculate_total_weight_quentity()
@@ -87,7 +117,107 @@ class CastingTreatment(Document):
 			frappe.throw("Please select Both Pouring and Casting Treatment")
 
 
+	@frappe.whitelist()
+	def default_warehouse(self, casting_treatment):
+		pass
+		
+		
 
+
+
+
+
+	@frappe.whitelist()
+	def updating_treatment_analysis(self):
+		casting = self.get("casting_item")
+		for g in casting:
+			quantity_to_treatment = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"quantity_to_treatment")
+			treatment_done_quantity = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"treatment_done_quantity")
+			treatment_remaining_quantity = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"treatment_remaining_quantity")
+			casting_treatment_ok = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_ok")
+			casting_treatment_cr = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_cr")
+			casting_treatment_rw = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_rw")
+
+			update_done_qty = treatment_done_quantity + g.quantity
+			update_remaining_qty = treatment_remaining_quantity - g.quantity
+
+			for p in self.get("quantity_details" , filters = {"reference_id":g.reference_id}):
+				update_treatment_ok = casting_treatment_ok + p.ok_quantity
+				update_treatment_cr = casting_treatment_cr + p.cr_quantity
+				update_treatment_rw = casting_treatment_rw + p.rw_quantity
+
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"treatment_done_quantity",update_done_qty)
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"treatment_remaining_quantity",update_remaining_qty)
+
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_ok",update_treatment_ok)
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_cr",update_treatment_cr)
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_rw",update_treatment_rw)
+
+			if quantity_to_treatment == update_done_qty:
+				frappe.set_value("Casting Treatment Analysis",g.name_reference ,"status",'Completed')
+			elif quantity_to_treatment > update_done_qty and quantity_to_treatment != update_remaining_qty:
+				frappe.set_value("Casting Treatment Analysis",g.name_reference ,"status",'Partially Done')
+			elif quantity_to_treatment == update_remaining_qty:
+				frappe.set_value("Casting Treatment Analysis",g.name_reference ,"status",'In Process')
+			elif quantity_to_treatment < update_done_qty:
+				frappe.throw(f"Casting Treatment Is Done For Pouring '{g.pouring}' , You Can Not Update")
+
+
+			for k in self.get("quantity_details" , filters = {"reference_id":g.reference_id}):
+				next_reference_remaining = frappe.get_value("Casting Treatment Analysis",g.next_treatment_id ,"treatment_remaining_quantity")
+				if next_reference_remaining or next_reference_remaining == 0:
+					updated_next_remaining = next_reference_remaining + k.ok_quantity
+					frappe.set_value("Casting Treatment Analysis",g.next_treatment_id ,"treatment_remaining_quantity",updated_next_remaining)
+
+			
+
+	@frappe.whitelist()
+	def updating_treatment_analysis_on_cancle(self):
+		casting = self.get("casting_item")
+		for g in casting:
+			quantity_to_treatment = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"quantity_to_treatment")
+
+			treatment_done_quantity = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"treatment_done_quantity")
+			treatment_remaining_quantity = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"treatment_remaining_quantity")
+			casting_treatment_ok = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_ok")
+			casting_treatment_cr = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_cr")
+			casting_treatment_rw = frappe.get_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_rw")
+
+			update_done_qty = treatment_done_quantity - g.quantity
+			update_remaining_qty = treatment_remaining_quantity + g.quantity
+
+			for p in self.get("quantity_details" , filters = {"reference_id":g.reference_id}):
+				update_treatment_ok = casting_treatment_ok - p.ok_quantity
+				update_treatment_cr = casting_treatment_cr - p.cr_quantity
+				update_treatment_rw = casting_treatment_rw - p.rw_quantity
+ 
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"treatment_done_quantity",update_done_qty)
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"treatment_remaining_quantity",update_remaining_qty)
+
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_ok",update_treatment_ok)
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_cr",update_treatment_cr)
+			frappe.set_value("Casting Treatment Analysis",g.name_reference ,"casting_treatment_rw",update_treatment_rw)
+
+
+			if quantity_to_treatment == update_done_qty:
+				frappe.set_value("Casting Treatment Analysis",g.name_reference ,"status",'Completed')
+			elif quantity_to_treatment > update_done_qty and quantity_to_treatment != update_remaining_qty:
+				frappe.set_value("Casting Treatment Analysis",g.name_reference ,"status",'Partially Done')
+			elif quantity_to_treatment == update_remaining_qty:
+				frappe.set_value("Casting Treatment Analysis",g.name_reference ,"status",'In Process')
+			elif quantity_to_treatment < update_done_qty:
+				frappe.throw(f"Casting Treatment Is Done For Pouring '{g.pouring}' , You Can Not Update")
+
+			# next_reference_remaining = frappe.get_value("Casting Treatment Analysis",g.next_treatment_id ,"treatment_remaining_quantity")
+			# if next_reference_remaining or next_reference_remaining == 0:
+			# 	updated_next_remaining = next_reference_remaining - g.quantity
+			# 	frappe.set_value("Casting Treatment Analysis",g.next_treatment_id ,"treatment_remaining_quantity",updated_next_remaining)
+
+			for k in self.get("quantity_details" , filters = {"reference_id":g.reference_id}):
+				next_reference_remaining = frappe.get_value("Casting Treatment Analysis",g.next_treatment_id ,"treatment_remaining_quantity")
+				if next_reference_remaining or next_reference_remaining == 0:
+					updated_next_remaining = next_reference_remaining - k.ok_quantity
+					frappe.set_value("Casting Treatment Analysis",g.next_treatment_id ,"treatment_remaining_quantity",updated_next_remaining)
 
 	@frappe.whitelist()
 	def update_raw(self):
@@ -150,7 +280,7 @@ class CastingTreatment(Document):
 	@frappe.whitelist()
 	def validate_total_quentity(self):
 		for qd in self.get('quantity_details'):
-			for ci in (self.get("casting_item" , filters= {"pouring" : qd.pouring , "item_code" : qd.item_code })):
+			for ci in (self.get("casting_item" , filters= {"pouring" : qd.pouring , "item_code" : qd.item_code , "reference_id" : qd.reference_id})):
 				if qd.total_quantity != ci.quantity:
 					frappe.throw(f'The "Total Quantity" in table "Quantity Details" must be equal to "Quantity" from "Casting Item" for Item "{qd.item_code}"-"{qd.item_name}" and Pouring ID "{qd.pouring}"')
 
@@ -170,6 +300,9 @@ class CastingTreatment(Document):
 	@frappe.whitelist()
 	def get_rejections(self):
 		cttwrejected = frappe.get_value("Foundry Setting",self.company,"ct_tw_rejected")
+		CR_rejections = frappe.get_value("Casting Treatment Master",self.casting_treatment,"crt_warehouse")
+		RW_rejections = frappe.get_value("Casting Treatment Master",self.casting_treatment,"rwt_warehouse")
+
 		quantity_details = self.get('quantity_details')
 		for qty_d in quantity_details:
 			if qty_d.cr_quantity:
@@ -180,7 +313,8 @@ class CastingTreatment(Document):
 									'pouring': qty_d.pouring,
 									'rejection_type':"CR",
 									"qty": qty_d.cr_quantity,
-									"target_warehouse" : cttwrejected,			
+									"target_warehouse" :CR_rejections if CR_rejections else  cttwrejected,
+									"reference_id":qty_d.reference_id,
 								},),
 			if qty_d.rw_quantity:
 				self.append("rejected_items_reasons",
@@ -190,14 +324,15 @@ class CastingTreatment(Document):
 									'pouring': qty_d.pouring,
 									'rejection_type':"RW",
 									"qty": qty_d.rw_quantity,
-									"target_warehouse":cttwrejected,				
+									"target_warehouse":RW_rejections if RW_rejections else cttwrejected,
+									"reference_id":qty_d.reference_id,		
 								},),
 	@frappe.whitelist()
 	def validate_rejections(self):
 		for qnt_dtls in self.get('quantity_details'):
 			if qnt_dtls.cr_quantity:
 				cr_quantity = 0
-				for rir in self.get('rejected_items_reasons' , filters={"item_code": qnt_dtls.item_code , "pouring": qnt_dtls.pouring ,"rejection_type" : "CR"}):
+				for rir in self.get('rejected_items_reasons' , filters={"item_code": qnt_dtls.item_code , "pouring": qnt_dtls.pouring ,"rejection_type" : "CR" , "reference_id":qnt_dtls.reference_id}):
 					cr_quantity = cr_quantity + rir.qty
 
 				if cr_quantity !=  qnt_dtls.cr_quantity :
@@ -205,7 +340,7 @@ class CastingTreatment(Document):
 
 			if qnt_dtls.rw_quantity :
 				rw_quantity = 0 
-				for rir in self.get('rejected_items_reasons' , filters={"item_code": qnt_dtls.item_code , "pouring": qnt_dtls.pouring , "rejection_type" : "RW"}):
+				for rir in self.get('rejected_items_reasons' , filters={"item_code": qnt_dtls.item_code , "pouring": qnt_dtls.pouring , "rejection_type" : "RW" , "reference_id":qnt_dtls.reference_id}):
 					rw_quantity	= rw_quantity + rir.qty
 
 				if rw_quantity != qnt_dtls.rw_quantity :
@@ -223,6 +358,12 @@ class CastingTreatment(Document):
 		self.total_quantity = self.calculating_total_weight("casting_item" ,"quantity")
 		self.total_weight = self.calculating_total_weight("casting_item" ,"weight")
 
+	@frappe.whitelist()
+	def validate_casting_quantity(self):
+		castingitem = self.get("casting_item")
+		for j in castingitem :
+			if j.treatmentable_quantity < j.quantity :
+				frappe.throw(f"You can not select value more than 'Remaining Treatment Quantity' which is '{j.treatmentable_quantity}' ")
 
 	@frappe.whitelist()
 	def manifacturing_stock_entry(self):
@@ -232,9 +373,9 @@ class CastingTreatment(Document):
 			se.company = self.company
 			se.posting_date = self.treatment_date
 			
-			all_core = self.get("quantity_details" ,  filters={"item_code": cd.item_code , "pouring": cd.pouring ,"ok_quantity" : ["!=",0]})
+			all_core = self.get("quantity_details" ,  filters={"item_code": cd.item_code , "pouring": cd.pouring ,"ok_quantity" : ["!=",0],"reference_id" : cd.reference_id})
 			for core in all_core:
-				for g in self.get("raw_item" , filters={"item_code": cd.item_code , "pouring": cd.pouring}):
+				for g in self.get("raw_item" , filters={"item_code": cd.item_code , "pouring": cd.pouring ,"reference_id" : cd.reference_id}):
 					se.append(
 							"items",
 							{
@@ -285,7 +426,7 @@ class CastingTreatment(Document):
 		se.company = self.company
 		se.posting_date = self.treatment_date
 		for i in self.get("casting_item"):
-			for j in self.get("rejected_items_reasons" ,filters={"item_code": i.item_code , "pouring": i.pouring}):
+			for j in self.get("rejected_items_reasons" ,filters={"item_code": i.item_code , "pouring": i.pouring ,"reference_id":i.reference_id}):
 				count = count + 1
 				se.append(
 						"items",
@@ -302,4 +443,17 @@ class CastingTreatment(Document):
 			se.insert()
 			se.save()
 			se.submit()
+
+
+	#This method used to get filter for getting pouring doctype name
+	@frappe.whitelist()
+	def get_pouring_id(self):
+		document_list=[]
+		doc=frappe.db.sql("""select distinct parent from `tabCasting Treatment Analysis` where casting_treatment='{0}' and docstatus='1' 
+                    and status <> 'Completed'
+                    """.format(self.casting_treatment),as_dict="True")
+		for i in doc:
+			document_list.append(i.parent)
+		return document_list
+		
  

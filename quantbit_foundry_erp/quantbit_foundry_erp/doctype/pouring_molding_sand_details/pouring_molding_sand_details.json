@@ -18,7 +18,8 @@
   "stock",
   "column_break_ov3qy",
   "required_quantity",
-  "quantity"
+  "quantity",
+  "reference_id"
  ],
  "fields": [
   {
@@ -90,12 +91,18 @@
   {
    "fieldname": "column_break_lqund",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Data",
+   "label": "Reference ID",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-11-28 13:52:45.337715",
+ "modified": "2023-12-11 18:00:31.239460",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pouring Molding Sand Details",

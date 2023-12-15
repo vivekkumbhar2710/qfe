@@ -22,6 +22,7 @@ class Pouring(Document):
 		self.manifacturing_stock_entry()
 		self.manifacturing_retained_items()
 		self.calculating_power_consumption_amount()
+		self.casting_treatment_analysis_details()
 
 
 
@@ -38,11 +39,13 @@ class Pouring(Document):
 					swcore = frappe.get_value("Foundry Setting",self.company,"sw_core")
 					twcasting = frappe.get_value("Foundry Setting",self.company,"tw_casting")
 					swsand = frappe.get_value("Foundry Setting",self.company,"sw_sand")
-					pm_doc = frappe.get_all("Casting Material Details", 
-													filters = {"parent": i.pattern_code},
-													fields = ["item_code","item_name","weight","qty","uom"])
 					pm_rr_weight =frappe.get_value('Pattern Master',i.pattern_code ,'rr_weight')
 					casting_weight =frappe.get_value('Pattern Master',i.pattern_code ,'casting_weight')
+					
+					pm_doc = frappe.get_all("Casting Material Details", 
+													filters = {"parent": i.pattern_code},
+													fields = ["item_code","item_name","weight","qty","uom","name"])
+					
 					
 					for d in pm_doc:
 
@@ -62,6 +65,7 @@ class Pouring(Document):
 							'total_weight' : total_weight ,
 							'target_warehouse' : twcasting ,
 							'sales_order' : i.sales_order,
+							'reference_id' : d.name,
 						},),
 
 
@@ -78,10 +82,12 @@ class Pouring(Document):
 								'item_code': cmd.item_code ,
 								'item_name': cmd.item_name,
 								'pattern': i.pattern_code ,
-								'qty': cmd.qty * (i.poured_boxes * d.qty) ,
+								'qty': cmd.qty * i.poured_boxes  ,
 								'uom':cmd.uom,
 								"warehouse" : swcore ,
 								'stock' : self.get_available_quantity(cmd.item_code , swcore),
+								'required_quantity':cmd.qty * i.poured_boxes,
+								'reference_id' :  d.name,
 
 							},),
 			
@@ -102,6 +108,7 @@ class Pouring(Document):
 							'stock' : self.get_available_quantity(sand.sand_item_code , swsand),
 							'required_quantity':sand_qty,
 							"quantity" : sand_qty ,
+							"reference_id": i.pattern_code,
 
 						},),
 			else:
@@ -286,7 +293,7 @@ class Pouring(Document):
 							"s_warehouse": g.warehouse,
 						},)
 				
-			for sand in self.get("molding_sand_details"):
+			for sand in self.get("molding_sand_details", filters = {"pattern_id": cd.pattern}):
 				se.append(
 						"items",
 						{
@@ -295,8 +302,7 @@ class Pouring(Document):
 							"s_warehouse": sand.warehouse,
 						},)
 
-			for core in self.get("core_details"):
-				if core.casting_item_code == cd .item_code:
+			for core in self.get("core_details" , filters = {"pattern": cd.pattern ,'reference_id': cd.reference_id ,"casting_item_code": cd.item_code}):
 					se.append(
 							"items",
 							{
@@ -345,7 +351,7 @@ class Pouring(Document):
 							"s_warehouse": p.warehouse,
 						},)
 
-			for sand in self.get("molding_sand_details"):
+			for sand in self.get("molding_sand_details" ):
 				se.append(
 						"items",
 						{
@@ -462,6 +468,52 @@ class Pouring(Document):
 		if self.power_reading_initial and last_doc:
 			if self.power_reading_initial < last_doc :
 				frappe.throw("'Power Reading Initial' must be greater than last sumitted Pouring`s 'Power Reading Final'")
+
+	def casting_treatment_analysis_details(self):
+		casting_details = self.get("casting_details")
+		casting_treatment_analysis = self.get("casting_treatment_analysis")
+		casting_treatment_analysis.clear()
+
+		for i in casting_details:
+			casting_treatment_details = frappe.get_all("Casting Treatment Details",
+																		filters = {"parent": i.pattern, "casting_items_code": i.item_code},
+																		fields = ['casting_treatment','finished_target_warehouse','finished_source_warehouse'], order_by = 'idx ASC')
+			p=0
+			temp =0
+
+			for j in casting_treatment_details:
+				temp = temp + 1
+				if p == 0:
+					quantity_to_treatment = i.total_quantity
+					p=1
+				else:
+					quantity_to_treatment = 0
+
+				
+
+				self.append("casting_treatment_analysis",{
+								'pattern': i.pattern,
+								'casting_item_code': i.item_code,
+								'casting_treatment': j.casting_treatment,
+								'quantity_to_treatment' : i.total_quantity,
+								'treatment_done_quantity': 0,
+								'casting_treatment_ok': 0,
+								'casting_treatment_cr': 0,
+								'casting_treatment_rw': 0,
+								'treatment_remaining_quantity': quantity_to_treatment,
+								'pouring_id' : self.name,
+								'reference_id' : i.name,
+								'status':'In Process',
+								'treatment_no':temp,
+								'source_warehouse':j.finished_source_warehouse if j.finished_source_warehouse else i.target_warehouse ,
+								'target_warehouse':j.finished_target_warehouse ,
+								
+							},),
+
+
+
+		
+
 
 
 

@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "quality_type"
  ],
  "fields": [
@@ -15,11 +16,17 @@
    "fieldname": "quality_type",
    "fieldtype": "Data",
    "label": "Quality Type"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-30 11:00:54.899741",
+ "modified": "2023-12-15 12:13:29.202001",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Quality Type",

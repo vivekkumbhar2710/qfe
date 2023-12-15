@@ -40,6 +40,7 @@
   "section_break_icjml",
   "molding_sand_details",
   "casting_treatment_tab",
+  "section_section",
   "casting_treatment_details"
  ],
  "fields": [
@@ -228,6 +229,11 @@
    "fieldtype": "Table",
    "label": "Molding Sand Details",
    "options": "Molding Sand Details"
+  },
+  {
+   "fieldname": "section_section",
+   "fieldtype": "Section Break",
+   "label": "****Note = In Table \"Casting Treatment Details\"  Need To Add Casting Treatment In Correct Sequence, This Sequence Is Used For Routing \ud83d\udd00."
   }
  ],
  "index_web_pages_for_search": 1,
@@ -237,7 +243,7 @@
    "link_fieldname": "item_name"
   }
  ],
- "modified": "2023-11-28 10:33:25.877874",
+ "modified": "2023-12-14 12:31:10.367139",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pattern Master",

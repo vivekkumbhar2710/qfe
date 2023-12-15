@@ -71,6 +71,7 @@
   "core_details",
   "retained_items",
   "additional_cost_details",
+  "casting_treatment_analysis",
   "amended_from"
  ],
  "fields": [
@@ -437,6 +438,13 @@
    "label": "Total Sand Weight",
    "precision": "2",
    "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.docstatus==1;",
+   "fieldname": "casting_treatment_analysis",
+   "fieldtype": "Table",
+   "label": "Casting Treatment Analysis",
+   "options": "Casting Treatment Analysis"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -459,7 +467,7 @@
    "table_fieldname": "select_pouring"
   }
  ],
- "modified": "2023-12-07 10:34:58.760085",
+ "modified": "2023-12-11 10:53:52.555866",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pouring",

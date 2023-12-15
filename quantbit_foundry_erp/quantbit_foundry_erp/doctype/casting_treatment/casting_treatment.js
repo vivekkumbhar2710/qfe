@@ -8,6 +8,30 @@ frappe.ui.form.on('Casting Treatment', {
 });
 
 // ============================================================= Casting Treatment ================================================= 
+frappe.ui.form.on('Casting Treatment', {
+    casting_treatment: function(frm) {
+		var pouring_list=[];
+        frm.call({
+			method:'get_pouring_id',
+			doc:frm.doc,
+			callback: function(response) {
+				if (!response.exc) {
+					pouring_list=response.message
+					if(pouring_list==null)
+					{
+						frappe.throw("Pouring entry is not available for this 'Casting Treatment'");
+					}
+			}}
+		})
+		frm.set_query("select_pouring", function(doc) {
+			return {
+				filters: [
+					['Pouring', 'name','in', pouring_list],  
+				]
+			};
+		});
+    }
+});
 
 frappe.ui.form.on('Casting Treatment', {
     select_pouring: function(frm) {
@@ -60,17 +84,9 @@ frappe.ui.form.on('Casting Treatment', {
     }
 });
 
-frappe.ui.form.on('Casting Treatment', {
-    setup: function(frm) {
-        frm.fields_dict.select_pouring.get_query = function(doc, cdt, cdn) {
-            return {
-                filters: [
-                    ['Pouring', 'docstatus', '=', 1]
-                ]
-            };
-        };
-    }
-});
+
+
+
 
 
 // ============================================================= Casting Treatment Quantity Details =================================================  
@@ -89,14 +105,47 @@ frappe.ui.form.on('Casting Treatment Quantity Details', {
         frm.call({
 			method:'rejection_addition',
 			doc:frm.doc,
+		});
+
+	
+    },
+	
+});
+
+frappe.ui.form.on('Casting Treatment Quantity Details', {
+    cr_quantity: function(frm) {
+
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
+
+        frm.call({
+			method:'get_rejections',
+			doc:frm.doc,
 		})
-    }
+
+    },
+	
 });
 
 frappe.ui.form.on('Casting Treatment Quantity Details', {
     rw_quantity: function(frm) {
         frm.call({
 			method:'rejection_addition',
+			doc:frm.doc,
+		});
+
+    }
+});
+
+frappe.ui.form.on('Casting Treatment Quantity Details', {
+    rw_quantity: function(frm) {
+
+
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
+
+        frm.call({
+			method:'get_rejections',
 			doc:frm.doc,
 		})
     }
@@ -136,6 +185,15 @@ frappe.ui.form.on('Casting Treatment Casting Item', {
     quantity: function(frm) {
         frm.call({
 			method:'update_raw',
+			doc:frm.doc,
+		})
+    }
+});
+
+frappe.ui.form.on('Casting Treatment Casting Item', {
+    quantity: function(frm) {
+        frm.call({
+			method:'validate_casting_quantity',
 			doc:frm.doc,
 		})
     }

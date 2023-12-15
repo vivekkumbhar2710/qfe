@@ -7,10 +7,19 @@
  "engine": "InnoDB",
  "field_order": [
   "casting_treatment",
+  "column_break_n61xg",
+  "finished_target_warehouse",
+  "column_break_hzsfx",
+  "finished_source_warehouse",
+  "section_break_l2uhs",
   "casting_items_code",
+  "column_break_faqxz",
   "casting_item_name",
+  "column_break_ma2vp",
   "raw_item_code",
+  "column_break_z77ua",
   "raw_item_name",
+  "column_break_hvoaj",
   "required_quantity"
  ],
  "fields": [
@@ -34,8 +43,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Raw Item Code",
-   "options": "Item",
-   "reqd": 1
+   "options": "Item"
   },
   {
    "fetch_from": "raw_item_code.item_name",
@@ -49,8 +57,7 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Required Quantity",
-   "precision": "2",
-   "reqd": 1
+   "precision": "2"
   },
   {
    "fieldname": "casting_treatment",
@@ -59,12 +66,53 @@
    "label": "Casting Treatment",
    "options": "Casting Treatment Master",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_n61xg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "finished_target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Finished Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "section_break_l2uhs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_faqxz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ma2vp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_z77ua",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hvoaj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hzsfx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "finished_source_warehouse",
+   "fieldtype": "Link",
+   "label": "Finished Source Warehouse",
+   "options": "Warehouse"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-11-03 15:53:34.836001",
+ "modified": "2023-12-14 13:02:37.199471",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Details",

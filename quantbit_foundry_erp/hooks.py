@@ -215,3 +215,14 @@ app_license = "MIT"
 # auth_hooks = [
 #	"quantbit_foundry_erp.auth.validate"
 # ]
+
+
+fixtures = [
+    {
+        "doctype": "Client Script",
+        "filters": [
+            ["name", "in", ["Filter-Pattern Master","Filter- Casting Treatment","Filter-Pouring"]],
+        ],
+    },
+    "Rejection Type Master"
+]

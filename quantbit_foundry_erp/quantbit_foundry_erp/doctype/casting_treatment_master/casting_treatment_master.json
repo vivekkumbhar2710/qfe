@@ -8,19 +8,69 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "casting_treatment"
+  "casting_treatment",
+  "company",
+  "default_warehouse_settings_section",
+  "ft_warehouse",
+  "column_break_brhhj",
+  "crt_warehouse",
+  "column_break_bywmo",
+  "rwt_warehouse"
  ],
  "fields": [
   {
    "fieldname": "casting_treatment",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Casting Treatment ",
    "unique": 1
+  },
+  {
+   "fieldname": "default_warehouse_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Default Warehouse settings"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_bywmo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_brhhj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ft_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default Target Warehouse For Finished Goods",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "crt_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default CR Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "rwt_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default RW Target Warehouse",
+   "options": "Warehouse"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-03 12:00:25.165864",
+ "modified": "2023-12-14 10:37:49.411868",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Master",

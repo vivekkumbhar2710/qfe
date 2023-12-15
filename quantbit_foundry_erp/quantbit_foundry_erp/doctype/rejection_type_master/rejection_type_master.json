@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "type"
  ],
  "fields": [
@@ -16,11 +17,17 @@
    "fieldtype": "Data",
    "label": "Rejection Type",
    "unique": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-01 11:01:03.901782",
+ "modified": "2023-12-13 16:33:12.543934",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Rejection Type Master",

@@ -14,6 +14,8 @@ class PatternMaster(Document):
 		self.calculating_casting_weight()
 		self.calculating_cavities()
 		self.validate_grade()
+		self.warehouse_settings()
+		self.velify_pattern_details()
 		# self. = self.box_weight - self.casting_weight
 
 		# self.box_weight = (self.no_of_cavities * self.casting_weight )+ self.rr_weight 
@@ -94,5 +96,37 @@ class PatternMaster(Document):
 					frappe.throw(f'Grade of Casting Items are not matching 🚨')
 			break
 		self.grade = d.grade
+
+	@frappe.whitelist()
+	def warehouse_settings(self):
+		casting_material_details = self.get("casting_material_details")
+		for i in casting_material_details:
+			casting_treatment_details = self.get("casting_treatment_details" , filters = {"casting_items_code": i.item_code})
+			
+			source_warehouse = None
+			for j in casting_treatment_details:
+				Targer_warehouse = frappe.get_value('Casting Treatment Master',j.casting_treatment,'ft_warehouse')
+				j.finished_target_warehouse = Targer_warehouse
+				j.finished_source_warehouse = source_warehouse
+				source_warehouse = Targer_warehouse
+				# warehouse = frappe.get_value('Casting Treatment Master',j.casting_treatment,'ft_warehouse')
+
+
+		# frappe.throw(str(len(casting_treatment_details)))
 		
-	
+	def velify_pattern_details(self):
+		casting_treatment_details = self.get('casting_treatment_details')
+		core_material_details = self.get("core_material_details")
+		casting_material_details = self.get("casting_material_details")
+
+		td = set([i.casting_items_code for i in casting_treatment_details])
+		cd = set([j.casting_item_code for j in core_material_details])
+		castd = set([k.item_code for k in casting_material_details])
+
+		missing_items = set()
+		for code in td.union(cd):
+			if code not in castd:
+				missing_items.add(code)
+
+		if missing_items:
+			frappe.throw(f'{missing_items} are not present in "Casting Material Details"')

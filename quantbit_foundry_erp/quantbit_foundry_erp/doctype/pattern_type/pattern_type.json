@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "pattern_type"
  ],
  "fields": [
@@ -15,11 +16,17 @@
    "fieldname": "pattern_type",
    "fieldtype": "Data",
    "label": "Pattern Type"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-05 12:50:21.307291",
+ "modified": "2023-12-15 12:15:02.289219",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pattern Type",
