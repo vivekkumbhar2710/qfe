@@ -442,8 +442,12 @@ class Pouring(Document):
 	def validate_total_charge_mix(self):
 		total_furnece_kg = frappe.get_value("Furnece Master",self.furnece,"furnece_capcity")
 		total_quantity = self.calculating_total_weight("change_mix_details","quantity")
-		if total_furnece_kg != total_quantity:
-			frappe.throw(f'The Total Used Quantity of charge mix should be equal to {total_furnece_kg}')
+
+		remit_value = ((total_furnece_kg*20)/100)
+		total_valid_quantity = total_furnece_kg + remit_value
+
+		if total_valid_quantity > total_quantity:
+			frappe.throw(f'The Total Used Quantity of charge mix should be equal to {total_valid_quantity} which is Total Furnace Weight {total_furnece_kg} + 20% remit value {remit_value}' )
 
 	@frappe.whitelist()
 	def set_last_power_consumption(self):
