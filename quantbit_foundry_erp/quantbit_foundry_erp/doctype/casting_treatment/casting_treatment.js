@@ -102,6 +102,9 @@ frappe.ui.form.on('Casting Treatment Quantity Details', {
 
 frappe.ui.form.on('Casting Treatment Quantity Details', {
     cr_quantity: function(frm) {
+
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
         frm.call({
 			method:'rejection_addition',
 			doc:frm.doc,
@@ -112,23 +115,13 @@ frappe.ui.form.on('Casting Treatment Quantity Details', {
 	
 });
 
-frappe.ui.form.on('Casting Treatment Quantity Details', {
-    cr_quantity: function(frm) {
 
-		frm.clear_table("rejected_items_reasons");
-		frm.refresh_field('rejected_items_reasons');
-
-        frm.call({
-			method:'get_rejections',
-			doc:frm.doc,
-		})
-
-    },
-	
-});
 
 frappe.ui.form.on('Casting Treatment Quantity Details', {
     rw_quantity: function(frm) {
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
+
         frm.call({
 			method:'rejection_addition',
 			doc:frm.doc,
@@ -137,19 +130,6 @@ frappe.ui.form.on('Casting Treatment Quantity Details', {
     }
 });
 
-frappe.ui.form.on('Casting Treatment Quantity Details', {
-    rw_quantity: function(frm) {
-
-
-		frm.clear_table("rejected_items_reasons");
-		frm.refresh_field('rejected_items_reasons');
-
-        frm.call({
-			method:'get_rejections',
-			doc:frm.doc,
-		})
-    }
-});
 
 
 // ============================================================= Casting Treatment Casting Item ================================================= 

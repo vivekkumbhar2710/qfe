@@ -446,7 +446,7 @@ class Pouring(Document):
 		remit_value = ((total_furnece_kg*20)/100)
 		total_valid_quantity = total_furnece_kg + remit_value
 
-		if total_valid_quantity > total_quantity:
+		if total_valid_quantity < total_quantity:
 			frappe.throw(f'The Total Used Quantity of charge mix should be equal to {total_valid_quantity} which is Total Furnace Weight {total_furnece_kg} + 20% remit value {remit_value}' )
 
 	@frappe.whitelist()

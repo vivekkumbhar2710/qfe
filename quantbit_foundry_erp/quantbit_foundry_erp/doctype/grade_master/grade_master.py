@@ -13,10 +13,10 @@ class GradeMaster(Document):
 	@frappe.whitelist()
 	def validate_percentage(self):
 		grade_items_details = self.get("grade_items_details")
-		total_percentage = 0
+		total_percentage = 0.0
 		for i in grade_items_details:
 			if i.percentage :
-				total_percentage = total_percentage + i.percentage
+				total_percentage = round(total_percentage,3) + round(i.percentage,3)
 
-		if total_percentage !=100 :
+		if int(total_percentage) !=100 :
 			frappe.throw(f'The addition of toal percentage must equal to 100 % the difference is {100- total_percentage}')

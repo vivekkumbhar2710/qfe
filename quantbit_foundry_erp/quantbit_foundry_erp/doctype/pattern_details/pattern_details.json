@@ -1,90 +1,95 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2023-09-23 14:24:29.053477",
- "default_view": "List",
- "doctype": "DocType",
- "editable_grid": 1,
- "engine": "InnoDB",
- "field_order": [
-  "pattern_code",
-  "column_break_gyjor",
-  "pattern_name",
-  "column_break_ylqox",
-  "poured_boxes",
-  "column_break_ndu1r",
-  "sales_order",
-  "column_break_mnssg",
-  "grade"
- ],
- "fields": [
-  {
-   "fieldname": "poured_boxes",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Poured Boxes",
-   "precision": "2",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_gyjor",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "pattern_code.pattern_name",
-   "fieldname": "pattern_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Pattern Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_ylqox",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "pattern_code",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Pattern Code",
-   "options": "Pattern Master",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_ndu1r",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "sales_order",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Sales Order",
-   "options": "Sales Order"
-  },
-  {
-   "fieldname": "column_break_mnssg",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "pattern_code.grade",
-   "fieldname": "grade",
-   "fieldtype": "Link",
-   "label": "Grade",
-   "options": "Grade Master",
-   "read_only": 1,
-   "reqd": 1
-  }
- ],
- "index_web_pages_for_search": 1,
- "istable": 1,
- "links": [],
- "modified": "2023-11-24 12:47:55.243151",
- "modified_by": "Administrator",
- "module": "Quantbit Foundry ERP",
- "name": "Pattern Details",
- "owner": "Administrator",
- "permissions": [],
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": []
-}
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2023-09-23 14:24:29.053477",
+    "default_view": "List",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+     "pattern_code",
+     "column_break_gyjor",
+     "pattern_name",
+     "column_break_ylqox",
+     "poured_boxes",
+     "column_break_ndu1r",
+     "sales_order",
+     "column_break_mnssg",
+     "grade"
+    ],
+    "fields": [
+     {
+      "columns": 1,
+      "fieldname": "poured_boxes",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Poured Boxes",
+      "precision": "2",
+      "reqd": 1
+     },
+     {
+      "fieldname": "column_break_gyjor",
+      "fieldtype": "Column Break"
+     },
+     {
+      "columns": 2,
+      "fetch_from": "pattern_code.pattern_name",
+      "fieldname": "pattern_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Pattern Name",
+      "read_only": 1
+     },
+     {
+      "fieldname": "column_break_ylqox",
+      "fieldtype": "Column Break"
+     },
+     {
+      "columns": 1,
+      "fieldname": "pattern_code",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Pattern Code",
+      "options": "Pattern Master",
+      "reqd": 1
+     },
+     {
+      "fieldname": "column_break_ndu1r",
+      "fieldtype": "Column Break"
+     },
+     {
+      "columns": 5,
+      "fieldname": "sales_order",
+      "fieldtype": "Link",
+      "label": "Sales Order",
+      "options": "Sales Order"
+     },
+     {
+      "fieldname": "column_break_mnssg",
+      "fieldtype": "Column Break"
+     },
+     {
+      "columns": 1,
+      "fetch_from": "pattern_code.grade",
+      "fieldname": "grade",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Grade",
+      "options": "Grade Master",
+      "read_only": 1,
+      "reqd": 1
+     }
+    ],
+    "index_web_pages_for_search": 1,
+    "istable": 1,
+    "links": [],
+    "modified": "2023-12-20 13:34:04.749547",
+    "modified_by": "Administrator",
+    "module": "Quantbit Foundry ERP",
+    "name": "Pattern Details",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+   }

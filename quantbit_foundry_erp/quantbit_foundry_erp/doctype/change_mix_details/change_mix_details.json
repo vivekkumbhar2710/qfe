@@ -1,104 +1,107 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2023-09-23 17:03:17.361334",
- "doctype": "DocType",
- "editable_grid": 1,
- "engine": "InnoDB",
- "field_order": [
-  "item_code",
-  "column_break_86npc",
-  "item_name",
-  "column_break_pmsbu",
-  "item_group",
-  "column_break_yiewg",
-  "warehouse",
-  "column_break_dn7me",
-  "stock",
-  "column_break_ov3qy",
-  "quantity",
-  "required_quantity"
- ],
- "fields": [
-  {
-   "fieldname": "stock",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Available Stock",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "quantity",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Used Quantity"
-  },
-  {
-   "fieldname": "column_break_86npc",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_pmsbu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_ov3qy",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "item_group",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Raw Item Group"
-  },
-  {
-   "fieldname": "item_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Raw Item Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "item_code",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Raw Item Code",
-   "options": "Item"
-  },
-  {
-   "fieldname": "column_break_yiewg",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "warehouse",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Warehouse",
-   "options": "Warehouse"
-  },
-  {
-   "fieldname": "column_break_dn7me",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "required_quantity",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Required Quantity",
-   "precision": "2"
-  }
- ],
- "index_web_pages_for_search": 1,
- "istable": 1,
- "links": [],
- "modified": "2023-11-24 13:14:58.938366",
- "modified_by": "Administrator",
- "module": "Quantbit Foundry ERP",
- "name": "Change Mix Details",
- "owner": "Administrator",
- "permissions": [],
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": []
-}
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2023-09-23 17:03:17.361334",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+     "item_code",
+     "column_break_86npc",
+     "item_name",
+     "column_break_pmsbu",
+     "item_group",
+     "column_break_yiewg",
+     "warehouse",
+     "column_break_dn7me",
+     "stock",
+     "column_break_ov3qy",
+     "quantity",
+     "required_quantity"
+    ],
+    "fields": [
+     {
+      "fieldname": "stock",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Available Stock",
+      "precision": "2",
+      "read_only": 1
+     },
+     {
+      "fieldname": "quantity",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Used Quantity"
+     },
+     {
+      "fieldname": "column_break_86npc",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "column_break_pmsbu",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "column_break_ov3qy",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fetch_from": "item_code.item_group",
+      "fieldname": "item_group",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Raw Item Group",
+      "options": "Item Group"
+     },
+     {
+      "fetch_from": "item_code.item_name",
+      "fieldname": "item_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Raw Item Name",
+      "read_only": 1
+     },
+     {
+      "fieldname": "item_code",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Raw Item Code",
+      "options": "Item"
+     },
+     {
+      "fieldname": "column_break_yiewg",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "warehouse",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Warehouse",
+      "options": "Warehouse"
+     },
+     {
+      "fieldname": "column_break_dn7me",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "required_quantity",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Required Quantity",
+      "precision": "2"
+     }
+    ],
+    "index_web_pages_for_search": 1,
+    "istable": 1,
+    "links": [],
+    "modified": "2023-12-20 13:05:55.131811",
+    "modified_by": "Administrator",
+    "module": "Quantbit Foundry ERP",
+    "name": "Change Mix Details",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+   }

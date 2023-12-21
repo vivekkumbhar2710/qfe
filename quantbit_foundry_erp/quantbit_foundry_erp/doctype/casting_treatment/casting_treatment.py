@@ -277,6 +277,8 @@ class CastingTreatment(Document):
 		self.sum_of_cr_quantity = self.calculating_total_weight("quantity_details" ,"cr_quantity")
 		self.sum_of_rw_quantity = self.calculating_total_weight("quantity_details" ,"rw_quantity")
 
+		self.get_rejections()
+
 	@frappe.whitelist()
 	def validate_total_quentity(self):
 		for qd in self.get('quantity_details'):

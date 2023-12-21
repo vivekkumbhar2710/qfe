@@ -61,26 +61,16 @@ def get_cs_data(filters):
 	conditions = get_conditions(filters)
 	data = frappe.get_all ("Pouring",
 									fields = ['name','heat_date','supervisor','operator','shift'],
-									filters = conditions,
-									)
+									filters = conditions,)
 	return data
 
 
 def get_conditions(filters):
-	# conditions={}
-	# for key , value in filters.items():
-	# 	if filters.get(key):
-	# 		conditions[key] = value
+	date_filter ={}
 	from_heat_date = filters.get('from_heat_date')
 	to_heat_date =  filters.get('to_heat_date')
-
 	if from_heat_date or to_heat_date:
+		date_filter={'heat_date': ['between',[ filters.get('from_heat_date', '2001-01-01'), filters.get('to_heat_date', '2100-01-01')]]}
 		
-		data={'heat_date': ['between',[ filters.get('from_heat_date', '2001-01-01'), filters.get('to_heat_date', '2100-01-01')]]}
-		filters.update(data)
-		if from_heat_date:
-			filters.pop('from_heat_date')
-		if to_heat_date:
-			filters.pop('to_heat_date')
 			
-	return filters
+	return date_filter
