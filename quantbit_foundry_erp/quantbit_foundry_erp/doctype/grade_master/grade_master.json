@@ -14,7 +14,13 @@
   "company",
   "section_break_vfhff",
   "grade_type",
-  "grade_items_details"
+  "grade_items_details",
+  "default_scrap_item_details_section",
+  "scrap_item_code",
+  "column_break_9m5sk",
+  "scrap_item_name",
+  "column_break_wk1zb",
+  "default_target_warehouse"
  ],
  "fields": [
   {
@@ -57,11 +63,45 @@
    "label": "Grade Name",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "default_scrap_item_details_section",
+   "fieldtype": "Section Break",
+   "label": "Default Scrap Item Details"
+  },
+  {
+   "fieldname": "scrap_item_code",
+   "fieldtype": "Link",
+   "label": "Scrap Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "scrap_item_code.item_name",
+   "fieldname": "scrap_item_name",
+   "fieldtype": "Data",
+   "label": "Scrap Item Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_target_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Target Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9m5sk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wk1zb",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-04 12:34:24.414696",
+ "modified": "2023-12-22 17:19:53.882182",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Grade Master",

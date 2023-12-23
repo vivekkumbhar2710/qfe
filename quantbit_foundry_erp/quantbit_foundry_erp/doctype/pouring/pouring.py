@@ -119,9 +119,9 @@ class Pouring(Document):
 
 		self.total_pouring_weight = self.calculating_total_weight("casting_details","total_weight")
 		self.totals_calculation()
+		self.get_details_grade_master()
 
-
-		self.validate_poring_weight_without_interupt()
+		# self.validate_poring_weight_without_interupt()
 
 	@frappe.whitelist()
 	def calculating_total_weight(self,child_table ,total_field):
@@ -138,32 +138,44 @@ class Pouring(Document):
 
 	@frappe.whitelist()
 	def get_details_grade_master(self):
+
+		pattern_details = self.get("pattern_details")
+		for t in pattern_details:
+			cmt_data = frappe.get_value("Pattern Master", t.pattern_code,'grade')
+		self.grade = cmt_data
+
 		if self.grade:
 			if self.furnece:
-				swcharge = frappe.get_value("Foundry Setting",self.company,"sw_charge")
-				total_furnece_kg = frappe.get_value("Furnece Master",self.furnece,"furnece_capcity")
-				gid_doc = frappe.get_all("Grade Items Details", 
-													filters = {"parent": self.grade},
-													fields = ["item_code","item_name","item_group","percentage"])
+				change_mix_details = self.get('change_mix_details')
+				if not change_mix_details:
+					swcharge = frappe.get_value("Foundry Setting",self.company,"sw_charge")
+					total_furnece_kg = frappe.get_value("Furnece Master",self.furnece,"furnece_capcity")
+					gid_doc = frappe.get_all("Grade Items Details", 
+														filters = {"parent": self.grade},
+														fields = ["item_code","item_name","item_group","percentage"])
 
-				for gid in gid_doc:
-						calculated_qty = (gid.percentage * total_furnece_kg)/100
+					for gid in gid_doc:
+							calculated_qty = (gid.percentage * total_furnece_kg)/100
 
-						self.append("change_mix_details",{
-							'item_code': gid.item_code ,
-							'item_name': gid.item_name,
-							'item_group': gid.item_group,
-							'quantity': calculated_qty,
-							'required_quantity' : calculated_qty,
-							'warehouse': swcharge,
-							'stock' : self.get_available_quantity(gid.item_code , swcharge) ,
-						
-						},),
+							self.append("change_mix_details",{
+								'item_code': gid.item_code ,
+								'item_name': gid.item_name,
+								'item_group': gid.item_group,
+								'quantity': 0,
+								'required_quantity' : calculated_qty,
+								'warehouse': swcharge,
+								'stock' : self.get_available_quantity(gid.item_code , swcharge) ,
+							
+							},),
 			else:
 				frappe.throw("Please select Furnece")
 
-			self.total_consumed_weight = self.calculating_total_weight("change_mix_details","quantity")
+		self.calculate_total_weight_after_charge_mix_filling()		
 
+	@frappe.whitelist()
+	def calculate_total_weight_after_charge_mix_filling(self):
+			
+			self.total_consumed_weight = self.calculating_total_weight("change_mix_details","quantity")
 			self.totals_calculation()
 
 
@@ -172,18 +184,18 @@ class Pouring(Document):
 		if self.total_consumed_weight < self.total_pouring_weight:
 			frappe.throw(f'"Total Pouring Weight" must be less than "Total Consumed Weight"')
 
-	@frappe.whitelist()
-	def validate_poring_weight_without_interupt(self):
-		pattern_details = self.get("pattern_details")
-		for t in pattern_details:
-			cmt_data = frappe.get_value("Pattern Master", t.pattern_code,'grade')
-		self.grade = cmt_data
+	# @frappe.whitelist()
+	# def validate_poring_weight_without_interupt(self):
+	# 	pattern_details = self.get("pattern_details")
+	# 	for t in pattern_details:
+	# 		cmt_data = frappe.get_value("Pattern Master", t.pattern_code,'grade')
+	# 	self.grade = cmt_data
 
-		self.get_details_grade_master()
+	# 	self.get_details_grade_master()
 
-		if self.total_consumed_weight:
-				if self.total_consumed_weight < self.total_pouring_weight:
-					frappe.msgprint(f'"Total Pouring Weight" must be less than "Total Consumed Weight"')
+	# 	if self.total_consumed_weight:
+	# 			if self.total_consumed_weight < self.total_pouring_weight:
+	# 				frappe.msgprint(f'"Total Pouring Weight" must be less than "Total Consumed Weight"')
 		# else:
 		# 	frappe.msgprint("Please select Grade")
 
@@ -273,7 +285,8 @@ class Pouring(Document):
 	def set_datd_in_naming_fields(self):
 		list_data =[]
 		for d in self.get('casting_details'):
-			list_data.append(d.item_name)
+			all_data = 'Item = '+str(d.item_name) + ',' + 'Total Quantity = ' +str(d.total_quantity) 
+			list_data.append(all_data)
 		self.naming_fields = str(list_data)
 
 		
@@ -393,7 +406,7 @@ class Pouring(Document):
 
 		self.total_pouring_weight = self.calculating_total_weight("casting_details","total_weight")
 		self.totals_calculation()
-		self.validate_poring_weight_without_interupt()
+		# self.validate_poring_weight_without_interupt()
 
 
 
@@ -414,10 +427,10 @@ class Pouring(Document):
 			break
 
 	def create_rr_item_retain_items(self):
-		rr_item = frappe.get_value("Foundry Setting",self.company,"rr_item")
-		rr_item_warehouse = frappe.get_value("Foundry Setting",self.company,"rr_item_warehouse")
+		rr_item = frappe.get_value("Grade Master",self.grade,"scrap_item_code")
+		rr_item_warehouse = frappe.get_value("Grade Master",self.grade,"default_target_warehouse")
 		if not rr_item:
-			frappe.throw('Please Set RR item In foundry setting')
+			frappe.throw('Please Set RR item In Grade Master')
 
 		retained_items = self.get("retained_items", filters={"rr_item":1})
 		if not retained_items:

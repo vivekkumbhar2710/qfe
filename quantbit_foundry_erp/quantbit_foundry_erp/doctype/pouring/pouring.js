@@ -49,8 +49,6 @@ frappe.ui.form.on('Pouring', {
 			frm.clear_table("core_details");
 			frm.refresh_field('core_details');
 
-			frm.clear_table("change_mix_details");
-			frm.refresh_field('change_mix_details');
 
 			frm.clear_table("molding_sand_details");
 			frm.refresh_field('molding_sand_details');
@@ -153,8 +151,6 @@ frappe.ui.form.on('Pattern Details', {
 		frm.clear_table("core_details");
 		frm.refresh_field('core_details');
 
-		frm.clear_table("change_mix_details");
-		frm.refresh_field('change_mix_details');
 
 		frm.clear_table("molding_sand_details");
 			frm.refresh_field('molding_sand_details');
@@ -180,8 +176,7 @@ frappe.ui.form.on('Pattern Details', {
 			frm.clear_table("core_details");
 			frm.refresh_field('core_details');
 
-			frm.clear_table("change_mix_details");
-			frm.refresh_field('change_mix_details');
+
 
 			frm.clear_table("molding_sand_details");
 			frm.refresh_field('molding_sand_details');
@@ -206,8 +201,7 @@ frappe.ui.form.on('Pattern Details', {
 			frm.clear_table("core_details");
 			frm.refresh_field('core_details');
 
-			frm.clear_table("change_mix_details");
-			frm.refresh_field('change_mix_details');
+
 
 			frm.clear_table("molding_sand_details");
 			frm.refresh_field('molding_sand_details');
@@ -234,6 +228,15 @@ frappe.ui.form.on('Change Mix Details', {
     }
 });
 
+frappe.ui.form.on('Change Mix Details', {
+    quantity: function(frm) {
+
+            frm.call({
+			method:'calculate_total_weight_after_charge_mix_filling',
+			doc:frm.doc,
+		});
+    }
+});
 
 // ============================================================= Core  Details =================================================
 
@@ -251,8 +254,6 @@ frappe.ui.form.on('Core  Details', {
 frappe.ui.form.on('Casting Details', {
     short_quantity: function(frm) {
 
-		frm.clear_table("change_mix_details");
-		frm.refresh_field('change_mix_details');
 
             frm.call({
 			method:'calculation_after_short_quentity',
