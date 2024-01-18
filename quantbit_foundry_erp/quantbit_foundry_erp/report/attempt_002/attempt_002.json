@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-12-28 11:20:48.204109",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Foundry Letterhead",
+ "modified": "2023-12-28 11:20:48.204109",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Attempt 002",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Pouring",
+ "report_name": "Attempt 002",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

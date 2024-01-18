@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-03 13:06:01.810044",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "column_break_ow0ft",
+  "item_name",
+  "column_break_xersm",
+  "weight_per_unit_quantity",
+  "column_break_8gfth",
+  "schedule_quantity",
+  "actual_poured_quantity",
+  "column_break_xlo0o",
+  "total_weight",
+  "actual_total_poured_weight"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ow0ft",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xersm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "schedule_quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Schedule Quantity"
+  },
+  {
+   "fieldname": "column_break_8gfth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "weight_per_unit_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight Per Unit Quantity",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xlo0o",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Weight",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "actual_poured_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual Poured Quantity ",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "actual_total_poured_weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual Total Poured Weight ",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-03 16:33:06.639134",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Item Pouring Schedule",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

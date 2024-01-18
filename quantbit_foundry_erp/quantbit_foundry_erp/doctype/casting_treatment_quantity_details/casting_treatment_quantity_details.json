@@ -7,27 +7,34 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "item_code",
-  "column_break_3kbf1",
-  "item_name",
-  "section_break_w5vra",
   "pouring",
+  "column_break_3kbf1",
   "sales_order",
   "column_break_xdysn",
+  "item_code",
+  "column_break_vvw3y",
+  "item_name",
+  "column_break_hqhpq",
+  "casting_weight",
+  "section_break_w5vra",
   "ok_quantity",
+  "ok_quantity_weight",
   "column_break_90xs6",
   "cr_quantity",
-  "section_break_mayqv",
+  "cr_quantity_weight",
+  "column_break_gsrzs",
   "rw_quantity",
+  "rw_quantiry_weight",
   "column_break_m4cez",
   "total_quantity",
-  "column_break_gsrzs",
   "weight",
+  "section_break_mayqv",
   "section_break_cred2",
   "reference_id"
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -41,6 +48,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 2,
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -51,19 +59,20 @@
    "fieldtype": "Section Break"
   },
   {
+   "columns": 1,
    "fieldname": "pouring",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Pouring",
    "options": "Pouring",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "column_break_xdysn",
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fieldname": "ok_quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -76,6 +85,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fieldname": "cr_quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -91,6 +101,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fieldname": "total_quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -104,14 +115,16 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fieldname": "weight",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Weight",
+   "label": "Total Quantity Weight",
    "precision": "2",
    "read_only": 1
   },
   {
+   "columns": 1,
    "fieldname": "rw_quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -134,12 +147,41 @@
    "fieldtype": "Data",
    "label": "Reference ID",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vvw3y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ok_quantity_weight",
+   "fieldtype": "Data",
+   "label": "OK Quantity Weight",
+   "precision": "2"
+  },
+  {
+   "fieldname": "cr_quantity_weight",
+   "fieldtype": "Data",
+   "label": "CR Quantity Weight"
+  },
+  {
+   "fieldname": "rw_quantiry_weight",
+   "fieldtype": "Data",
+   "label": "RW Quantiry Weight"
+  },
+  {
+   "fieldname": "column_break_hqhpq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "casting_weight",
+   "fieldtype": "Float",
+   "label": "Casting Weight"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-06 15:56:49.006089",
+ "modified": "2023-12-26 15:01:53.618058",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Quantity Details",

@@ -9,13 +9,20 @@ class Pouring(Document):
 		self.validate_poring_weight()
 		self.calculating_power_consumption()
 		self.validate_stock()
-		self.validate_retained_items()
+		# self.validate_retained_items()
 		self.calculating_power_consumption_amount()
 		self.set_datd_in_naming_fields()
 		self.validate_pattern()
 		self.validate_pattern_equality()
 		self.create_rr_item_retain_items()
 		self.validate_total_charge_mix()
+		self.calculate_normal_loss()
+		if int(self.power_reading_initial) == 0:
+			frappe.throw('Please Fill Power Reading')
+		if int(self.power_reading_final) == 0:
+			frappe.throw('Please Fill Power Reading')
+
+		self.charge_mix = str(self.grade)
 
 	def before_submit(self):
 		self.validate_last_power_consumption()
@@ -146,13 +153,13 @@ class Pouring(Document):
 
 		if self.grade:
 			if self.furnece:
-				change_mix_details = self.get('change_mix_details')
+				change_mix_details = self.get('change_mix_details',)
 				if not change_mix_details:
 					swcharge = frappe.get_value("Foundry Setting",self.company,"sw_charge")
 					total_furnece_kg = frappe.get_value("Furnece Master",self.furnece,"furnece_capcity")
 					gid_doc = frappe.get_all("Grade Items Details", 
 														filters = {"parent": self.grade},
-														fields = ["item_code","item_name","item_group","percentage"])
+														fields = ["item_code","item_name","item_group","percentage"] , order_by='idx ASC')
 
 					for gid in gid_doc:
 							calculated_qty = (gid.percentage * total_furnece_kg)/100
@@ -235,7 +242,7 @@ class Pouring(Document):
 
 	@frappe.whitelist()
 	def validate_stock(self):
-		for vsk in self.get("change_mix_details"):
+		for vsk in self.get("change_mix_details",filters = {"quantity" :['!=',0]}):
 			if vsk.quantity > vsk.stock :
 				frappe.throw(f'There is not enough stock present in warehouse "{vsk.warehouse}" of item "{vsk.item_name}" to proceed with pouring entry')
 
@@ -243,16 +250,18 @@ class Pouring(Document):
 			if stk.qty > stk.stock :
 				frappe.throw(f'There is not enough stock present in warehouse "{stk.warehouse}" of item "{stk.item_name}" to proceed with pouring entry')
 
-	@frappe.whitelist()
-	def validate_retained_items(self):
-		total_sum =0
-		for ri in self.get("retained_items" , filters={"rr_item":0}):
-			if ri.total_quantity:
-				total_sum = total_sum + ri.total_quantity
+	# @frappe.whitelist()
+	# def validate_retained_items(self):
+	# 	total_sum =0
+	# 	for ri in self.get("retained_items" , filters={"rr_item":0}):
+	# 		if ri.total_quantity:
+	# 			total_sum = total_sum + ri.total_quantity
 
-		if self.total_weight_difference:
-			if round(self.total_weight_difference,2) != total_sum:
-				frappe.throw(f"The total sum of 'Total Quantity' should be equal to { self.total_weight_difference} ")
+	# 	total =int(self.total_pouring_weight) + int(total_sum)
+	# 	total_furnece_kg = frappe.get_value("Furnece Master",self.furnece,"furnece_capcity")
+
+	# 	if int(total_furnece_kg) != int(total):
+	# 		frappe.throw(f"Please Enter Valid Retain Item Quentity the difference is{total_furnece_kg - total} ")
 				
 		
 	@frappe.whitelist()
@@ -297,7 +306,7 @@ class Pouring(Document):
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company
 			se.posting_date = self.heat_date
-			for g in self.get("change_mix_details"):
+			for g in self.get("change_mix_details" , filters = {"quantity" :['!=',0]}):
 				se.append(
 						"items",
 						{
@@ -355,7 +364,7 @@ class Pouring(Document):
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company
 			se.posting_date = self.heat_date
-			for p in self.get("change_mix_details"):
+			for p in self.get("change_mix_details" , filters = {"quantity" :['!=',0]}):
 				se.append(
 						"items",
 						{
@@ -395,19 +404,19 @@ class Pouring(Document):
 			casting_weight =frappe.get_value('Pattern Master',pd.pattern_code ,'casting_weight')
 
 			for cd in self.get('casting_details'):
-				# if cd.short_quantity:
-					if pd.pattern_code ==  cd.pattern:
-						cd.total_quantity = (cd.quantitybox - cd.short_quantity)* pd.poured_boxes
-						rr_weight = (pm_rr_weight/casting_weight)*(cd.casting_weight)
-						total_weight = ((cd.casting_weight)+ rr_weight ) * (cd.total_quantity)
-						# frappe.msgprint(str(rr_weight)+"====="+str(total_weight))
-						cd.rr_weight = rr_weight
-						cd.total_weight = total_weight
+				if cd.short_quantity:
+					total_quantity = pd.poured_boxes * cd.quantitybox
+
+
+					cd.total_quantity = (total_quantity - int(cd.short_quantity) )
+					cd.rr_weight_total = cd.rr_weight * cd.total_quantity
+					cd.total_weight = (cd.casting_weight + cd.rr_weight) * (cd.total_quantity)
+
+				
 
 		self.total_pouring_weight = self.calculating_total_weight("casting_details","total_weight")
 		self.totals_calculation()
-		# self.validate_poring_weight_without_interupt()
-
+		self.get_details_grade_master()
 
 
 	def validate_pattern(self):
@@ -444,13 +453,37 @@ class Pouring(Document):
 			for g in retained_items:
 				g.total_quantity = self.total_rr_weight
 
+		heal_item = frappe.get_value("Grade Master",self.grade,"heal_item_code")
+		heal_item_warehouse = frappe.get_value("Grade Master",self.grade,"default_target_warehouse_heal")
+		if not heal_item:
+			frappe.throw('Please Set Heal item In Grade Master')
+
+		heal_metal = self.get("retained_items", filters={"item_code":heal_item})
+		if not heal_metal:
+			self.append("retained_items",{
+								'item_code': heal_item,
+								'target_warehouse': heal_item_warehouse,
+								'total_quantity': 0,
+								
+							},),
+
+
 	
 	def totals_calculation(self):
-		if self.total_consumed_weight and self.total_pouring_weight:
-				self.total_weight_difference =  self.total_consumed_weight - self.total_pouring_weight
+		# if self.total_consumed_weight and self.total_pouring_weight:
+		# 		self.total_weight_difference =  self.total_consumed_weight - self.total_pouring_weight
 
 		self.total_rr_weight = self.calculating_total_weight("casting_details","rr_weight_total")
 		self.total_sand_weight = self.calculating_total_weight("molding_sand_details","quantity")
+
+	def calculate_normal_loss(self):
+		total_sum =0
+		for ri in self.get("retained_items" , filters={"rr_item":0}):
+			if ri.total_quantity:
+				total_sum = total_sum + ri.total_quantity
+
+		self.normal_loss = self.total_consumed_weight - (self.total_pouring_weight + total_sum)
+		
 
 	def validate_total_charge_mix(self):
 		total_furnece_kg = frappe.get_value("Furnece Master",self.furnece,"furnece_capcity")
@@ -464,15 +497,21 @@ class Pouring(Document):
 
 	@frappe.whitelist()
 	def set_last_power_consumption(self):
-		# frappe.throw('MOYE MOYE .......')
 		power_consumption = frappe.get_all('Pouring',
                                         filters ={'docstatus':1 ,},
                                         fields = ['name','power_reading_final'] ,order_by='creation DESC',limit=1)
-		# frappe.throw(str(power_consumption))
 		if power_consumption :
 			for p in power_consumption:
 				if not  self.power_reading_initial:
 					self.power_reading_initial = p.power_reading_final
+					
+		doc = frappe.get_all("Laddle Master", filters = {'company':self.company})
+		for d in doc:
+			items = self.get("laddle_temperature", filters={"laddle":d.name})
+			if 	not items:
+				self.append("laddle_temperature",{
+								'laddle': d.name,
+							},),
 
 	def validate_last_power_consumption(self):
 		power_consumption = frappe.get_all('Pouring',
@@ -484,7 +523,7 @@ class Pouring(Document):
 
 		if self.power_reading_initial and last_doc:
 			if self.power_reading_initial < last_doc :
-				frappe.throw("'Power Reading Initial' must be greater than last sumitted Pouring`s 'Power Reading Final'")
+				frappe.msgprint("'Power Reading Initial' must be greater than last sumitted Pouring`s 'Power Reading Final'")
 
 	def casting_treatment_analysis_details(self):
 		casting_details = self.get("casting_details")

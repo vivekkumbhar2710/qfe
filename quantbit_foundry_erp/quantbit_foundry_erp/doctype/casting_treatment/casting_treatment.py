@@ -3,6 +3,9 @@
 
 import frappe
 from frappe.model.document import Document
+from quantbit_foundry_erp.quantbit_foundry_erp.doctype.pattern_master.pattern_master import (
+	item_weight_per_unit,
+)
 
 class CastingTreatment(Document):
 
@@ -77,6 +80,7 @@ class CastingTreatment(Document):
 								'pouring': d.pouring,
 								'sales_order' : i.sales_order,
 								'reference_id':i.name,
+								'casting_weight':i.casting_weight ,
 				
 							},),
 
@@ -268,8 +272,13 @@ class CastingTreatment(Document):
 	def rejection_addition(self):
 		for qd in self.get('quantity_details'):
 			qd.total_quantity = qd.ok_quantity + qd.cr_quantity + qd.rw_quantity
-			for ci in (self.get("casting_item" , filters= {"pouring" : qd.pouring , "item_code" : qd.item_code })):
-				qd.weight = qd.total_quantity * (ci.weight/ci.quantity)
+			qd.ok_quantity_weight = qd.casting_weight * qd.ok_quantity
+			qd.cr_quantity_weight = qd.casting_weight * qd.cr_quantity
+			qd.rw_quantiry_weight = qd.casting_weight * qd.rw_quantity
+			qd.weight             = qd.casting_weight * qd.total_quantity
+			
+			# for ci in (self.get("casting_item" , filters= {"pouring" : qd.pouring , "item_code" : qd.item_code })):
+			# 	qd.weight = qd.total_quantity * (ci.weight/ci.quantity)
 
 		self.sum_of_total_quantity =  self.calculating_total_weight("quantity_details" ,"total_quantity")
 		self.sum_of_total_weight = self.calculating_total_weight("quantity_details" ,"weight")
@@ -282,10 +291,14 @@ class CastingTreatment(Document):
 	@frappe.whitelist()
 	def validate_total_quentity(self):
 		for qd in self.get('quantity_details'):
+
 			for ci in (self.get("casting_item" , filters= {"pouring" : qd.pouring , "item_code" : qd.item_code , "reference_id" : qd.reference_id})):
 				if qd.total_quantity != ci.quantity:
 					frappe.throw(f'The "Total Quantity" in table "Quantity Details" must be equal to "Quantity" from "Casting Item" for Item "{qd.item_code}"-"{qd.item_name}" and Pouring ID "{qd.pouring}"')
 
+			for i in (self.get("pattern_casting_item" , filters= {"reference_id" : qd.reference_id})):
+				if qd.total_quantity != i.quantity:
+					frappe.throw(f'The "Total Quantity" in table "Quantity Details" must be equal to "Quantity" from "Casting Item" for Item "{qd.item_code}"-"{qd.item_name}"')
 
 
 
@@ -359,6 +372,9 @@ class CastingTreatment(Document):
 	def calculate_total_weight_quentity(self):
 		self.total_quantity = self.calculating_total_weight("casting_item" ,"quantity")
 		self.total_weight = self.calculating_total_weight("casting_item" ,"weight")
+		if self.get('pattern_casting_item'):
+			self.total_quantity = self.calculating_total_weight("pattern_casting_item" ,"quantity")
+			self.total_weight = self.calculating_total_weight("pattern_casting_item" ,"weight")
 
 	@frappe.whitelist()
 	def validate_casting_quantity(self):
@@ -369,15 +385,20 @@ class CastingTreatment(Document):
 
 	@frappe.whitelist()
 	def manifacturing_stock_entry(self):
-		for cd in self.get("casting_item"):      
+		if self.casting_treatment_without_pouring:
+			table = 'pattern_casting_item'
+		else:
+			table = 'casting_item'
+
+		for cd in self.get(table):      
 			se = frappe.new_doc("Stock Entry")
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company
 			se.posting_date = self.treatment_date
 			
-			all_core = self.get("quantity_details" ,  filters={"item_code": cd.item_code , "pouring": cd.pouring ,"ok_quantity" : ["!=",0],"reference_id" : cd.reference_id})
+			all_core = self.get("quantity_details" ,  filters={"item_code": cd.item_code ,"ok_quantity" : ["!=",0],"reference_id" : cd.reference_id})
 			for core in all_core:
-				for g in self.get("raw_item" , filters={"item_code": cd.item_code , "pouring": cd.pouring ,"reference_id" : cd.reference_id}):
+				for g in self.get("raw_item" , filters={"item_code": cd.item_code  ,"reference_id" : cd.reference_id}):
 					se.append(
 							"items",
 							{
@@ -427,24 +448,44 @@ class CastingTreatment(Document):
 		se.stock_entry_type = "Material Transfer"
 		se.company = self.company
 		se.posting_date = self.treatment_date
-		for i in self.get("casting_item"):
-			for j in self.get("rejected_items_reasons" ,filters={"item_code": i.item_code , "pouring": i.pouring ,"reference_id":i.reference_id}):
-				count = count + 1
-				se.append(
-						"items",
-						{
-							"item_code": j.item_code,
-							"qty": j.qty,
-							"s_warehouse": i.source_warehouse,
-							"t_warehouse": j.target_warehouse,
-						},)
+		if self.casting_treatment_without_pouring:
+			for y in self.get("pattern_casting_item"):
+				for z in self.get("rejected_items_reasons" ,filters={"item_code": y.item_code ,"reference_id":y.reference_id}):
+					count = count + 1
+					se.append(
+							"items",
+							{
+								"item_code": y.item_code,
+								"qty": z.qty,
+								"s_warehouse": y.source_warehouse,
+								"t_warehouse": z.target_warehouse,
+							},)
 
-					
-		se.custom_casting_treatment = self.name	
-		if count !=0:
-			se.insert()
-			se.save()
-			se.submit()
+						
+			se.custom_casting_treatment = self.name	
+			if count !=0:
+				se.insert()
+				se.save()
+				se.submit()
+		else:
+			for i in self.get("casting_item"):
+				for j in self.get("rejected_items_reasons" ,filters={"item_code": i.item_code , "pouring": i.pouring ,"reference_id":i.reference_id}):
+					count = count + 1
+					se.append(
+							"items",
+							{
+								"item_code": j.item_code,
+								"qty": j.qty,
+								"s_warehouse": i.source_warehouse,
+								"t_warehouse": j.target_warehouse,
+							},)
+
+						
+			se.custom_casting_treatment = self.name	
+			if count !=0:
+				se.insert()
+				se.save()
+				se.submit()
 
 
 	#This method used to get filter for getting pouring doctype name
@@ -457,5 +498,125 @@ class CastingTreatment(Document):
 		for i in doc:
 			document_list.append(i.parent)
 		return document_list
+	
+	#This method used to get filter for getting Items which are present in taht perticular Pattern
+	@frappe.whitelist()
+	def get_item_id_from_pattern(self):
+		document_list=[]
+		if self.select_pattern:
+			doc = frappe.get_all("Casting Material Details" , filters = {'parent': self.select_pattern} ,fields = ['item_code'])
+			for i in doc:
+				document_list.append(i.item_code)
+			return document_list
 		
+	#This method used to set data in table 'Pattern Casting Item'
+	@frappe.whitelist()
+	def pcidetails(self):
+		
+		if self.select_pattern and self.select_item:
+			if not self.casting_treatment:
+				frappe.throw("Please Select 'Casting Treatment'")
+			self.append("pattern_casting_item",
+							{
+							'item_code': self.select_item ,
+							'item_name': frappe.get_value("Item" , self.select_item ,"item_name"),
+							'pattern_id': self.select_pattern,
+							'casting_weight':item_weight_per_unit(self.select_item),
+							'reference_id': self.select_pattern,
+
+							},),
+
+	@frappe.whitelist()
+	def pattern_set_raw_item(self):
+
+		ctswraw = frappe.get_value("Foundry Setting",self.company,"ct_sw_raw")
+		pattern_casting_item = self.get('pattern_casting_item')
+
+		for j in pattern_casting_item:
+			if j.quantity:
+				self.validate_pattern_casting_item( j.source_warehouse , j.available_quantity ,j.quantity)
+				j.weight = j.casting_weight * j.quantity
+
+				casting_treatment = frappe.get_all("Casting Treatment Details" ,
+												filters = {"parent": self.select_pattern , 'casting_items_code': self.select_item, 'casting_treatment' : self.casting_treatment },
+												fields = ["casting_treatment","casting_items_code","casting_item_name","raw_item_code","raw_item_name","required_quantity"])
+
+				
+				for ct in casting_treatment:
+					total_quantity = 0
+					raw_uom = frappe.get_value("Item",ct.raw_item_code,"stock_uom")
+					if raw_uom:
+						if raw_uom =='Nos':
+							temp_total_quantity = ct.required_quantity * (j.quantity)
+							total_quantity = int(temp_total_quantity) + (1 if temp_total_quantity % 1 != 0 else 0)
+						else:
+							total_quantity = ct.required_quantity * (j.quantity)
+					if ct.raw_item_code:
+						self.append("raw_item",{
+								'item_code': ct.casting_items_code ,
+								'item_name': ct.casting_item_name,
+								'pouring': None,
+								'raw_item_code':ct.raw_item_code,
+								"raw_item_name": ct.raw_item_name,
+								'required_quantity_per_unit':ct.required_quantity,
+								"total_quantity": total_quantity,
+								"source_warehouse" : ctswraw ,
+								"available_quantity": self.get_available_quantity(ct.raw_item_code ,ctswraw),
+								'reference_id':self.select_pattern,
+
+				
+							},),
+		self.pattern_set_quantity_details()
+
+	@frappe.whitelist()
+	def pattern_set_quantity_details(self):
+		pattern_casting_item = self.get('pattern_casting_item')
+		for k in pattern_casting_item:
+			self.append("quantity_details",{
+									'item_code': k.item_code ,
+									'item_name': k.item_name,
+									'pouring': None,
+									'sales_order' : None,
+									'reference_id':self.select_pattern,
+									'casting_weight': k.casting_weight,
+					
+								},),
+
+		self.calculate_total_weight_quentity()
+
+	
+	@frappe.whitelist()
+	def validate_pattern_casting_item(self , source_warehouse , available_quantity , quantity):
+		if not source_warehouse:
+			frappe.throw("please select source_warehouse") 
+		if available_quantity < quantity:
+			frappe.throw("You can not select 'Quantity' more than 'Quantity Available In Warehouse'   ")
+
+	#set available qty in child table
+	# @frappe.whitelist()
+	# def set_available_qty_in_pcidetails(self):
+	# 	pattern_casting_item = self.get("pattern_casting_item")
+	# 	for d in pattern_casting_item:
+	# 		if d.source_warehouse and d.item_code:
+	# 			d.available_quantity = self.get_available_quantity(d.item_code , d.source_warehouse)
+			
+
+	# @frappe.whitelist()
+	# def item_weight_per_unit(self , item_code ):
+	# 	item_uom = frappe.get_value("Item",item_code,"stock_uom")
+	# 	if item_uom == 'Kg':
+	# 		item_weight = frappe.get_all("Item",item_code,"weight")
+	# 	else:
+	# 		production_uom_definition = frappe.get_all("Production UOM Definition",
+	# 																			filters = {"parent":item_code,"uom": 'Kg'},
+	# 																			fields = ["value_per_unit"])
+	# 		if production_uom_definition:
+	# 			for k in production_uom_definition:
+	# 				item_weight= k.value_per_unit
+	# 		else:
+	# 			frappe.throw(f'Please Set "Production UOM Definition" For Item {get_link_to_form("Item",item_code)} of UOM "Kg" ')
+	# 	if item_weight:
+	# 		return  item_weight
+	# 	else:
+	# 		return 0
  

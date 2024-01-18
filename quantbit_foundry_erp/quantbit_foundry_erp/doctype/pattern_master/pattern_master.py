@@ -25,26 +25,7 @@ class PatternMaster(Document):
 	def set_weight(self):
 		for i in self.get('casting_material_details'):
 			if i.item_code:
-				i.weight = self.item_weight_per_unit( i.item_code)
-
-	@frappe.whitelist()
-	def item_weight_per_unit(self , item_code ):
-		item_uom = frappe.get_value("Item",item_code,"stock_uom")
-		if item_uom == 'Kg':
-			item_weight = frappe.get_all("Item",item_code,"weight")
-		else:
-			production_uom_definition = frappe.get_all("Production UOM Definition",
-																				filters = {"parent":item_code,"uom": 'Kg'},
-																				fields = ["value_per_unit"])
-			if production_uom_definition:
-				for k in production_uom_definition:
-					item_weight= k.value_per_unit
-			else:
-				frappe.throw(f'Please Set "Production UOM Definition" For Item {get_link_to_form("Item",item_code)} of UOM "Kg" ')
-		if item_weight:
-			return  item_weight
-		else:
-			return 0
+				i.weight = item_weight_per_unit(i.item_code)
 
 	
 	@frappe.whitelist()
@@ -130,3 +111,11 @@ class PatternMaster(Document):
 
 		if missing_items:
 			frappe.throw(f'{missing_items} are not present in "Casting Material Details"')
+
+def item_weight_per_unit(item_code ):
+	item_uom = frappe.get_value("Item",item_code,"stock_uom")
+	if item_uom == 'Kg':
+		item_weight = frappe.get_value("Item",item_code,"weight")
+	else:
+		item_weight = frappe.get_value("Production UOM Definition",{"parent":item_code,"uom": 'Kg'},"value_per_unit")
+	return  item_weight if item_weight else 0

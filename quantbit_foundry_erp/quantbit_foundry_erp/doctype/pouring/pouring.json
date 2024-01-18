@@ -45,6 +45,7 @@
      "column_break_sfi6o",
      "total_pouring_weight",
      "total_weight_difference",
+     "normal_loss",
      "section_break_fet4v",
      "ferro_lab_readings",
      "column_break_tqzhb",
@@ -138,9 +139,11 @@
       "label": "Charge Mix"
      },
      {
+      "allow_on_submit": 1,
       "fieldname": "heat_no",
-      "fieldtype": "Int",
-      "label": "Heat No."
+      "fieldtype": "Data",
+      "label": "Heat No.",
+      "unique": 0
      },
      {
       "fieldname": "section_break_uqige",
@@ -308,15 +311,15 @@
       "fieldtype": "Link",
       "in_standard_filter": 1,
       "label": "Supervisor ID",
-      "options": "Employee"
+      "options": "Employee",
+      "reqd": 1
      },
      {
       "fieldname": "operator",
       "fieldtype": "Link",
       "in_list_view": 1,
       "label": "Operator ID",
-      "options": "Employee",
-      "reqd": 1
+      "options": "Employee"
      },
      {
       "fieldname": "column_break_on2tf",
@@ -370,7 +373,7 @@
      {
       "fieldname": "contractor",
       "fieldtype": "Link",
-      "label": "Contractor",
+      "label": "Moulding Contractor",
       "options": "Supplier"
      },
      {
@@ -391,6 +394,7 @@
      {
       "fieldname": "total_weight_difference",
       "fieldtype": "Float",
+      "hidden": 1,
       "label": "Total Weight Difference",
       "precision": "2",
       "read_only": 1
@@ -446,6 +450,12 @@
       "fieldtype": "Table",
       "label": "Casting Treatment Analysis",
       "options": "Casting Treatment Analysis"
+     },
+     {
+      "fieldname": "normal_loss",
+      "fieldtype": "Float",
+      "label": "Normal Loss",
+      "read_only": 1
      }
     ],
     "index_web_pages_for_search": 1,
@@ -468,7 +478,7 @@
       "table_fieldname": "select_pouring"
      }
     ],
-    "modified": "2023-12-22 14:16:54.557924",
+    "modified": "2024-01-12 15:33:24.956598",
     "modified_by": "Administrator",
     "module": "Quantbit Foundry ERP",
     "name": "Pouring",

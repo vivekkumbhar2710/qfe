@@ -1,491 +1,491 @@
 {
- "charts": [
-  {
-   "chart_name": "Daily Pouring",
-   "label": "Daily Casting"
-  }
- ],
- "content": "[{\"id\":\"xYx1sy3A_d\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Daily Casting\",\"col\":12}},{\"id\":\"IqEjzJ1VwZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZrN_QrW10p\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pouring\",\"col\":3}},{\"id\":\"DkKqkCzSEH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Casting Treatment\",\"col\":3}},{\"id\":\"8ON9tjzIq1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Foundry Dashboard\",\"col\":3}},{\"id\":\"4B4qAj4mEX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Planning\",\"col\":3}},{\"id\":\"1gxk2N3qJb\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Foundry</span>\",\"col\":12}},{\"id\":\"91En6-DQNK\",\"type\":\"card\",\"data\":{\"card_name\":\"Pattern Masters\",\"col\":4}},{\"id\":\"7_6bIZjfev\",\"type\":\"card\",\"data\":{\"card_name\":\"Entries\",\"col\":4}},{\"id\":\"YWqosbCFC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Casting Treatment Master\",\"col\":4}},{\"id\":\"H0Hl7Rueao\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"uXIrgIe_sN\",\"type\":\"card\",\"data\":{\"card_name\":\"Pouring Master\",\"col\":4}},{\"id\":\"vk7Od5eom5\",\"type\":\"card\",\"data\":{\"card_name\":\"Foundry Settings\",\"col\":4}},{\"id\":\"7pbLBpVbBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"3PFQd1CzHR\",\"type\":\"card\",\"data\":{\"card_name\":\"Production Report\",\"col\":4}},{\"id\":\"_wHGTDmdk0\",\"type\":\"card\",\"data\":{\"card_name\":\"Consumption Report\",\"col\":4}},{\"id\":\"LzeAy8cQsF\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Report\",\"col\":4}},{\"id\":\"P3Cyl39YYQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Resource Report\\t\",\"col\":4}},{\"id\":\"hSFwqTnAk8\",\"type\":\"card\",\"data\":{\"card_name\":\"Taxes And Charges Report\",\"col\":4}}]",
- "creation": "2023-11-04 18:12:32.854958",
- "custom_blocks": [],
- "docstatus": 0,
- "doctype": "Workspace",
- "for_user": "",
- "hide_custom": 1,
- "icon": "quantity-1",
- "idx": 0,
- "is_hidden": 0,
- "label": "Foundry",
- "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Casting Treatment Master",
-   "link_count": 1,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Casting Treatment Master",
-   "link_count": 0,
-   "link_to": "Casting Treatment Master",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Entries",
-   "link_count": 3,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pouring",
-   "link_count": 0,
-   "link_to": "Pouring",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Casting Treatment",
-   "link_count": 0,
-   "link_to": "Casting Treatment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Stock Entry",
-   "link_count": 0,
-   "link_to": "Stock Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pattern Masters",
-   "link_count": 4,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pattern Master",
-   "link_count": 0,
-   "link_to": "Pattern Master",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pattern Owner",
-   "link_count": 0,
-   "link_to": "Pattern Owner",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pattern Type",
-   "link_count": 0,
-   "link_to": "Pattern Type",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Item",
-   "link_count": 0,
-   "link_to": "Item",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pouring Master",
-   "link_count": 4,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Furnace Master",
-   "link_count": 0,
-   "link_to": "Furnece Master",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Grade Master",
-   "link_count": 0,
-   "link_to": "Grade Master",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Ladle Master",
-   "link_count": 0,
-   "link_to": "Laddle Master",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Power Rate Per Unit",
-   "link_count": 0,
-   "link_to": "Power Consumption",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Foundry Settings",
-   "link_count": 1,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Foundry Setting",
-   "link_count": 0,
-   "link_to": "Foundry Setting",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Consumption Report",
-   "link_count": 3,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "Casting Treatment",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Casting Treatment Consumption Report",
-   "link_count": 0,
-   "link_to": "Casting Treatment Consumption Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Electricity Consumption  and Cost Report",
-   "link_count": 0,
-   "link_to": "Electricity Consumption  and Cost Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pouring",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Core Consumption Report",
-   "link_count": 0,
-   "link_to": "Core Consumption Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Quality Report",
-   "link_count": 1,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "Casting Treatment",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Rejection Analysis in Casting Treatment",
-   "link_count": 0,
-   "link_to": "Rejection Analysis in Casting Treatment",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Resource Report\t",
-   "link_count": 4,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Operator Wise Production  Casting Treatment",
-   "link_count": 0,
-   "link_to": "Operator Wise Production  Casting Treatment",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Supervisor Wise Production  Casting Treatment",
-   "link_count": 0,
-   "link_to": "Supervisor Wise Production  Casting Treatment",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Operator Wise Production of Pouring",
-   "link_count": 0,
-   "link_to": "Operator Wise Production of Pouring",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Supervisor Wise Production of Pouring",
-   "link_count": 0,
-   "link_to": "Supervisor Wise Production of Pouring",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Production Report",
-   "link_count": 10,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Production Summary Per Month With Nos And Weight",
-   "link_count": 0,
-   "link_to": "Production Summary Per Month With Nos And Weight",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pouring",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Shift Wise Production Report",
-   "link_count": 0,
-   "link_to": "Shift Wise Production Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Casting Treatment",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Short Blasting Report",
-   "link_count": 0,
-   "link_to": "Short Blasting Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pouring",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "RR Report",
-   "link_count": 0,
-   "link_to": "RR Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pouring",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Raw Casting Material Consumption Report",
-   "link_count": 0,
-   "link_to": "Raw Casting Material Consumption Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Casting Treatment",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Fettling Report",
-   "link_count": 0,
-   "link_to": "Fettling Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pattern Master",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Pattern Master Report",
-   "link_count": 0,
-   "link_to": "Pattern Master Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pouring",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Furnace Wise Production Report",
-   "link_count": 0,
-   "link_to": "Furnace Wise Production Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Pouring",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Grade Wise Production Report",
-   "link_count": 0,
-   "link_to": "Grade Wise Production Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Casting Treatment",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Knock Out Report",
-   "link_count": 0,
-   "link_to": "Knock Out Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Taxes And Charges Report",
-   "link_count": 2,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "Outsourcing Job Work",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Details of Inputs/Capital Goods Sent For Job Work",
-   "link_count": 0,
-   "link_to": "Details of Inputs/Capital Goods Sent For Job Work",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Outsourcing Job Work",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Details of Inputs/Capital Goods Recived Back From Job Work",
-   "link_count": 0,
-   "link_to": "Details of Inputs/Capital Goods Recived Back From Job Work",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  }
- ],
- "modified": "2023-12-19 13:26:01.684044",
- "modified_by": "tejal.kumbhar@erpdata.in",
- "module": "Quantbit Foundry ERP",
- "name": "Foundry",
- "number_cards": [],
- "owner": "akshay.m@erpdata.in",
- "parent_page": "",
- "public": 1,
- "quick_lists": [],
- "roles": [],
- "sequence_id": 2.0,
- "shortcuts": [
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "label": "Pouring",
-   "link_to": "Pouring",
-   "stats_filter": "[[\"Pouring\",\"docstatus\",\"=\",\"1\",false]]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Foundry Dashboard",
-   "link_to": "Foundy Dashboard",
-   "type": "Dashboard"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "Dashboard",
-   "label": "Production Planning",
-   "link_to": "Production Plan",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "label": "Casting Treatment",
-   "link_to": "Casting Treatment",
-   "stats_filter": "[]",
-   "type": "DocType"
-  }
- ],
- "title": "Foundry"
-}
+    "charts": [
+    {
+    "chart_name": "Daily Pouring",
+    "label": "Daily Casting"
+    }
+    ],
+    "content": "[{\"id\":\"xYx1sy3A_d\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Daily Casting\",\"col\":12}},{\"id\":\"IqEjzJ1VwZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZrN_QrW10p\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pouring\",\"col\":3}},{\"id\":\"DkKqkCzSEH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Casting Treatment\",\"col\":3}},{\"id\":\"8ON9tjzIq1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Foundry Dashboard\",\"col\":3}},{\"id\":\"4B4qAj4mEX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Planning\",\"col\":3}},{\"id\":\"1gxk2N3qJb\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Foundry</span>\",\"col\":12}},{\"id\":\"91En6-DQNK\",\"type\":\"card\",\"data\":{\"card_name\":\"Pattern Masters\",\"col\":4}},{\"id\":\"7_6bIZjfev\",\"type\":\"card\",\"data\":{\"card_name\":\"Entries\",\"col\":4}},{\"id\":\"YWqosbCFC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Casting Treatment Master\",\"col\":4}},{\"id\":\"H0Hl7Rueao\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"uXIrgIe_sN\",\"type\":\"card\",\"data\":{\"card_name\":\"Pouring Master\",\"col\":4}},{\"id\":\"vk7Od5eom5\",\"type\":\"card\",\"data\":{\"card_name\":\"Foundry Settings\",\"col\":4}},{\"id\":\"7pbLBpVbBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"3PFQd1CzHR\",\"type\":\"card\",\"data\":{\"card_name\":\"Production Report\",\"col\":4}},{\"id\":\"_wHGTDmdk0\",\"type\":\"card\",\"data\":{\"card_name\":\"Consumption Report\",\"col\":4}},{\"id\":\"LzeAy8cQsF\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Report\",\"col\":4}},{\"id\":\"P3Cyl39YYQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Resource Report\\t\",\"col\":4}},{\"id\":\"hSFwqTnAk8\",\"type\":\"card\",\"data\":{\"card_name\":\"Taxes And Charges Report\",\"col\":4}}]",
+    "creation": "2023-11-04 18:12:32.854958",
+    "custom_blocks": [],
+    "docstatus": 0,
+    "doctype": "Workspace",
+    "for_user": "",
+    "hide_custom": 1,
+    "icon": "quantity-1",
+    "idx": 0,
+    "is_hidden": 0,
+    "label": "Foundry",
+    "links": [
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Casting Treatment Master",
+    "link_count": 1,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Casting Treatment Master",
+    "link_count": 0,
+    "link_to": "Casting Treatment Master",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Entries",
+    "link_count": 3,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pouring",
+    "link_count": 0,
+    "link_to": "Pouring",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Casting Treatment",
+    "link_count": 0,
+    "link_to": "Casting Treatment",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Stock Entry",
+    "link_count": 0,
+    "link_to": "Stock Entry",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pattern Masters",
+    "link_count": 4,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pattern Master",
+    "link_count": 0,
+    "link_to": "Pattern Master",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pattern Owner",
+    "link_count": 0,
+    "link_to": "Pattern Owner",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pattern Type",
+    "link_count": 0,
+    "link_to": "Pattern Type",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Item",
+    "link_count": 0,
+    "link_to": "Item",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pouring Master",
+    "link_count": 4,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Furnace Master",
+    "link_count": 0,
+    "link_to": "Furnece Master",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Grade Master",
+    "link_count": 0,
+    "link_to": "Grade Master",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Ladle Master",
+    "link_count": 0,
+    "link_to": "Laddle Master",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Power Rate Per Unit",
+    "link_count": 0,
+    "link_to": "Power Consumption",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Foundry Settings",
+    "link_count": 1,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Foundry Setting",
+    "link_count": 0,
+    "link_to": "Foundry Setting",
+    "link_type": "DocType",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Consumption Report",
+    "link_count": 3,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "dependencies": "Casting Treatment",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Casting Treatment Consumption Report",
+    "link_count": 0,
+    "link_to": "Casting Treatment Consumption Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Electricity Consumption  and Cost Report",
+    "link_count": 0,
+    "link_to": "Electricity Consumption  and Cost Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pouring",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Core Consumption Report",
+    "link_count": 0,
+    "link_to": "Core Consumption Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Quality Report",
+    "link_count": 1,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "dependencies": "Casting Treatment",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Rejection Analysis in Casting Treatment",
+    "link_count": 0,
+    "link_to": "Rejection Analysis in Casting Treatment",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Resource Report\t",
+    "link_count": 4,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Operator Wise Production  Casting Treatment",
+    "link_count": 0,
+    "link_to": "Operator Wise Production  Casting Treatment",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Supervisor Wise Production  Casting Treatment",
+    "link_count": 0,
+    "link_to": "Supervisor Wise Production  Casting Treatment",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Operator Wise Production of Pouring",
+    "link_count": 0,
+    "link_to": "Operator Wise Production of Pouring",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Supervisor Wise Production of Pouring",
+    "link_count": 0,
+    "link_to": "Supervisor Wise Production of Pouring",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Production Report",
+    "link_count": 10,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "dependencies": "",
+    "hidden": 0,
+    "is_query_report": 1,
+    "label": "Production Summary Per Month With Nos And Weight",
+    "link_count": 0,
+    "link_to": "Production Summary Per Month With Nos And Weight",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pouring",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Shift Wise Production Report",
+    "link_count": 0,
+    "link_to": "Shift Wise Production Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Casting Treatment",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Short Blasting Report",
+    "link_count": 0,
+    "link_to": "Short Blasting Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pouring",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "RR Report",
+    "link_count": 0,
+    "link_to": "RR Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pouring",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Raw Casting Material Consumption Report",
+    "link_count": 0,
+    "link_to": "Raw Casting Material Consumption Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Casting Treatment",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Fettling Report",
+    "link_count": 0,
+    "link_to": "Fettling Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pattern Master",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Pattern Master Report",
+    "link_count": 0,
+    "link_to": "Pattern Master Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pouring",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Furnace Wise Production Report",
+    "link_count": 0,
+    "link_to": "Furnace Wise Production Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Pouring",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Grade Wise Production Report",
+    "link_count": 0,
+    "link_to": "Grade Wise Production Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Casting Treatment",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Knock Out Report",
+    "link_count": 0,
+    "link_to": "Knock Out Report",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Taxes And Charges Report",
+    "link_count": 2,
+    "onboard": 0,
+    "type": "Card Break"
+    },
+    {
+    "dependencies": "Outsourcing Job Work",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Details of Inputs/Capital Goods Sent For Job Work",
+    "link_count": 0,
+    "link_to": "Details of Inputs/Capital Goods Sent For Job Work",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    },
+    {
+    "dependencies": "Outsourcing Job Work",
+    "hidden": 0,
+    "is_query_report": 0,
+    "label": "Details of Inputs/Capital Goods Recived Back From Job Work",
+    "link_count": 0,
+    "link_to": "Details of Inputs/Capital Goods Recived Back From Job Work",
+    "link_type": "Report",
+    "onboard": 0,
+    "type": "Link"
+    }
+    ],
+    "modified": "2023-12-30 11:00:47.498290",
+    "modified_by": "vivek.kumbhar@erpdata.in",
+    "module": "Quantbit Foundry ERP",
+    "name": "Foundry",
+    "number_cards": [],
+    "owner": "akshay.m@erpdata.in",
+    "parent_page": "",
+    "public": 1,
+    "quick_lists": [],
+    "roles": [],
+    "sequence_id": 3.0,
+    "shortcuts": [
+    {
+    "color": "Green",
+    "doc_view": "List",
+    "label": "Pouring",
+    "link_to": "Pouring",
+    "stats_filter": "[[\"Pouring\",\"docstatus\",\"=\",\"1\",false]]",
+    "type": "DocType"
+    },
+    {
+    "color": "Grey",
+    "doc_view": "List",
+    "label": "Foundry Dashboard",
+    "link_to": "Foundy Dashboard",
+    "type": "Dashboard"
+    },
+    {
+    "color": "Grey",
+    "doc_view": "Dashboard",
+    "label": "Production Planning",
+    "link_to": "Production Plan",
+    "stats_filter": "[]",
+    "type": "DocType"
+    },
+    {
+    "color": "Green",
+    "doc_view": "List",
+    "label": "Casting Treatment",
+    "link_to": "Casting Treatment",
+    "stats_filter": "[]",
+    "type": "DocType"
+    }
+    ],
+    "title": "Foundry"
+    }

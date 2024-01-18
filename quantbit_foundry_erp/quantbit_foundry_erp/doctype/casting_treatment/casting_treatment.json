@@ -17,17 +17,21 @@
   "shift_time",
   "casting_treatment",
   "select_pouring",
+  "select_pattern",
   "column_break_gvb1f",
   "supervisor",
   "operator",
   "contractor",
+  "select_item",
   "column_break_on2tf",
+  "casting_treatment_without_pouring",
   "supervisor_name",
   "operator_name",
   "contractor_name",
   "branch_name",
   "section_break_uqige",
   "casting_item",
+  "pattern_casting_item",
   "section_break_xnhff",
   "column_break_lr3co",
   "column_break_ybjh6",
@@ -181,12 +185,14 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.casting_treatment_without_pouring==0;",
    "fieldname": "select_pouring",
    "fieldtype": "Table MultiSelect",
    "label": "Select Pouring",
    "options": "Pouring Multi select"
   },
   {
+   "depends_on": "eval:doc.casting_treatment_without_pouring == 0;",
    "fieldname": "casting_item",
    "fieldtype": "Table",
    "label": "Casting Item",
@@ -300,9 +306,39 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "0",
+   "depends_on": "eval: !doc.select_pouring || doc.select_pouring.length === 0;",
+   "fieldname": "casting_treatment_without_pouring",
+   "fieldtype": "Check",
+   "label": "Casting Treatment Without Pouring"
+  },
+  {
    "fieldname": "sum_of_rw_quantity",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Sum of RW Quantity"
+  },
+  {
+   "depends_on": "eval:doc.casting_treatment_without_pouring == 1;",
+   "fieldname": "select_pattern",
+   "fieldtype": "Link",
+   "label": "Select Pattern ",
+   "mandatory_depends_on": "eval:doc.casting_treatment_without_pouring == 1;",
+   "options": "Pattern Master"
+  },
+  {
+   "depends_on": "eval:doc.casting_treatment_without_pouring == 1;",
+   "fieldname": "select_item",
+   "fieldtype": "Link",
+   "label": "Select Item",
+   "mandatory_depends_on": "eval:doc.casting_treatment_without_pouring == 1;",
+   "options": "Item"
+  },
+  {
+   "depends_on": "eval:doc.casting_treatment_without_pouring == 1;",
+   "fieldname": "pattern_casting_item",
+   "fieldtype": "Table",
+   "label": "Pattern Casting Item",
+   "options": "Casting Treatment Pattern Casting Item"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -313,7 +349,7 @@
    "link_fieldname": "custom_casting_treatment"
   }
  ],
- "modified": "2023-11-27 15:29:23.199913",
+ "modified": "2023-12-25 13:03:02.739816",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment",
