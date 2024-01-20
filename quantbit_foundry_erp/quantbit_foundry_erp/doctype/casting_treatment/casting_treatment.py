@@ -516,6 +516,8 @@ class CastingTreatment(Document):
 		if self.select_pattern and self.select_item:
 			if not self.casting_treatment:
 				frappe.throw("Please Select 'Casting Treatment'")
+
+			source_warehouse = frappe.get_value('Casting Treatment Details',{'parent':self.select_pattern , 'casting_treatment': self.casting_treatment},'finished_source_warehouse')
 			self.append("pattern_casting_item",
 							{
 							'item_code': self.select_item ,
@@ -523,7 +525,9 @@ class CastingTreatment(Document):
 							'pattern_id': self.select_pattern,
 							'casting_weight':item_weight_per_unit(self.select_item),
 							'reference_id': self.select_pattern,
-
+							'available_quantity' : self.get_available_quantity(self.select_item ,source_warehouse),
+							'source_warehouse':source_warehouse,
+							'target_warehouse':frappe.get_value('Casting Treatment Details',{'parent':self.select_pattern , 'casting_treatment': self.casting_treatment},'finished_target_warehouse'),
 							},),
 
 	@frappe.whitelist()

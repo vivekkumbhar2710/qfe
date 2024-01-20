@@ -88,7 +88,8 @@ class PatternMaster(Document):
 			for j in casting_treatment_details:
 				Targer_warehouse = frappe.get_value('Casting Treatment Master',j.casting_treatment,'ft_warehouse')
 				j.finished_target_warehouse = Targer_warehouse
-				j.finished_source_warehouse = source_warehouse
+				if source_warehouse:
+					j.finished_source_warehouse = source_warehouse
 				source_warehouse = Targer_warehouse
 				# warehouse = frappe.get_value('Casting Treatment Master',j.casting_treatment,'ft_warehouse')
 
