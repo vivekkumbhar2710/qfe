@@ -34,37 +34,37 @@ frappe.ui.form.on('Casting Treatment', {
 });
 
 
-frappe.ui.form.on('Casting Treatment', {
-    select_pattern: function(frm) {
-		var item_list=[];
-        frm.call({
-			method:'get_item_id_from_pattern',
-			doc:frm.doc,
-			callback: function(response) {
-				if (!response.exc) {
-					item_list=response.message
-					if(item_list.length === 0 && frm.doc.select_pattern !== null)
-					{
-						frappe.throw("Items are not present in 'Pattern Master'");
-					}
-			}}
-		})
-		frm.set_query("select_item", function(doc) {
-			return {
-				filters: [
-					['Item', 'name','in', item_list],  
-				]
-			};
-		});
-		frm.set_query("item_code","pattern_casting_item", function(doc) {
-			return {
-				filters: [
-				    ['Item', 'name','in', item_list],
-				]
-			};
-		});
-    }
-});
+// frappe.ui.form.on('Casting Treatment', {
+//     select_pattern: function(frm) {
+// 		var item_list=[];
+//         frm.call({
+// 			method:'get_item_id_from_pattern',
+// 			doc:frm.doc,
+// 			callback: function(response) {
+// 				if (!response.exc) {
+// 					item_list=response.message
+// 					if(item_list.length === 0 && frm.doc.select_pattern !== null)
+// 					{
+// 						frappe.throw("Items are not present in 'Pattern Master'");
+// 					}
+// 			}}
+// 		})
+// 		frm.set_query("select_item", function(doc) {
+// 			return {
+// 				filters: [
+// 					['Item', 'name','in', item_list],  
+// 				]
+// 			};
+// 		});
+// 		frm.set_query("item_code","pattern_casting_item", function(doc) {
+// 			return {
+// 				filters: [
+// 				    ['Item', 'name','in', item_list],
+// 				]
+// 			};
+// 		});
+//     }
+// });
 
 
 
@@ -119,18 +119,30 @@ frappe.ui.form.on('Casting Treatment', {
     }
 });
 
-frappe.ui.form.on('Casting Treatment', {
-    select_item: function(frm) {
-		frm.clear_table("pattern_casting_item");
-		frm.refresh_field('pattern_casting_item');
+// frappe.ui.form.on('Casting Treatment', {
+//     select_item: function(frm) {
+// 		frm.clear_table("pattern_casting_item");
+// 		frm.refresh_field('pattern_casting_item');
 
-        frm.call({
-			method:'pcidetails',
-			doc:frm.doc,
-		})
+//         frm.call({
+// 			method:'pcidetails',
+// 			doc:frm.doc,
+// 		})
+//     }
+// });
+
+frappe.ui.form.on('Casting Treatment', {
+    setup: function(frm) {
+		frm.set_query("item_code","pattern_casting_item", function(doc) {
+			return {
+				filters: [
+					["Item", 'company', '=', frm.doc.company],
+					['Item', 'custom_is_finished_foundry_casting_items', '=',1]
+				]
+			};
+		});
     }
 });
-
 
 
 
@@ -273,6 +285,22 @@ frappe.ui.form.on('Casting Treatment Pattern Casting Item', {
 
         frm.call({
 			method:'pattern_set_raw_item',
+			doc:frm.doc,
+		})
+    }
+});
+
+frappe.ui.form.on('Casting Treatment Pattern Casting Item', {
+    item_code: function(frm) {
+
+		frm.clear_table("raw_item");
+		frm.refresh_field('raw_item');
+
+		frm.clear_table("quantity_details");
+		frm.refresh_field('quantity_details');
+
+        frm.call({
+			method:'set_pattern_of_item',
 			doc:frm.doc,
 		})
     }

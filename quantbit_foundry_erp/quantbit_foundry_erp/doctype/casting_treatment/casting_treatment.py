@@ -500,35 +500,45 @@ class CastingTreatment(Document):
 		return document_list
 	
 	#This method used to get filter for getting Items which are present in taht perticular Pattern
-	@frappe.whitelist()
-	def get_item_id_from_pattern(self):
-		document_list=[]
-		if self.select_pattern:
-			doc = frappe.get_all("Casting Material Details" , filters = {'parent': self.select_pattern} ,fields = ['item_code'])
-			for i in doc:
-				document_list.append(i.item_code)
-			return document_list
+	# @frappe.whitelist()
+	# def get_item_id_from_pattern(self):
+	# 	document_list=[]
+	# 	if self.select_pattern:
+	# 		doc = frappe.get_all("Casting Material Details" , filters = {'parent': self.select_pattern} ,fields = ['item_code'])
+	# 		for i in doc:
+	# 			document_list.append(i.item_code)
+	# 		return document_list
 		
+	@frappe.whitelist()
+	def set_pattern_of_item(self):
+		pattern_casting_item = self.get("pattern_casting_item")
+		for d in pattern_casting_item:
+			if d.item_code:
+				pattern_code = frappe.get_value("Casting Material Details" , {'item_code': d.item_code},'parent')
+				if not pattern_code:
+					frappe.throw(f"The item {d.item_code} is not present in any pattern")
+				d.pattern_id = pattern_code
+				d.reference_id = d.name,
 	#This method used to set data in table 'Pattern Casting Item'
-	@frappe.whitelist()
-	def pcidetails(self):
+	# @frappe.whitelist()
+	# def pcidetails(self):
 		
-		if self.select_pattern and self.select_item:
-			if not self.casting_treatment:
-				frappe.throw("Please Select 'Casting Treatment'")
+	# 	if self.select_pattern and self.select_item:
+	# 		if not self.casting_treatment:
+	# 			frappe.throw("Please Select 'Casting Treatment'")
 
-			source_warehouse = frappe.get_value('Casting Treatment Details',{'parent':self.select_pattern , 'casting_treatment': self.casting_treatment},'finished_source_warehouse')
-			self.append("pattern_casting_item",
-							{
-							'item_code': self.select_item ,
-							'item_name': frappe.get_value("Item" , self.select_item ,"item_name"),
-							'pattern_id': self.select_pattern,
-							'casting_weight':item_weight_per_unit(self.select_item),
-							'reference_id': self.select_pattern,
-							'available_quantity' : self.get_available_quantity(self.select_item ,source_warehouse),
-							'source_warehouse':source_warehouse,
-							'target_warehouse':frappe.get_value('Casting Treatment Details',{'parent':self.select_pattern , 'casting_treatment': self.casting_treatment},'finished_target_warehouse'),
-							},),
+	# 		source_warehouse = frappe.get_value('Casting Treatment Details',{'parent':self.select_pattern , 'casting_treatment': self.casting_treatment},'finished_source_warehouse')
+	# 		self.append("pattern_casting_item",
+	# 						{
+	# 						'item_code': self.select_item ,
+	# 						'item_name': frappe.get_value("Item" , self.select_item ,"item_name"),
+	# 						'pattern_id': self.select_pattern,
+	# 						'casting_weight':item_weight_per_unit(self.select_item),
+	# 						'reference_id': self.select_pattern,
+	# 						'available_quantity' : self.get_available_quantity(self.select_item ,source_warehouse),
+	# 						'source_warehouse':source_warehouse,
+	# 						'target_warehouse':frappe.get_value('Casting Treatment Details',{'parent':self.select_pattern , 'casting_treatment': self.casting_treatment},'finished_target_warehouse'),
+	# 						},),
 
 	@frappe.whitelist()
 	def pattern_set_raw_item(self):
@@ -536,13 +546,16 @@ class CastingTreatment(Document):
 		ctswraw = frappe.get_value("Foundry Setting",self.company,"ct_sw_raw")
 		pattern_casting_item = self.get('pattern_casting_item')
 
+		if not self.casting_treatment:
+			frappe.throw('Please select "Casting Treatment" ')
+
 		for j in pattern_casting_item:
-			if j.quantity:
+			if j.quantity and j.pattern_id and j.item_code:
 				self.validate_pattern_casting_item( j.source_warehouse , j.available_quantity ,j.quantity)
 				j.weight = j.casting_weight * j.quantity
 
 				casting_treatment = frappe.get_all("Casting Treatment Details" ,
-												filters = {"parent": self.select_pattern , 'casting_items_code': self.select_item, 'casting_treatment' : self.casting_treatment },
+												filters = {"parent": j.pattern_id , 'casting_items_code': j.item_code, 'casting_treatment' : self.casting_treatment },
 												fields = ["casting_treatment","casting_items_code","casting_item_name","raw_item_code","raw_item_name","required_quantity"])
 
 				
@@ -566,7 +579,7 @@ class CastingTreatment(Document):
 								"total_quantity": total_quantity,
 								"source_warehouse" : ctswraw ,
 								"available_quantity": self.get_available_quantity(ct.raw_item_code ,ctswraw),
-								'reference_id':self.select_pattern,
+								'reference_id':j.reference_id,
 
 				
 							},),
@@ -581,7 +594,7 @@ class CastingTreatment(Document):
 									'item_name': k.item_name,
 									'pouring': None,
 									'sales_order' : None,
-									'reference_id':self.select_pattern,
+									'reference_id':k.reference_id,
 									'casting_weight': k.casting_weight,
 					
 								},),
