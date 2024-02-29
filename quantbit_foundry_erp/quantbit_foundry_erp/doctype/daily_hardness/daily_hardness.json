@@ -1,0 +1,240 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:DH - {######}",
+ "creation": "2024-02-14 16:35:34.835571",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "column_break_sia34",
+  "customer_name",
+  "column_break_kcqw2",
+  "part_code",
+  "column_break_jwuzf",
+  "part_name",
+  "section_break_rpdfh",
+  "pouring_id",
+  "column_break_lbxzj",
+  "heat_date",
+  "column_break_1jg7z",
+  "heat_no",
+  "column_break_yaz5c",
+  "grade",
+  "column_break_2hyaf",
+  "master_specification",
+  "section_break_qr6eo",
+  "reading_11",
+  "column_break_races",
+  "reading_12",
+  "column_break_tv4on",
+  "reading_13",
+  "column_break_i0kd7",
+  "reading_14",
+  "column_break_wwnyc",
+  "reading_15",
+  "section_break_v15x9",
+  "column_break_ihvaa",
+  "actual_hardness",
+  "column_break_sdeom",
+  "column_break_adabr",
+  "column_break_yuhxa",
+  "lab_supervisor"
+ ],
+ "fields": [
+  {
+   "fieldname": "pouring_id",
+   "fieldtype": "Link",
+   "label": "Pouring ID",
+   "options": "Pouring"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "pouring_id.heat_date",
+   "fieldname": "heat_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Heat Date"
+  },
+  {
+   "fetch_from": "part_code.item_name",
+   "fieldname": "part_name",
+   "fieldtype": "Data",
+   "label": "Part Name"
+  },
+  {
+   "fetch_from": "pouring_id.heat_no",
+   "fieldname": "heat_no",
+   "fieldtype": "Data",
+   "label": "Heat No"
+  },
+  {
+   "fetch_from": "pouring_id.grade",
+   "fieldname": "grade",
+   "fieldtype": "Data",
+   "label": "Grade"
+  },
+  {
+   "fieldname": "master_specification",
+   "fieldtype": "Data",
+   "label": "Master Specification"
+  },
+  {
+   "fieldname": "actual_hardness",
+   "fieldtype": "Data",
+   "label": "Actual Hardness"
+  },
+  {
+   "fieldname": "column_break_kcqw2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lbxzj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_1jg7z",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ihvaa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rpdfh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "part_code",
+   "fieldtype": "Link",
+   "label": "Part Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_qr6eo",
+   "fieldtype": "Section Break",
+   "label": "BHN"
+  },
+  {
+   "fieldname": "column_break_races",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tv4on",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_i0kd7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wwnyc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_v15x9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jwuzf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_yaz5c",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_2hyaf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reading_11",
+   "fieldtype": "Float",
+   "label": "Reading 1"
+  },
+  {
+   "fieldname": "reading_12",
+   "fieldtype": "Float",
+   "label": "Reading 2"
+  },
+  {
+   "fieldname": "reading_13",
+   "fieldtype": "Float",
+   "label": "Reading 3"
+  },
+  {
+   "fieldname": "reading_14",
+   "fieldtype": "Float",
+   "label": "Reading 4"
+  },
+  {
+   "fieldname": "reading_15",
+   "fieldtype": "Float",
+   "label": "Reading 5"
+  },
+  {
+   "fieldname": "column_break_sdeom",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sia34",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_adabr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_yuhxa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lab_supervisor",
+   "fieldtype": "Link",
+   "label": "Lab Supervisor",
+   "options": "Lab Supervisor Master",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-27 11:47:28.174937",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Hardness",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

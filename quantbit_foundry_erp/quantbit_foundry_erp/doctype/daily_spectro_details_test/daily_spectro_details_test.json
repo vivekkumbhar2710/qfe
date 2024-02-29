@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-21 12:29:23.780697",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pouring_id",
+  "item_code",
+  "item_name",
+  "column_break_8zefs",
+  "heat_no",
+  "c",
+  "si",
+  "column_break_hi3rl",
+  "mn",
+  "p",
+  "s",
+  "column_break_v0k9x",
+  "cu",
+  "cr",
+  "mg",
+  "section_break_wlbqm",
+  "standard___chemical__composition_range"
+ ],
+ "fields": [
+  {
+   "fieldname": "pouring_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pouring Id",
+   "options": "Pouring"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Part Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Part Name"
+  },
+  {
+   "fieldname": "column_break_8zefs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "pouring_id.heat_no",
+   "fieldname": "heat_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Heat No"
+  },
+  {
+   "fieldname": "c",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "C%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "si",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Si%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_hi3rl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mn",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Mn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "p",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "P%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "s",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "S%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_v0k9x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cu",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Cu%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Cr%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Mg%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_wlbqm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "standard___chemical__composition_range",
+   "fieldtype": "Link",
+   "label": "STANDARD   CHEMICAL  COMPOSITION RANGE",
+   "options": "Chemical Composition Item Master"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-29 12:09:09.634693",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Spectro Details Test",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

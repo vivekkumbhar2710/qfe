@@ -1,11 +1,14 @@
 // Copyright (c) 2023, Quantbit Technologies Pvt ltd and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Casting Treatment', {
-	// refresh: function(frm) {
-
-	// }
+frappe.ui.form.on('Casting Treatment Casting Item', {
+	item_code: function(frm) {
+		frm.doc.casting_item.forEach(child => {
+			frm.fields_dict['casting_item'].grid.toggle_reqd('pouring', 1, child.name);
+		});
+	}
 });
+
 
 // ============================================================= Casting Treatment ================================================= 
 frappe.ui.form.on('Casting Treatment', {
@@ -150,6 +153,9 @@ frappe.ui.form.on('Casting Treatment', {
 
 frappe.ui.form.on('Casting Treatment Quantity Details', {
     ok_quantity: function(frm) {
+
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
         frm.call({
 			method:'rejection_addition',
 			doc:frm.doc,
@@ -282,6 +288,8 @@ frappe.ui.form.on('Casting Treatment Pattern Casting Item', {
 
 		frm.clear_table("quantity_details");
 		frm.refresh_field('quantity_details');
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
 
         frm.call({
 			method:'pattern_set_raw_item',
@@ -298,6 +306,11 @@ frappe.ui.form.on('Casting Treatment Pattern Casting Item', {
 
 		frm.clear_table("quantity_details");
 		frm.refresh_field('quantity_details');
+
+		frm.clear_table("rejected_items_reasons");
+		frm.refresh_field('rejected_items_reasons');
+
+		// frm.set_value('pattern_id', '');
 
         frm.call({
 			method:'set_pattern_of_item',

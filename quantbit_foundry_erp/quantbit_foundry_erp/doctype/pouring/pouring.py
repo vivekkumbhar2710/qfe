@@ -212,7 +212,7 @@ class Pouring(Document):
 		if self.power_reading_initial and  self.power_reading_final:
 			self.power_consumed = self.power_reading_final - self.power_reading_initial
 			if self.power_consumed < 0 :
-				frappe.throw("The 'Power Consumed' should not be negatine")
+				frappe.throw("The 'Power Consumed' should not be negative")
 
 			self.calculating_power_consumption_amount()
 		
@@ -358,8 +358,8 @@ class Pouring(Document):
 			se.submit()
 
 	@frappe.whitelist()
-	def manifacturing_retained_items(self):
-		for ri in self.get("retained_items"):      
+	def manifacturing_retained_items(self ):
+		for ri in self.get("retained_items" ,filters = {"total_quantity" :['not in',[0,None]]}):      
 			se = frappe.new_doc("Stock Entry")
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company

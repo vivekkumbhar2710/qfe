@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DSR-.######",
+ "creation": "2024-02-14 10:38:00.352813",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "column_break_qc792",
+  "shift",
+  "column_break_ryr8a",
+  "supervisor_name",
+  "column_break_ff9hz",
+  "company",
+  "column_break_mv2ri",
+  "section_break_6kwms",
+  "daily_spectro_details",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_qc792",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift Master"
+  },
+  {
+   "fieldname": "column_break_ryr8a",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ff9hz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "supervisor.employee_name",
+   "fieldname": "supervisor_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lab Supervisor",
+   "options": "Lab Supervisor Master",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mv2ri",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_6kwms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "daily_spectro_details",
+   "fieldtype": "Table",
+   "label": "Daily Spectro Details",
+   "options": "Daily Spectro Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Daily Spectro Analysis",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-26 16:47:56.550139",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Spectro Analysis",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

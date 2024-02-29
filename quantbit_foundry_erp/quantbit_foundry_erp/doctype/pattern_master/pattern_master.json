@@ -245,12 +245,10 @@
       "label": "Pattern"
      },
      {
-      "fetch_from": "pattern_owner.customer",
       "fieldname": "customer",
       "fieldtype": "Link",
       "label": "Customer",
-      "options": "Customer",
-      "read_only": 1
+      "options": "Customer"
      },
      {
       "fetch_from": "customer.customer_name",
@@ -267,7 +265,7 @@
       "link_fieldname": "item_name"
      }
     ],
-    "modified": "2024-01-06 15:30:33.916133",
+    "modified": "2024-02-02 17:17:06.810464",
     "modified_by": "Administrator",
     "module": "Quantbit Foundry ERP",
     "name": "Pattern Master",

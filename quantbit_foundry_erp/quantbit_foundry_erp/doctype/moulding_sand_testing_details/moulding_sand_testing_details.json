@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-19 18:20:14.391041",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "time",
+  "column_break_qyb7m",
+  "part_name_number",
+  "column_break_nykfw",
+  "column_break_wibdf",
+  "section_break_extu6",
+  "gcs",
+  "column_break_djub4",
+  "permeability",
+  "column_break_swvrr",
+  "compactibility",
+  "column_break_fx8ef",
+  "moisture",
+  "section_break_zfniu",
+  "mold_hardness_cope",
+  "column_break_wshzt",
+  "machine_operated_cope",
+  "column_break_a91xq",
+  "mold_hardness_drag",
+  "column_break_nx1xo",
+  "machine_operated_drag",
+  "section_break_ocwha",
+  "water_time",
+  "column_break_di8fo",
+  "sand_temp_molding_outlet",
+  "column_break_ejih4",
+  "column_break_vkxap"
+ ],
+ "fields": [
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
+  },
+  {
+   "fieldname": "column_break_qyb7m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "part_name_number",
+   "fieldtype": "Link",
+   "label": "PART NAME AND NUMBER",
+   "options": "Pattern Master"
+  },
+  {
+   "fieldname": "column_break_nykfw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wibdf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_extu6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "gcs",
+   "fieldtype": "Data",
+   "label": "GCS (MIN 1100 gm/cm\u00b2)"
+  },
+  {
+   "fieldname": "column_break_djub4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "permeability",
+   "fieldtype": "Data",
+   "label": "PERMEABILITY (MIN 100)"
+  },
+  {
+   "fieldname": "column_break_swvrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "compactibility",
+   "fieldtype": "Data",
+   "label": "COMPACTIBILITY (35 - 45%)"
+  },
+  {
+   "fieldname": "column_break_fx8ef",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "moisture",
+   "fieldtype": "Data",
+   "label": "MOISTURE (3.2-4.5%)"
+  },
+  {
+   "fieldname": "section_break_zfniu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "mold_hardness_cope",
+   "fieldtype": "Data",
+   "label": "MOLD HARDNESS (COPE 80-95)"
+  },
+  {
+   "fieldname": "column_break_wshzt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_operated_cope",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "MACHINE OPERATED COPE",
+   "options": "\nManual\nPLC",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_a91xq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mold_hardness_drag",
+   "fieldtype": "Data",
+   "label": "MOLD HARDNESS (DRAG 80-95)"
+  },
+  {
+   "fieldname": "column_break_nx1xo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_operated_drag",
+   "fieldtype": "Select",
+   "label": "MACHINE OPERATED DRAG",
+   "options": "\nManual\nPLC",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ocwha",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "water_time",
+   "fieldtype": "Data",
+   "label": "WATER TIME (1 sec.=0.50 liter)"
+  },
+  {
+   "fieldname": "column_break_di8fo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sand_temp_molding_outlet",
+   "fieldtype": "Data",
+   "label": "SAND TEMP. (OUT LET below 50\u00b0c)"
+  },
+  {
+   "fieldname": "column_break_ejih4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_vkxap",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-29 12:09:13.732794",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Moulding Sand Testing Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

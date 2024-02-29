@@ -16,7 +16,11 @@
      "column_break_pkxvv",
      "uom",
      "column_break_hrsjs",
-     "grade"
+     "grade",
+     "section_break_lwhpk",
+     "from_bhn",
+     "column_break_dsweu",
+     "to_bhn"
     ],
     "fields": [
      {
@@ -87,12 +91,32 @@
       "options": "Grade Master",
       "read_only": 1,
       "reqd": 1
+     },
+     {
+      "fieldname": "section_break_lwhpk",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fetch_from": "item_code.from_bhn",
+      "fieldname": "from_bhn",
+      "fieldtype": "Float",
+      "label": "From BHN"
+     },
+     {
+      "fieldname": "column_break_dsweu",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fetch_from": "item_code.to_bhn",
+      "fieldname": "to_bhn",
+      "fieldtype": "Float",
+      "label": "To BHN"
      }
     ],
     "index_web_pages_for_search": 1,
     "istable": 1,
     "links": [],
-    "modified": "2023-12-27 10:58:41.755329",
+    "modified": "2024-02-27 12:30:06.162697",
     "modified_by": "Administrator",
     "module": "Quantbit Foundry ERP",
     "name": "Casting Material Details",

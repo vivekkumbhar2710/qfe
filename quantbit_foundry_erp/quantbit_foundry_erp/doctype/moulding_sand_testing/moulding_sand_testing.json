@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-02-19 19:15:06.621821",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "column_break_3hkqn",
+  "naming_series",
+  "column_break_1qpff",
+  "column_break_c2aa6",
+  "section_break_ww3nw",
+  "date",
+  "column_break_eoigy",
+  "shift",
+  "column_break_okgve",
+  "iatf_number",
+  "column_break_lzdzz",
+  "work_sup",
+  "column_break_jtkqx",
+  "moulding_contractor",
+  "section_break_dp60j",
+  "moulding_sand_testing_details",
+  "section_break_ujvdy",
+  "sand_mixture_capacity",
+  "column_break_kqtl5",
+  "column_break_mivwx",
+  "section_break_mqkkp",
+  "raw_material_addition_details",
+  "sand_mix_time_in_seconds_section",
+  "dry_mix",
+  "column_break_adbna",
+  "wet_mix",
+  "column_break_mcezw",
+  "total_mixture_time",
+  "section_break_ujqrp",
+  "remark_if_any"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_3hkqn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MST -"
+  },
+  {
+   "fieldname": "column_break_1qpff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_c2aa6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ww3nw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "DATE"
+  },
+  {
+   "fieldname": "column_break_eoigy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "SHIFT",
+   "options": "Shift Master"
+  },
+  {
+   "fieldname": "column_break_okgve",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "AF - F - 26",
+   "fieldname": "iatf_number",
+   "fieldtype": "Data",
+   "label": "IATF "
+  },
+  {
+   "fieldname": "column_break_lzdzz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "work_supervisor_id.employee_name",
+   "fieldname": "work_sup",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "LAB SUPERVISOR",
+   "options": "Lab Supervisor Master",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_jtkqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "moulding_contractor",
+   "fieldtype": "Link",
+   "label": "MOULDING CONTRACTOR",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "section_break_dp60j",
+   "fieldtype": "Section Break",
+   "label": "Moulding Sand Testing Details"
+  },
+  {
+   "fieldname": "moulding_sand_testing_details",
+   "fieldtype": "Table",
+   "label": "Moulding Sand Testing Details",
+   "options": "Moulding Sand Testing Details"
+  },
+  {
+   "fieldname": "section_break_ujvdy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sand_mixture_capacity",
+   "fieldtype": "Data",
+   "label": "SAND MIXTURE CAPACITY "
+  },
+  {
+   "fieldname": "column_break_kqtl5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mivwx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_mqkkp",
+   "fieldtype": "Section Break",
+   "label": "Raw Material Addition Details"
+  },
+  {
+   "fieldname": "raw_material_addition_details",
+   "fieldtype": "Table",
+   "label": "Raw Material Addition Details",
+   "options": "Raw Material Addition Details"
+  },
+  {
+   "fieldname": "sand_mix_time_in_seconds_section",
+   "fieldtype": "Section Break",
+   "label": "Sand Mix Time (in seconds)"
+  },
+  {
+   "fieldname": "dry_mix",
+   "fieldtype": "Data",
+   "label": "DRY MIX (in seconds)"
+  },
+  {
+   "fieldname": "column_break_adbna",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wet_mix",
+   "fieldtype": "Data",
+   "label": "WET MIX (in seconds)"
+  },
+  {
+   "fieldname": "column_break_mcezw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_mixture_time",
+   "fieldtype": "Data",
+   "label": "TOTAL MIXTURE TIME (in seconds)"
+  },
+  {
+   "fieldname": "section_break_ujqrp",
+   "fieldtype": "Section Break",
+   "label": "REMARK (If Any)"
+  },
+  {
+   "fieldname": "remark_if_any",
+   "fieldtype": "Text Editor",
+   "label": "REMARK"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-29 12:09:11.425397",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Moulding Sand Testing",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

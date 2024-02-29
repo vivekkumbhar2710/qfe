@@ -7,6 +7,9 @@ from quantbit_foundry_erp.quantbit_foundry_erp.doctype.pattern_master.pattern_ma
 	item_weight_per_unit,
 )
 
+def getVal(val):
+        return val if val is not None else 0
+
 class CastingTreatment(Document):
 
 
@@ -271,14 +274,18 @@ class CastingTreatment(Document):
 	@frappe.whitelist()
 	def rejection_addition(self):
 		for qd in self.get('quantity_details'):
-			qd.total_quantity = qd.ok_quantity + qd.cr_quantity + qd.rw_quantity
-			qd.ok_quantity_weight = qd.casting_weight * qd.ok_quantity
-			qd.cr_quantity_weight = qd.casting_weight * qd.cr_quantity
-			qd.rw_quantiry_weight = qd.casting_weight * qd.rw_quantity
-			qd.weight             = qd.casting_weight * qd.total_quantity
-			
-			# for ci in (self.get("casting_item" , filters= {"pouring" : qd.pouring , "item_code" : qd.item_code })):
-			# 	qd.weight = qd.total_quantity * (ci.weight/ci.quantity)
+			ok_quantity = getVal(qd.ok_quantity)
+			cr_quantity = getVal(qd.cr_quantity)
+			rw_quantity = getVal(qd.rw_quantity)
+			casting_weight = getVal(qd.casting_weight)
+			qd.total_quantity = ok_quantity + cr_quantity + rw_quantity
+
+
+			qd.ok_quantity_weight = casting_weight * ok_quantity
+			qd.cr_quantity_weight = casting_weight * cr_quantity
+			qd.rw_quantiry_weight = casting_weight * rw_quantity
+			qd.weight             = casting_weight * qd.total_quantity
+
 
 		self.sum_of_total_quantity =  self.calculating_total_weight("quantity_details" ,"total_quantity")
 		self.sum_of_total_weight = self.calculating_total_weight("quantity_details" ,"weight")
@@ -514,11 +521,30 @@ class CastingTreatment(Document):
 		pattern_casting_item = self.get("pattern_casting_item")
 		for d in pattern_casting_item:
 			if d.item_code:
-				pattern_code = frappe.get_value("Casting Material Details" , {'item_code': d.item_code},'parent')
-				if not pattern_code:
-					frappe.throw(f"The item {d.item_code} is not present in any pattern")
-				d.pattern_id = pattern_code
-				d.reference_id = d.name,
+				name = frappe.get_value("Casting Material Details" , {'item_code': d.item_code},'name')
+				# pattern_code = frappe.get_value("Casting Material Details" , {'item_code': d.item_code},'parent')
+				if name:
+					patten_code_doc = frappe.get_doc("Casting Material Details" , name)
+					pattern_code = patten_code_doc.parent
+					items_weight = patten_code_doc.weight
+					target_warehouse , source_warehouse = None , None
+					if self.casting_treatment:
+						source_warehouse = frappe.get_value("Casting Treatment Details" , {'casting_items_code': d.item_code , 'parent' : pattern_code ,'casting_treatment': self.casting_treatment },'finished_source_warehouse')
+						target_warehouse = frappe.get_value("Casting Treatment Details" , {'casting_items_code': d.item_code , 'parent' : pattern_code ,'casting_treatment': self.casting_treatment },'finished_target_warehouse')
+					if source_warehouse:
+						d.available_quantity = self.get_available_quantity(d.item_code ,source_warehouse)
+
+					d.pattern_id = pattern_code
+					d.source_warehouse = source_warehouse
+					d.target_warehouse = target_warehouse
+					d.casting_weight = items_weight
+					d.reference_id = None
+				else:
+					d.pattern_id = None
+					d.source_warehouse = None
+					d.target_warehouse = None
+					d.reference_id = None
+					frappe.msgprint(f"The item {d.item_code} is not present in any pattern")
 	#This method used to set data in table 'Pattern Casting Item'
 	# @frappe.whitelist()
 	# def pcidetails(self):

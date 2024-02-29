@@ -9,7 +9,8 @@
  "engine": "InnoDB",
  "field_order": [
   "company",
-  "pattern_type"
+  "pattern_type",
+  "check"
  ],
  "fields": [
   {
@@ -22,11 +23,17 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company"
+  },
+  {
+   "default": "0",
+   "fieldname": "check",
+   "fieldtype": "Check",
+   "label": "Check"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-15 12:15:02.289219",
+ "modified": "2024-02-14 18:26:49.918543",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pattern Type",

@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-13 14:28:02.851208",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pouring_id",
+  "heat_date",
+  "column_break_z7wi2",
+  "heat_no",
+  "cavity",
+  "column_break_sqnka",
+  "part_code",
+  "column_break_jafnt",
+  "part_name",
+  "section_break_kyqzo",
+  "reading_1",
+  "reading_2",
+  "column_break_mvalk",
+  "reading_3",
+  "reading_4",
+  "reading_5",
+  "column_break_m10vm",
+  "average_weight",
+  "standard_weight",
+  "column_break_us131",
+  "extra_weight",
+  "wt_value",
+  "column_break_xc823",
+  "remark",
+  "section_break_ndigm",
+  "checked_by",
+  "column_break_jotri",
+  "column_break_i2ull"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "pouring_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pouring Id",
+   "options": "Pouring"
+  },
+  {
+   "columns": 1,
+   "fieldname": "heat_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Heat Date",
+   "options": "Pouring"
+  },
+  {
+   "fieldname": "column_break_z7wi2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "pouring_id.heat_no",
+   "fieldname": "heat_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Heat No",
+   "options": "Pouring"
+  },
+  {
+   "columns": 1,
+   "fieldname": "cavity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Cavity"
+  },
+  {
+   "fieldname": "column_break_sqnka",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "reading_1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Reading 1",
+   "precision": "3"
+  },
+  {
+   "columns": 1,
+   "fieldname": "reading_2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Reading 2",
+   "precision": "3"
+  },
+  {
+   "fieldname": "column_break_mvalk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reading_3",
+   "fieldtype": "Float",
+   "label": "Reading 3",
+   "precision": "3"
+  },
+  {
+   "columns": 1,
+   "fieldname": "reading_4",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Reading 4",
+   "precision": "3"
+  },
+  {
+   "columns": 1,
+   "fieldname": "reading_5",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Reading 5",
+   "precision": "3"
+  },
+  {
+   "fieldname": "column_break_m10vm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "average_weight",
+   "fieldtype": "Float",
+   "label": "Average Weight",
+   "precision": "3"
+  },
+  {
+   "fieldname": "column_break_us131",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "extra_weight",
+   "fieldtype": "Float",
+   "label": "Extra Weight",
+   "precision": "3"
+  },
+  {
+   "fieldname": "column_break_xc823",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Text Editor",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "section_break_ndigm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "label": "Lab Supervisor ",
+   "options": "Lab Supervisor Master",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_jotri",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "part_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Part Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_jafnt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "part_code.item_name",
+   "fieldname": "part_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Part Name"
+  },
+  {
+   "fieldname": "section_break_kyqzo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "standard_weight",
+   "fieldtype": "Float",
+   "label": "Standard Weight",
+   "precision": "3"
+  },
+  {
+   "fieldname": "wt_value",
+   "fieldtype": "Float",
+   "label": "WT (INC./DEC.) %",
+   "precision": "3"
+  },
+  {
+   "fieldname": "column_break_i2ull",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-28 14:46:50.934845",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Pouring Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

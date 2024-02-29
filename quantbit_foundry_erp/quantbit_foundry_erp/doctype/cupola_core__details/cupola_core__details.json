@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-14 17:57:46.436892",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "casting_item_code",
+  "column_break_udcvu",
+  "item_code",
+  "column_break_3vbzt",
+  "item_name",
+  "column_break_dw8sg",
+  "uom",
+  "section_break_me0ms",
+  "warehouse",
+  "column_break_vfipc",
+  "stock",
+  "column_break_7oxxo",
+  "required_quantity",
+  "qty",
+  "pattern",
+  "reference_id"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "casting_item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Casting Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_udcvu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Core Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_3vbzt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Core Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dw8sg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "item_code.stock_uom",
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "UOM"
+  },
+  {
+   "fieldname": "section_break_me0ms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_vfipc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Stock",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_7oxxo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "required_quantity",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Required Quantity",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Used Quantity",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pattern",
+   "fieldtype": "Link",
+   "label": "Pattern Code",
+   "options": "Pattern Master"
+  },
+  {
+   "fieldname": "reference_id",
+   "fieldtype": "Data",
+   "label": "Reference ID",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-15 13:25:06.633854",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Cupola Core  Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

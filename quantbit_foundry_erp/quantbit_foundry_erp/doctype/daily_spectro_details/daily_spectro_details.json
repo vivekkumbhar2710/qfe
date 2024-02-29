@@ -1,0 +1,232 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-14 10:36:29.379059",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pouring_id",
+  "column_break_8zefs",
+  "heat_no",
+  "column_break_hi3rl",
+  "item_code",
+  "column_break_v0k9x",
+  "item_name",
+  "column_break_o9usj",
+  "section_break_aouyv",
+  "standard_chemical_composition_range",
+  "column_break_tqoni",
+  "column_break_5zdhq",
+  "column_break_oppqt",
+  "column_break_ehqp7",
+  "c_",
+  "si_",
+  "mn_",
+  "s_",
+  "p_",
+  "cu_",
+  "mg_",
+  "cr_",
+  "column_break_mggyf",
+  "c",
+  "si",
+  "mn",
+  "p",
+  "s",
+  "cu",
+  "mg",
+  "cr"
+ ],
+ "fields": [
+  {
+   "fieldname": "pouring_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pouring Id",
+   "options": "Pouring"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Part Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Part Name"
+  },
+  {
+   "fieldname": "column_break_8zefs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "pouring_id.heat_no",
+   "fieldname": "heat_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Heat No"
+  },
+  {
+   "fieldname": "c",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "C%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "si",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Si%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_hi3rl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mn",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Mn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "p",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "P%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "s",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "S%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_v0k9x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cu",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Cu%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Cr%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Mg%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_aouyv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_o9usj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.c",
+   "fieldname": "c_",
+   "fieldtype": "Data",
+   "label": "C"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.si",
+   "fieldname": "si_",
+   "fieldtype": "Data",
+   "label": "Si"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.mn",
+   "fieldname": "mn_",
+   "fieldtype": "Data",
+   "label": "Mn"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.s",
+   "fieldname": "s_",
+   "fieldtype": "Data",
+   "label": "S"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.p",
+   "fieldname": "p_",
+   "fieldtype": "Data",
+   "label": "P"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.cu",
+   "fieldname": "cu_",
+   "fieldtype": "Data",
+   "label": "Cu"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.mg",
+   "fieldname": "mg_",
+   "fieldtype": "Data",
+   "label": "Mg"
+  },
+  {
+   "fetch_from": "standard_chemical_composition_range.cr",
+   "fieldname": "cr_",
+   "fieldtype": "Data",
+   "label": "Cr"
+  },
+  {
+   "fieldname": "column_break_mggyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ehqp7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "standard_chemical_composition_range",
+   "fieldtype": "Link",
+   "label": "STANDARD CHEMICAL COMPOSITION RANGE",
+   "options": "Chemical Composition Item Master"
+  },
+  {
+   "fieldname": "column_break_tqoni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_5zdhq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oppqt",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-27 18:03:59.960893",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Spectro Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

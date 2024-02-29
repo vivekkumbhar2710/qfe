@@ -1,509 +1,509 @@
 {
- "actions": [],
- "allow_rename": 1,
- "autoname": "naming_series:",
- "creation": "2023-09-23 13:58:25.718370",
- "default_view": "List",
- "doctype": "DocType",
- "editable_grid": 1,
- "engine": "InnoDB",
- "field_order": [
-  "naming_series",
-  "company",
-  "heat_date",
-  "furnece",
-  "column_break_c0zar",
-  "supervisor",
-  "operator",
-  "contractor",
-  "shift",
-  "column_break_on2tf",
-  "supervisor_name",
-  "operator_name",
-  "contractor_name",
-  "shift_time",
-  "column_break_gvb1f",
-  "branch_name",
-  "charge_mix",
-  "heat_no",
-  "naming_fields",
-  "section_break_lxfn2",
-  "pattern_details",
-  "casting_details",
-  "section_break_uqige",
-  "grade",
-  "column_break_2vif6",
-  "grade_type",
-  "column_break_54iqm",
-  "total_consumed_weight",
-  "section_break_brg1d",
-  "change_mix_details",
-  "molding_sand_details",
-  "section_break_l5paf",
-  "total_rr_weight",
-  "total_sand_weight",
-  "column_break_sfi6o",
-  "total_pouring_weight",
-  "total_weight_difference",
-  "normal_loss",
-  "section_break_fet4v",
-  "ferro_lab_readings",
-  "column_break_tqzhb",
-  "laddle_temperature",
-  "section_break_9pzii",
-  "downtime_reasons_details",
-  "section_break_alh19",
-  "poring_time_start",
-  "column_break_6rlw9",
-  "poring_time_end",
-  "column_break_dqknl",
-  "box_pouring_time",
-  "section_break_sym91",
-  "power_reading_initial",
-  "column_break_jb28s",
-  "power_reading_final",
-  "section_break_nbhlq",
-  "power_consumed",
-  "section_break_iiwkp",
-  "tapping_temperature",
-  "column_break_iigbn",
-  "pouring_temperature",
-  "section_break_ybaa5",
-  "core_details",
-  "retained_items",
-  "additional_cost_details",
-  "casting_treatment_analysis",
-  "amended_from"
- ],
- "fields": [
-  {
-   "default": "Today",
-   "fieldname": "heat_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Heat Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "shift",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Shift",
-   "options": "Shift Master",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "supervisor.employee_name",
-   "fieldname": "supervisor_name",
-   "fieldtype": "Data",
-   "label": "Supervisor Name",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "operator.employee_name",
-   "fieldname": "operator_name",
-   "fieldtype": "Data",
-   "in_standard_filter": 1,
-   "label": "Operator Name",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "contractor.supplier_name",
-   "fieldname": "contractor_name",
-   "fieldtype": "Data",
-   "label": "Contractor Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_c0zar",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Company",
-   "options": "Company",
-   "reqd": 1
-  },
-  {
-   "fieldname": "branch_name",
-   "fieldtype": "Data",
-   "label": "Branch Name"
-  },
-  {
-   "fieldname": "charge_mix",
-   "fieldtype": "Data",
-   "label": "Charge Mix"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "heat_no",
-   "fieldtype": "Data",
-   "label": "Heat No.",
-   "unique": 1
-  },
-  {
-   "fieldname": "section_break_uqige",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "pattern_details",
-   "fieldtype": "Table",
-   "in_standard_filter": 1,
-   "label": "Pattern Details",
-   "options": "Pattern Details"
-  },
-  {
-   "fieldname": "casting_details",
-   "fieldtype": "Table",
-   "label": "Casting Details",
-   "options": "Casting Details"
-  },
-  {
-   "fieldname": "section_break_l5paf",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "total_consumed_weight",
-   "fieldtype": "Float",
-   "label": "Total Consumed Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_sfi6o",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_pouring_weight",
-   "fieldtype": "Float",
-   "label": "Total Pouring Weight",
-   "read_only": 1
-  },
-  {
-   "fieldname": "section_break_fet4v",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "change_mix_details",
-   "fieldtype": "Table",
-   "label": "Charge Mix Details",
-   "options": "Change Mix Details"
-  },
-  {
-   "fieldname": "section_break_lxfn2",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "ferro_lab_readings",
-   "fieldtype": "Table",
-   "label": "Ferro Lab Readings",
-   "options": "Ferro Lab Readings"
-  },
-  {
-   "fieldname": "column_break_tqzhb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "laddle_temperature",
-   "fieldtype": "Table",
-   "label": "Laddle Temperature",
-   "options": "Laddle Temperature"
-  },
-  {
-   "fieldname": "section_break_9pzii",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "downtime_reasons_details",
-   "fieldtype": "Table",
-   "label": "Downtime Reasons Details",
-   "options": "Downtime Reasons Details"
-  },
-  {
-   "fieldname": "section_break_alh19",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "poring_time_start",
-   "fieldtype": "Time",
-   "label": "Poring Time Start"
-  },
-  {
-   "fieldname": "column_break_6rlw9",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "poring_time_end",
-   "fieldtype": "Time",
-   "label": "Poring Time End"
-  },
-  {
-   "fieldname": "section_break_sym91",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "power_reading_initial",
-   "fieldtype": "Float",
-   "label": "Power Reading Initial",
-   "precision": "2",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_jb28s",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "power_reading_final",
-   "fieldtype": "Float",
-   "label": "Power Reading Final",
-   "precision": "2",
-   "reqd": 1
-  },
-  {
-   "fieldname": "section_break_iiwkp",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "tapping_temperature",
-   "fieldtype": "Float",
-   "label": "Tapping Temperature ( \u00b0C)"
-  },
-  {
-   "fieldname": "section_break_nbhlq",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "pouring_temperature",
-   "fieldtype": "Data",
-   "label": "Pouring Temperature ( \u00b0C)"
-  },
-  {
-   "fieldname": "section_break_ybaa5",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "box_pouring_time",
-   "fieldtype": "Duration",
-   "label": "Box Pouring Time"
-  },
-  {
-   "fieldname": "column_break_dqknl",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "power_consumed",
-   "fieldtype": "Float",
-   "label": "Power Consumed",
-   "precision": "2"
-  },
-  {
-   "fieldname": "core_details",
-   "fieldtype": "Table",
-   "label": "Core Details",
-   "options": "Core  Details"
-  },
-  {
-   "fieldname": "supervisor",
-   "fieldtype": "Link",
-   "in_standard_filter": 1,
-   "label": "Supervisor ID",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "fieldname": "operator",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Operator ID",
-   "options": "Employee"
-  },
-  {
-   "fieldname": "column_break_on2tf",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_gvb1f",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "shift.minutes",
-   "fieldname": "shift_time",
-   "fieldtype": "Data",
-   "label": "Shift Time",
-   "read_only": 1
-  },
-  {
-   "fieldname": "grade",
-   "fieldtype": "Link",
-   "in_standard_filter": 1,
-   "label": "Select Grade",
-   "options": "Grade Master",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "furnece",
-   "fieldtype": "Link",
-   "label": "Furnace",
-   "options": "Furnece Master",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_54iqm",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_brg1d",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_iigbn",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Series",
-   "options": "POUR-"
-  },
-  {
-   "fieldname": "contractor",
-   "fieldtype": "Link",
-   "label": "Moulding Contractor",
-   "options": "Supplier"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Pouring",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "retained_items",
-   "fieldtype": "Table",
-   "label": "Retained Items",
-   "options": "Retained Items"
-  },
-  {
-   "fieldname": "total_weight_difference",
-   "fieldtype": "Float",
-   "hidden": 1,
-   "label": "Total Weight Difference",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "additional_cost_details",
-   "fieldtype": "Table",
-   "label": "Additional Cost Details",
-   "options": "Additional Cost Details"
-  },
-  {
-   "fieldname": "column_break_2vif6",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "grade.grade_type",
-   "fieldname": "grade_type",
-   "fieldtype": "Link",
-   "label": "Grade Type",
-   "options": "Grade Type",
-   "read_only": 1
-  },
-  {
-   "fieldname": "naming_fields",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Naming Fields",
-   "read_only": 1
-  },
-  {
-   "fieldname": "total_rr_weight",
-   "fieldtype": "Float",
-   "label": "Total RR Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "fieldname": "molding_sand_details",
-   "fieldtype": "Table",
-   "label": "Molding Sand Details",
-   "options": "Pouring Molding Sand Details"
-  },
-  {
-   "fieldname": "total_sand_weight",
-   "fieldtype": "Float",
-   "label": "Total Sand Weight",
-   "precision": "2",
-   "read_only": 1
-  },
-  {
-   "depends_on": "eval:doc.docstatus==1;",
-   "fieldname": "casting_treatment_analysis",
-   "fieldtype": "Table",
-   "label": "Casting Treatment Analysis",
-   "options": "Casting Treatment Analysis"
-  },
-  {
-   "fieldname": "normal_loss",
-   "fieldtype": "Float",
-   "label": "Normal Loss",
-   "read_only": 1
-  }
- ],
- "index_web_pages_for_search": 1,
- "is_calendar_and_gantt": 1,
- "is_submittable": 1,
- "links": [
-  {
-   "link_doctype": "Stock Entry",
-   "link_fieldname": "custom_pouring"
-  },
-  {
-   "link_doctype": "Material Request",
-   "link_fieldname": "custom_custom_pouring"
-  },
-  {
-   "is_child_table": 1,
-   "link_doctype": "Pouring Multi select",
-   "link_fieldname": "pouring",
-   "parent_doctype": "Casting Treatment",
-   "table_fieldname": "select_pouring"
-  }
- ],
- "modified": "2024-01-19 12:26:14.335685",
- "modified_by": "Administrator",
- "module": "Quantbit Foundry ERP",
- "name": "Pouring",
- "naming_rule": "By \"Naming Series\" field",
- "owner": "Administrator",
- "permissions": [
-  {
-   "amend": 1,
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  }
- ],
- "search_fields": "naming_fields",
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": [],
- "track_changes": 1
-}
+    "actions": [],
+    "allow_rename": 1,
+    "autoname": "naming_series:",
+    "creation": "2023-09-23 13:58:25.718370",
+    "default_view": "List",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+     "naming_series",
+     "company",
+     "heat_date",
+     "furnece",
+     "column_break_c0zar",
+     "supervisor",
+     "operator",
+     "contractor",
+     "shift",
+     "column_break_on2tf",
+     "supervisor_name",
+     "operator_name",
+     "contractor_name",
+     "shift_time",
+     "column_break_gvb1f",
+     "branch_name",
+     "charge_mix",
+     "heat_no",
+     "naming_fields",
+     "section_break_lxfn2",
+     "pattern_details",
+     "casting_details",
+     "section_break_uqige",
+     "grade",
+     "column_break_2vif6",
+     "grade_type",
+     "column_break_54iqm",
+     "total_consumed_weight",
+     "section_break_brg1d",
+     "change_mix_details",
+     "retained_items",
+     "molding_sand_details",
+     "section_break_l5paf",
+     "total_rr_weight",
+     "total_sand_weight",
+     "column_break_sfi6o",
+     "total_pouring_weight",
+     "total_weight_difference",
+     "normal_loss",
+     "section_break_fet4v",
+     "ferro_lab_readings",
+     "column_break_tqzhb",
+     "laddle_temperature",
+     "section_break_9pzii",
+     "downtime_reasons_details",
+     "section_break_alh19",
+     "poring_time_start",
+     "column_break_6rlw9",
+     "poring_time_end",
+     "column_break_dqknl",
+     "box_pouring_time",
+     "section_break_sym91",
+     "power_reading_initial",
+     "column_break_jb28s",
+     "power_reading_final",
+     "section_break_nbhlq",
+     "power_consumed",
+     "section_break_iiwkp",
+     "tapping_temperature",
+     "column_break_iigbn",
+     "pouring_temperature",
+     "section_break_ybaa5",
+     "core_details",
+     "additional_cost_details",
+     "casting_treatment_analysis",
+     "amended_from"
+    ],
+    "fields": [
+     {
+      "default": "Today",
+      "fieldname": "heat_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Heat Date",
+      "reqd": 1
+     },
+     {
+      "fieldname": "shift",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Shift",
+      "options": "Shift Master",
+      "reqd": 1
+     },
+     {
+      "fetch_from": "supervisor.employee_name",
+      "fieldname": "supervisor_name",
+      "fieldtype": "Data",
+      "label": "Supervisor Name",
+      "read_only": 1
+     },
+     {
+      "fetch_from": "operator.employee_name",
+      "fieldname": "operator_name",
+      "fieldtype": "Data",
+      "in_standard_filter": 1,
+      "label": "Operator Name",
+      "read_only": 1
+     },
+     {
+      "fetch_from": "contractor.supplier_name",
+      "fieldname": "contractor_name",
+      "fieldtype": "Data",
+      "label": "Contractor Name",
+      "read_only": 1
+     },
+     {
+      "fieldname": "column_break_c0zar",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1
+     },
+     {
+      "fieldname": "branch_name",
+      "fieldtype": "Data",
+      "label": "Branch Name"
+     },
+     {
+      "fieldname": "charge_mix",
+      "fieldtype": "Data",
+      "label": "Charge Mix"
+     },
+     {
+      "allow_on_submit": 1,
+      "fieldname": "heat_no",
+      "fieldtype": "Data",
+      "label": "Heat No.",
+      "unique": 1
+     },
+     {
+      "fieldname": "section_break_uqige",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "pattern_details",
+      "fieldtype": "Table",
+      "in_standard_filter": 1,
+      "label": "Pattern Details",
+      "options": "Pattern Details"
+     },
+     {
+      "fieldname": "casting_details",
+      "fieldtype": "Table",
+      "label": "Casting Details",
+      "options": "Casting Details"
+     },
+     {
+      "fieldname": "section_break_l5paf",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "total_consumed_weight",
+      "fieldtype": "Float",
+      "label": "Total Consumed Weight",
+      "precision": "2",
+      "read_only": 1
+     },
+     {
+      "fieldname": "column_break_sfi6o",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "total_pouring_weight",
+      "fieldtype": "Float",
+      "label": "Total Pouring Weight",
+      "read_only": 1
+     },
+     {
+      "fieldname": "section_break_fet4v",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "change_mix_details",
+      "fieldtype": "Table",
+      "label": "Charge Mix Details",
+      "options": "Change Mix Details"
+     },
+     {
+      "fieldname": "section_break_lxfn2",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "ferro_lab_readings",
+      "fieldtype": "Table",
+      "label": "Ferro Lab Readings",
+      "options": "Ferro Lab Readings"
+     },
+     {
+      "fieldname": "column_break_tqzhb",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "laddle_temperature",
+      "fieldtype": "Table",
+      "label": "Laddle Temperature",
+      "options": "Laddle Temperature"
+     },
+     {
+      "fieldname": "section_break_9pzii",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "downtime_reasons_details",
+      "fieldtype": "Table",
+      "label": "Downtime Reasons Details",
+      "options": "Downtime Reasons Details"
+     },
+     {
+      "fieldname": "section_break_alh19",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "poring_time_start",
+      "fieldtype": "Time",
+      "label": "Poring Time Start"
+     },
+     {
+      "fieldname": "column_break_6rlw9",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "poring_time_end",
+      "fieldtype": "Time",
+      "label": "Poring Time End"
+     },
+     {
+      "fieldname": "section_break_sym91",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "power_reading_initial",
+      "fieldtype": "Float",
+      "label": "Power Reading Initial",
+      "precision": "2",
+      "reqd": 1
+     },
+     {
+      "fieldname": "column_break_jb28s",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "power_reading_final",
+      "fieldtype": "Float",
+      "label": "Power Reading Final",
+      "precision": "2",
+      "reqd": 1
+     },
+     {
+      "fieldname": "section_break_iiwkp",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "tapping_temperature",
+      "fieldtype": "Float",
+      "label": "Tapping Temperature ( \u00b0C)"
+     },
+     {
+      "fieldname": "section_break_nbhlq",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "pouring_temperature",
+      "fieldtype": "Data",
+      "label": "Pouring Temperature ( \u00b0C)"
+     },
+     {
+      "fieldname": "section_break_ybaa5",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "box_pouring_time",
+      "fieldtype": "Duration",
+      "label": "Box Pouring Time"
+     },
+     {
+      "fieldname": "column_break_dqknl",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "power_consumed",
+      "fieldtype": "Float",
+      "label": "Power Consumed",
+      "precision": "2"
+     },
+     {
+      "fieldname": "core_details",
+      "fieldtype": "Table",
+      "label": "Core Details",
+      "options": "Core  Details"
+     },
+     {
+      "fieldname": "supervisor",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Supervisor ID",
+      "options": "Employee",
+      "reqd": 1
+     },
+     {
+      "fieldname": "operator",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Operator ID",
+      "options": "Employee"
+     },
+     {
+      "fieldname": "column_break_on2tf",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "column_break_gvb1f",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fetch_from": "shift.minutes",
+      "fieldname": "shift_time",
+      "fieldtype": "Data",
+      "label": "Shift Time",
+      "read_only": 1
+     },
+     {
+      "fieldname": "grade",
+      "fieldtype": "Link",
+      "in_standard_filter": 1,
+      "label": "Select Grade",
+      "options": "Grade Master",
+      "read_only": 1,
+      "reqd": 1
+     },
+     {
+      "fieldname": "furnece",
+      "fieldtype": "Link",
+      "label": "Furnace",
+      "options": "Furnece Master",
+      "reqd": 1
+     },
+     {
+      "fieldname": "column_break_54iqm",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "section_break_brg1d",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "column_break_iigbn",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "POUR-"
+     },
+     {
+      "fieldname": "contractor",
+      "fieldtype": "Link",
+      "label": "Moulding Contractor",
+      "options": "Supplier"
+     },
+     {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Pouring",
+      "print_hide": 1,
+      "read_only": 1
+     },
+     {
+      "fieldname": "retained_items",
+      "fieldtype": "Table",
+      "label": "Retained Items",
+      "options": "Retained Items"
+     },
+     {
+      "fieldname": "total_weight_difference",
+      "fieldtype": "Float",
+      "hidden": 1,
+      "label": "Total Weight Difference",
+      "precision": "2",
+      "read_only": 1
+     },
+     {
+      "fieldname": "additional_cost_details",
+      "fieldtype": "Table",
+      "label": "Additional Cost Details",
+      "options": "Additional Cost Details"
+     },
+     {
+      "fieldname": "column_break_2vif6",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fetch_from": "grade.grade_type",
+      "fieldname": "grade_type",
+      "fieldtype": "Link",
+      "label": "Grade Type",
+      "options": "Grade Type",
+      "read_only": 1
+     },
+     {
+      "fieldname": "naming_fields",
+      "fieldtype": "Data",
+      "hidden": 1,
+      "label": "Naming Fields",
+      "read_only": 1
+     },
+     {
+      "fieldname": "total_rr_weight",
+      "fieldtype": "Float",
+      "label": "Total RR Weight",
+      "precision": "2",
+      "read_only": 1
+     },
+     {
+      "fieldname": "molding_sand_details",
+      "fieldtype": "Table",
+      "label": "Molding Sand Details",
+      "options": "Pouring Molding Sand Details"
+     },
+     {
+      "fieldname": "total_sand_weight",
+      "fieldtype": "Float",
+      "label": "Total Sand Weight",
+      "precision": "2",
+      "read_only": 1
+     },
+     {
+      "depends_on": "eval:doc.docstatus==1;",
+      "fieldname": "casting_treatment_analysis",
+      "fieldtype": "Table",
+      "label": "Casting Treatment Analysis",
+      "options": "Casting Treatment Analysis"
+     },
+     {
+      "fieldname": "normal_loss",
+      "fieldtype": "Float",
+      "label": "Normal Loss",
+      "read_only": 1
+     }
+    ],
+    "index_web_pages_for_search": 1,
+    "is_calendar_and_gantt": 1,
+    "is_submittable": 1,
+    "links": [
+     {
+      "link_doctype": "Stock Entry",
+      "link_fieldname": "custom_pouring"
+     },
+     {
+      "link_doctype": "Material Request",
+      "link_fieldname": "custom_custom_pouring"
+     },
+     {
+      "is_child_table": 1,
+      "link_doctype": "Pouring Multi select",
+      "link_fieldname": "pouring",
+      "parent_doctype": "Casting Treatment",
+      "table_fieldname": "select_pouring"
+     }
+    ],
+    "modified": "2024-02-27 18:11:33.305035",
+    "modified_by": "Administrator",
+    "module": "Quantbit Foundry ERP",
+    "name": "Pouring",
+    "naming_rule": "By \"Naming Series\" field",
+    "owner": "Administrator",
+    "permissions": [
+     {
+      "amend": 1,
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "submit": 1,
+      "write": 1
+     }
+    ],
+    "search_fields": "naming_fields , heat_no",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+   }

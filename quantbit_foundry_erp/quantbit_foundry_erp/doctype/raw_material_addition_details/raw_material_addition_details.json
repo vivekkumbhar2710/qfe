@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-19 19:06:57.441794",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "raw_material_addition_details",
+  "column_break_n3pum",
+  "quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "raw_material_addition_details",
+   "fieldtype": "Link",
+   "label": "RAW MATERIAL ADDITION DETAILS",
+   "options": "Raw Material Addition Master"
+  },
+  {
+   "fieldname": "column_break_n3pum",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Data",
+   "label": "QUANTITY"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-29 12:09:12.178453",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Raw Material Addition Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

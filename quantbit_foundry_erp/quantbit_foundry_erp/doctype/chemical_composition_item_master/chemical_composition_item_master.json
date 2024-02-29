@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:part_no",
+ "creation": "2024-02-21 10:57:37.923001",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "part_no",
+  "column_break_iejag",
+  "component",
+  "column_break_uti1o",
+  "equivalent_is_grade",
+  "column_break_luddz",
+  "chemical_composition_section",
+  "c",
+  "column_break_uwp05",
+  "si",
+  "column_break_g6cwj",
+  "mn",
+  "column_break_hcqkv",
+  "s",
+  "section_break_k6mca",
+  "p",
+  "column_break_g3kgj",
+  "cu",
+  "column_break_ojlfq",
+  "mg",
+  "column_break_eaupi",
+  "cr"
+ ],
+ "fields": [
+  {
+   "fetch_from": "component.item_code",
+   "fieldname": "part_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "PART NO",
+   "options": "Item",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_iejag",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "part_no.item_name",
+   "fieldname": "component",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "COMPONENT",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_uti1o",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "component.custom_grade",
+   "fieldname": "equivalent_is_grade",
+   "fieldtype": "Data",
+   "label": "EQUIVALENT IS GRADE"
+  },
+  {
+   "fieldname": "column_break_luddz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chemical_composition_section",
+   "fieldtype": "Section Break",
+   "label": "CHEMICAL  COMPOSITION RANGE"
+  },
+  {
+   "fieldname": "c",
+   "fieldtype": "Data",
+   "label": "C"
+  },
+  {
+   "fieldname": "column_break_uwp05",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "si",
+   "fieldtype": "Data",
+   "label": "Si"
+  },
+  {
+   "fieldname": "column_break_g6cwj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mn",
+   "fieldtype": "Data",
+   "label": "Mn"
+  },
+  {
+   "fieldname": "column_break_hcqkv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "s",
+   "fieldtype": "Data",
+   "label": "S"
+  },
+  {
+   "fieldname": "section_break_k6mca",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "p",
+   "fieldtype": "Data",
+   "label": "P"
+  },
+  {
+   "fieldname": "column_break_g3kgj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cu",
+   "fieldtype": "Data",
+   "label": "Cu"
+  },
+  {
+   "fieldname": "column_break_ojlfq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mg",
+   "fieldtype": "Data",
+   "label": "Mg"
+  },
+  {
+   "fieldname": "column_break_eaupi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Data",
+   "label": "Cr"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-29 12:09:10.292922",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Chemical Composition Item Master",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

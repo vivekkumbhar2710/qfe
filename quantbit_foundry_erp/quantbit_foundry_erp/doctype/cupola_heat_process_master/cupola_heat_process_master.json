@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-02-15 12:48:14.913362",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "column_break_xsxfy",
+  "column_break_9sfis",
+  "naming_series",
+  "section_break_slngl",
+  "process_name",
+  "text_editor"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xsxfy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_9sfis",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CHP-"
+  },
+  {
+   "fieldname": "section_break_slngl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "process_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Process Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "text_editor",
+   "fieldtype": "Text Editor",
+   "label": "Text Editor"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-15 13:25:05.083910",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Cupola Heat Process Master",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "process_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
