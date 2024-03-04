@@ -1,0 +1,43 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-14 17:54:08.948103",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:25:26.870272",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Spectro Analysis",
+ "owner": "sonali.kinikar@erpdata.in",
+ "prepared_report": 0,
+ "query": "select a.name \"ID:Link/Daily Spectro Analysis:120\",a.date \"Date:Date:100\",a.shift \"Shift\",a.supervisor \"Supervisor\" ,a.company \"Company\",b.pouring_id \"Pouring:Link/Pouring:120\",\nb.item_code \"Item Code\",b.heat_no \"Heat No\",b.c \"c\",\nb.si \"si \",b.mn \"mn \",b.p \"p \",b.s \"s \",b.cu \"cu \",b.cr \"cr \",b.mg \"mg \"\nfrom \n`tabDaily Spectro Analysis` a\nleft join `tabDaily Spectro Details` b on a.name  =b.parent\nwhere a.date between %(from_date)s and %(to_date)s",
+ "ref_doctype": "Daily Spectro Analysis",
+ "report_name": "Daily Spectro Analysis",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

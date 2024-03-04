@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-15 11:05:48.545489",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:25:33.939416",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Hardness Report",
+ "owner": "vikas.deshmukh@erpdata.in",
+ "prepared_report": 0,
+ "query": "SELECT\n    TO_CHAR(heat_date, 'DD-MM-YYYY') \"Heat Date\",\n    customer_name \"Customer Name\",\n    part_name \"Part Name\",\n    heat_no \"Heat No\",\n    grade \"Grade\",\n    bhn \"BHN\",\n    reading_11 \"Reading 1\",\n    reading_12 \"Reading 2\",\n    reading_13 \"Reading 3\",\n    reading_14 \"Reading 4\",\n    reading_15 \"Reading 5\",\n    master_specification \"Master Specification\",\n    actual_hardness \"Actual Hardness\",\n    checked_by \"Checked By\",\n    prepared_by \"Prepared By\"\nFROM\n    `tabDaily Hardness`\n",
+ "ref_doctype": "Daily Hardness",
+ "report_name": "Daily Hardness Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

@@ -107,33 +107,33 @@ frappe.ui.form.on('Pouring', {
 	},
 });
 
-	frappe.ui.form.on("Pouring", {
-		setup: function(frm) {
-				frm.set_query("supervisor", function() { // Replace with the name of the link field
-					return {
-						filters: [
-							["Employee", "company", '=', frm.doc.company],// Replace with your actual filter criteria
-							["Employee", "designation", '=', 'Supervisor'],
-						]
-					};
-				});
+	// frappe.ui.form.on("Pouring", {
+	// 	setup: function(frm) {
+	// 			frm.set_query("supervisor", function() { // Replace with the name of the link field
+	// 				return {
+	// 					filters: [
+	// 						["Employee", "company", '=', frm.doc.company],// Replace with your actual filter criteria
+	// 						["Employee", "designation", '=', 'Supervisor'],
+	// 					]
+	// 				};
+	// 			});
 	
-			}
-		});
+	// 		}
+	// 	});
 
-	frappe.ui.form.on("Pouring", {
-		setup: function(frm) {
-				frm.set_query("operator", function() { // Replace with the name of the link field
-					return {
-						filters: [
-							["Employee", "company", '=', frm.doc.company],// Replace with your actual filter criteria
-							["Employee", "designation", '=', 'Operator'],
-						]
-					};
-				});
+	// frappe.ui.form.on("Pouring", {
+	// 	setup: function(frm) {
+	// 			frm.set_query("operator", function() { // Replace with the name of the link field
+	// 				return {
+	// 					filters: [
+	// 						["Employee", "company", '=', frm.doc.company],// Replace with your actual filter criteria
+	// 						["Employee", "designation", '=', 'Operator'],
+	// 					]
+	// 				};
+	// 			});
 	
-			}
-		});
+	// 		}
+	// 	});
 
 
 

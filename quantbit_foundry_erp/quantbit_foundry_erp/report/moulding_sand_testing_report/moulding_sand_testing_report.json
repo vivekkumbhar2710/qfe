@@ -1,0 +1,55 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-24 14:46:27.873443",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "default": "01-02-2024",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "default": "28-02-2024",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "part_name",
+   "fieldtype": "Link",
+   "label": "Part Name",
+   "mandatory": 0,
+   "options": "Moulding Sand Testing Details",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:27:03.417899",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Moulding Sand Testing Report",
+ "owner": "vikas.deshmukh@erpdata.in",
+ "prepared_report": 0,
+ "query": "SELECT \r\n    TO_CHAR(mst.date, 'DD-MM-YYYY') AS \"DATE\",\r\n    mst.shift AS \"SHIFT\", \r\n    mstd.time AS \"TIME\", \r\n    mstd.part_name_number AS \"PART NAME AND NUMBER\", \r\n    mstd.gcs AS \"GCS (MIN 1100 gm/cm\u00b2)\", \r\n    mstd.permeability AS \"PERMEABILITY (MIN 100)\", \r\n    mstd.compactibility AS \"COMPACTIBILITY (35 - 45%%)\", \r\n    mstd.moisture AS \"MOISTURE (3.5-4.5%%)\", \r\n    mstd.mold_hardness_cope AS \"MOLD HARDNESS (COPE 85-90)\", \r\n    mstd.machine_operated_cope AS \"MACHINE OPERATED COPE\",\r\n    mstd.mold_hardness_drag AS \"MOLD HARDNESS (DRAG 85-90)\", \r\n    mstd.machine_operated_drag AS \"MACHINE OPERATED DRAG\",\r\n    mstd.water_time AS \"WATER TIME(1 sec.=0.50 liter)\", \r\n    mstd.sand_temp_molding_outlet AS \"SAND TEMP. (OUT LET below 50\u00b0c)\", \r\n    rmad.raw_material_addition_details AS \"RAW MATERIAL ADDITION DETAILS\",\r\n    mst.sand_mixture_capacity AS \"SAND MIXTURE CAPACITY \", \r\n    mst.dry_mix AS \"DRY MIX (in seconds)\",\r\n    mst.wet_mix AS \"WET MIX (in seconds)\",\r\n    mst.total_mixture_time AS \"TOTAL MIXTURE TIME (in seconds)\",\r\n    \r\n    mst.work_sup AS \"LAB SUPERVISOR\",\r\n  \r\n    mst.remark_if_any AS \"REMARKS (If Any)\"\r\n\r\nFROM `tabMoulding Sand Testing` mst\r\nLEFT JOIN \r\n`tabMoulding Sand Testing Details` mstd on mst.name = mstd.parent \r\nLEFT JOIN \r\n`tabRaw Material Addition Details` rmad on mst.name = rmad.parent",
+ "ref_doctype": "Moulding Sand Testing",
+ "report_name": "Moulding Sand Testing Report",
+ "report_script": "",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

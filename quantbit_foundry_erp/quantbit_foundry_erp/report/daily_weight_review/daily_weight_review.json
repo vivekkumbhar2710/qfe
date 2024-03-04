@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-14 11:23:45.308084",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Daily Weight Review\"],[\"company\",\"Daily Weight Review\"],[\"posting_date\",\"Daily Weight Review\"],[\"iatf_number\",\"Daily Weight Review\"],[\"heat_date\",\"Pouring Details\"],[\"part_code\",\"Pouring Details\"],[\"part_name\",\"Pouring Details\"],[\"heat_no\",\"Pouring Details\"],[\"cavity\",\"Pouring Details\"],[\"reading_1\",\"Pouring Details\"],[\"reading_2\",\"Pouring Details\"],[\"reading_3\",\"Pouring Details\"],[\"reading_4\",\"Pouring Details\"],[\"reading_5\",\"Pouring Details\"],[\"average_weight\",\"Pouring Details\"],[\"standard_weight\",\"Pouring Details\"],[\"extra_weight\",\"Pouring Details\"],[\"wt_value\",\"Pouring Details\"],[\"checked_by\",\"Pouring Details\"],[\"prepared_by\",\"Pouring Details\"],[\"remark\",\"Pouring Details\"]],\"order_by\":\"`tabDaily Weight Review`.`modified` desc\",\"page_length\":20,\"column_widths\":{\"name\":120,\"company\":120,\"posting_date\":120,\"iatf_number\":120,\"Pouring Details:heat_date\":120,\"Pouring Details:part_code\":120,\"Pouring Details:part_name\":120,\"Pouring Details:heat_no\":120,\"Pouring Details:cavity\":120,\"Pouring Details:reading_1\":120,\"Pouring Details:reading_2\":120,\"Pouring Details:reading_3\":120,\"Pouring Details:reading_4\":120,\"Pouring Details:reading_5\":120,\"Pouring Details:average_weight\":120,\"Pouring Details:standard_weight\":120,\"Pouring Details:extra_weight\":120,\"Pouring Details:wt_value\":120,\"Pouring Details:checked_by\":120,\"Pouring Details:prepared_by\":120,\"Pouring Details:remark\":120},\"group_by\":null}",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:20:35.885210",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Weight Review",
+ "owner": "vikas.deshmukh@erpdata.in",
+ "prepared_report": 0,
+ "ref_doctype": "Daily Weight Review",
+ "report_name": "Daily Weight Review",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

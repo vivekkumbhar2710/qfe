@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-26 15:20:31.718237",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Moulding Sand Testing\"],[\"date\",\"Moulding Sand Testing\"],[\"shift\",\"Moulding Sand Testing\"],[\"time\",\"Moulding Sand Testing Details\"],[\"part_name_number\",\"Moulding Sand Testing Details\"],[\"gcs\",\"Moulding Sand Testing Details\"],[\"permeability\",\"Moulding Sand Testing Details\"],[\"compactibility\",\"Moulding Sand Testing Details\"],[\"moisture\",\"Moulding Sand Testing Details\"],[\"mold_hardness_cope\",\"Moulding Sand Testing Details\"],[\"machine_operated_cope\",\"Moulding Sand Testing Details\"],[\"mold_hardness_drag\",\"Moulding Sand Testing Details\"],[\"machin_operated_drag\",\"Moulding Sand Testing Details\"],[\"water_time\",\"Moulding Sand Testing Details\"],[\"sand_temp_molding_outlet\",\"Moulding Sand Testing Details\"],[\"sand_mixture_capacity\",\"Moulding Sand Testing\"],[\"raw_material_addition_details\",\"Raw Material Addition Details\"],[\"quantity\",\"Raw Material Addition Details\"],[\"dry_mix\",\"Moulding Sand Testing\"],[\"wet_mix\",\"Moulding Sand Testing\"],[\"total_mixture_time\",\"Moulding Sand Testing\"],[\"work_sup\",\"Moulding Sand Testing\"]],\"order_by\":\"`tabMoulding Sand Testing`.`modified` desc\",\"page_length\":20,\"column_widths\":{\"name\":120,\"date\":120,\"shift\":120,\"Moulding Sand Testing Details:time\":120,\"Moulding Sand Testing Details:part_name_number\":120,\"Moulding Sand Testing Details:gcs\":120,\"Moulding Sand Testing Details:permeability\":120,\"Moulding Sand Testing Details:compactibility\":120,\"Moulding Sand Testing Details:moisture\":120,\"Moulding Sand Testing Details:mold_hardness_cope\":120,\"Moulding Sand Testing Details:machine_operated_cope\":120,\"Moulding Sand Testing Details:mold_hardness_drag\":120,\"Moulding Sand Testing Details:machin_operated_drag\":120,\"Moulding Sand Testing Details:water_time\":120,\"Moulding Sand Testing Details:sand_temp_molding_outlet\":120,\"sand_mixture_capacity\":120,\"Raw Material Addition Details:raw_material_addition_details\":120,\"Raw Material Addition Details:quantity\":120,\"dry_mix\":120,\"wet_mix\":120,\"total_mixture_time\":120,\"work_sup\":120},\"group_by\":null}",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:26:56.600258",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Moulding Sand Testing Report 1.0",
+ "owner": "vikas.deshmukh@erpdata.in",
+ "prepared_report": 0,
+ "query": "",
+ "ref_doctype": "Moulding Sand Testing",
+ "report_name": "Moulding Sand Testing Report 1.0",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

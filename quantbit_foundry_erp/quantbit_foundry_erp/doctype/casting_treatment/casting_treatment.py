@@ -369,6 +369,95 @@ class CastingTreatment(Document):
 					frappe.throw(f'Please define Correct Qty of rejection of Item {qnt_dtls.item_code}-{qnt_dtls.item_name} off Pouring ID {qnt_dtls.pouring} in table "Rejected Items Reasons"')
 
 
+
+
+	@frappe.whitelist()
+	def update_get_rejections(self):
+		quantity_details = self.get('quantity_details')
+		rejected_items_reasons = self.get('rejected_items_reasons')
+		cr_list , rw_list = [] , []
+		for i in quantity_details:
+			cr_qty = 0
+			rw_qty = 0	
+			if i.cr_quantity:
+				for j in self.get('rejected_items_reasons', filters = {'item_code': i.item_code ,'reference_id':i.reference_id ,'pouring': i.pouring ,'rejection_type': 'CR'}):
+					cr_qty = cr_qty + j.qty
+
+				# frappe.msgprint(str(i.cr_quantity)+'=='+str(cr_qty))
+				if i.cr_quantity > cr_qty :
+					cr_list.append({'item_code': i.item_code ,
+									'item_name': i.item_name,
+									'pouring': i.pouring,
+									'rejection_type':"CR",
+									"qty": i.cr_quantity - cr_qty,
+									"target_warehouse": j.target_warehouse,
+									"reference_id":i.reference_id,})
+			if i.rw_quantity:
+				for j in self.get('rejected_items_reasons', filters = {'item_code': i.item_code ,'reference_id':i.reference_id ,'pouring': i.pouring, 'rejection_type': 'RW'}):
+					rw_qty = rw_qty + j.qty
+
+				# frappe.msgprint(str(i.rw_quantity)+'=='+str(rw_qty))	
+				if i.rw_quantity > rw_qty :
+					rw_list.append({'item_code': i.item_code ,
+									'item_name': i.item_name,
+									'pouring': i.pouring,
+									'rejection_type':"RW",
+									"qty": i.rw_quantity - rw_qty ,
+									"target_warehouse": j.target_warehouse,
+									"reference_id":i.reference_id,})
+
+			
+		# frappe.msgprint(str(cr_list)+'=='+str(rw_list))
+		if cr_list:
+			for x in cr_list:
+				self.append("rejected_items_reasons", 	{
+														'item_code': x['item_code'],
+														'item_name': x['item_name'],
+														'pouring': x['pouring'],
+														'rejection_type': x['rejection_type'],
+														'qty': x['qty'],
+														'reference_id': x['reference_id']
+														})
+
+		if rw_list:
+			for y in rw_list:
+				self.append("rejected_items_reasons", 	{
+														'item_code': y['item_code'],
+														'item_name': y['item_name'],
+														'pouring': y['pouring'],
+														'rejection_type': y['rejection_type'],
+														'qty': y['qty'],
+														'reference_id': y['reference_id']
+														})
+		# for r in rejected_items_reasons :
+		# 	quantity_details = self.get('quantity_details', filters = {'item_code': r.item_code ,'reference_id':r.reference_id ,'pouring': r.pouring})
+		# 	for q in quantity_details:
+		# 		pass
+				# if r.rejection_type == 'CR' and getVal(r.qty) < getVal(q.cr_quantity):
+				# 	self.append("rejected_items_reasons",
+				# 			{
+				# 					'item_code': r.item_code ,
+				# 					'item_name': r.item_name,
+				# 					'pouring': r.pouring,
+				# 					'rejection_type':"CR",
+				# 					# "qty": q.cr_quantity - r.qty,
+				# 					"target_warehouse" : r.target_warehouse,
+				# 					"reference_id":r.reference_id,
+				# 				},),
+				# if r.rejection_type == "RW" and getVal(r.qty) < getVal(q.rw_quantity):
+				# 	self.append("rejected_items_reasons",
+				# 			{
+				# 					'item_code': r.item_code ,
+				# 					'item_name': r.item_name,
+				# 					'pouring': r.pouring,
+				# 					'rejection_type':"CR",
+				# 					# "qty": q.rw_quantity - r.qty,
+				# 					"target_warehouse" : r.target_warehouse,
+				# 					"reference_id":r.reference_id,	
+				# 				},),
+
+
+				
 	# @frappe.whitelist()
 	# def update_quentities_at_pouring(self):
 	# 	for o in self.get('quantity_details'):

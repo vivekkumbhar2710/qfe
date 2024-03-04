@@ -318,3 +318,16 @@ frappe.ui.form.on('Casting Treatment Pattern Casting Item', {
 		})
     }
 });
+
+// ============================================================= Casting Treatment Rejected Items Reasons =================================================
+
+
+frappe.ui.form.on('Casting Treatment Rejected Items Reasons', {
+    qty: function(frm) {
+        frm.call({
+			method:'update_get_rejections',
+			doc:frm.doc,
+		});
+
+    }
+});

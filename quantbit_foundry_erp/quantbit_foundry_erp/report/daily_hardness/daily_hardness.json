@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-15 11:00:08.758077",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Daily Hardness\"],[\"heat_date\",\"Daily Hardness\"],[\"customer_name\",\"Daily Hardness\"],[\"part_name\",\"Daily Hardness\"],[\"heat_no\",\"Daily Hardness\"],[\"grade\",\"Daily Hardness\"],[\"bhn\",\"Daily Hardness\"],[\"master_specification\",\"Daily Hardness\"],[\"actual_hardness\",\"Daily Hardness\"]],\"order_by\":\"`tabDaily Hardness`.`modified` desc\",\"page_length\":20,\"column_widths\":{\"name\":120,\"heat_date\":120,\"customer_name\":120,\"part_name\":120,\"heat_no\":120,\"grade\":120,\"bhn\":120,\"master_specification\":120,\"actual_hardness\":120},\"group_by\":null}",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:26:20.531514",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Hardness",
+ "owner": "vikas.deshmukh@erpdata.in",
+ "prepared_report": 0,
+ "query": "select a.date \"Date:Date:100\",a.shift \"Shift\",a.supervisor \"Supervisor\" ,a.company \"Company\",b.pouring_id \"Pouring:Link/Pouring:120\",\nb.item_code \"Item Code\",b.heat_no \"Heat No\",b.c \"c\",\nb.si \"si \",b.mn \"mn \",b.p \"p \",b.s \"s \",b.cu \"cu \",b.cr \"cr \",b.mg \"mg \"\nfrom \n`tabDaily Spectro Analysis` a\nleft join `tabDaily Spectro Details` b on a.name  =b.parent\nwhere a.date between %(from_date)s and %(to_date)s",
+ "ref_doctype": "Daily Hardness",
+ "report_name": "Daily Hardness",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

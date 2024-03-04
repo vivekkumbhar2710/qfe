@@ -11,6 +11,7 @@
      "naming_series",
      "company",
      "heat_date",
+     "time",
      "furnece",
      "column_break_c0zar",
      "supervisor",
@@ -94,14 +95,14 @@
       "reqd": 1
      },
      {
-      "fetch_from": "supervisor.employee_name",
+      "fetch_from": "supervisor.supervisor_name",
       "fieldname": "supervisor_name",
       "fieldtype": "Data",
       "label": "Supervisor Name",
       "read_only": 1
      },
      {
-      "fetch_from": "operator.employee_name",
+      "fetch_from": "operator.operator_name",
       "fieldname": "operator_name",
       "fieldtype": "Data",
       "in_standard_filter": 1,
@@ -311,7 +312,8 @@
       "fieldtype": "Link",
       "in_standard_filter": 1,
       "label": "Supervisor ID",
-      "options": "Employee",
+      "options": "Supervisor Master",
+      "remember_last_selected_value": 1,
       "reqd": 1
      },
      {
@@ -319,7 +321,7 @@
       "fieldtype": "Link",
       "in_list_view": 1,
       "label": "Operator ID",
-      "options": "Employee"
+      "options": "Operator Master"
      },
      {
       "fieldname": "column_break_on2tf",
@@ -456,6 +458,12 @@
       "fieldtype": "Float",
       "label": "Normal Loss",
       "read_only": 1
+     },
+     {
+      "default": "Now",
+      "fieldname": "time",
+      "fieldtype": "Time",
+      "label": "Time"
      }
     ],
     "index_web_pages_for_search": 1,
@@ -478,7 +486,7 @@
       "table_fieldname": "select_pouring"
      }
     ],
-    "modified": "2024-02-27 18:11:33.305035",
+    "modified": "2024-03-02 15:02:20.315503",
     "modified_by": "Administrator",
     "module": "Quantbit Foundry ERP",
     "name": "Pouring",

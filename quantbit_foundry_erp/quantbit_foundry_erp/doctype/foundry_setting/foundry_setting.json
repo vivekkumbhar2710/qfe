@@ -28,7 +28,11 @@
   "column_break_e8tsy",
   "rr_item_name",
   "column_break_rjvlh",
-  "rr_item_warehouse"
+  "rr_item_warehouse",
+  "core_manufacturing_warehouse_section",
+  "default_source_warehouse",
+  "column_break_vh6w9",
+  "default_target_warehouse"
  ],
  "fields": [
   {
@@ -140,11 +144,32 @@
    "fieldtype": "Link",
    "label": "Molding Sand Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "core_manufacturing_warehouse_section",
+   "fieldtype": "Section Break",
+   "label": "Core Manufacturing Warehouse"
+  },
+  {
+   "fieldname": "default_source_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_vh6w9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_target_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Target Warehouse",
+   "options": "Warehouse"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-28 13:31:48.247917",
+ "modified": "2024-03-01 15:55:03.472208",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Foundry Setting",

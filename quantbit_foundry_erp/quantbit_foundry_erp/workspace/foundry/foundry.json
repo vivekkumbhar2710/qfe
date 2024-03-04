@@ -5,7 +5,7 @@
       "label": "Daily Casting"
      }
     ],
-    "content": "[{\"id\":\"xYx1sy3A_d\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Daily Casting\",\"col\":12}},{\"id\":\"IqEjzJ1VwZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZrN_QrW10p\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pouring\",\"col\":3}},{\"id\":\"DkKqkCzSEH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Casting Treatment\",\"col\":3}},{\"id\":\"4B4qAj4mEX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Planning\",\"col\":3}},{\"id\":\"1gxk2N3qJb\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Foundry</span>\",\"col\":12}},{\"id\":\"91En6-DQNK\",\"type\":\"card\",\"data\":{\"card_name\":\"Pattern Masters\",\"col\":4}},{\"id\":\"7_6bIZjfev\",\"type\":\"card\",\"data\":{\"card_name\":\"Entries\",\"col\":4}},{\"id\":\"YWqosbCFC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Casting Treatment Master\",\"col\":4}},{\"id\":\"H0Hl7Rueao\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"uXIrgIe_sN\",\"type\":\"card\",\"data\":{\"card_name\":\"Pouring Master\",\"col\":4}},{\"id\":\"NRg8imxNNK\",\"type\":\"card\",\"data\":{\"card_name\":\"Core Manufacturing\",\"col\":4}},{\"id\":\"vk7Od5eom5\",\"type\":\"card\",\"data\":{\"card_name\":\"Foundry Settings\",\"col\":4}},{\"id\":\"7pbLBpVbBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"3PFQd1CzHR\",\"type\":\"card\",\"data\":{\"card_name\":\"Production Report\",\"col\":4}},{\"id\":\"_wHGTDmdk0\",\"type\":\"card\",\"data\":{\"card_name\":\"Consumption Report\",\"col\":4}},{\"id\":\"LzeAy8cQsF\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Report\",\"col\":4}},{\"id\":\"P3Cyl39YYQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Resource Report\\t\",\"col\":4}}]",
+    "content": "[{\"id\":\"xYx1sy3A_d\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Daily Casting\",\"col\":12}},{\"id\":\"IqEjzJ1VwZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZrN_QrW10p\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pouring\",\"col\":3}},{\"id\":\"DkKqkCzSEH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Casting Treatment\",\"col\":3}},{\"id\":\"4B4qAj4mEX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Planning\",\"col\":3}},{\"id\":\"1gxk2N3qJb\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Foundry</span>\",\"col\":12}},{\"id\":\"91En6-DQNK\",\"type\":\"card\",\"data\":{\"card_name\":\"Pattern Masters\",\"col\":4}},{\"id\":\"7_6bIZjfev\",\"type\":\"card\",\"data\":{\"card_name\":\"Entries\",\"col\":4}},{\"id\":\"YWqosbCFC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Other Masters\",\"col\":4}},{\"id\":\"JllLz8hgFv\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Inspection\",\"col\":4}},{\"id\":\"H0Hl7Rueao\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"uXIrgIe_sN\",\"type\":\"card\",\"data\":{\"card_name\":\"Pouring Master\",\"col\":4}},{\"id\":\"NRg8imxNNK\",\"type\":\"card\",\"data\":{\"card_name\":\"Core Manufacturing\",\"col\":4}},{\"id\":\"vk7Od5eom5\",\"type\":\"card\",\"data\":{\"card_name\":\"Foundry Settings\",\"col\":4}},{\"id\":\"7pbLBpVbBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"3PFQd1CzHR\",\"type\":\"card\",\"data\":{\"card_name\":\"Production Report\",\"col\":4}},{\"id\":\"_wHGTDmdk0\",\"type\":\"card\",\"data\":{\"card_name\":\"Consumption Report\",\"col\":4}},{\"id\":\"LzeAy8cQsF\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Report\",\"col\":4}},{\"id\":\"P3Cyl39YYQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Resource Report\\t\",\"col\":4}}]",
     "creation": "2023-11-04 18:12:32.854958",
     "custom_blocks": [],
     "docstatus": 0,
@@ -17,24 +17,6 @@
     "is_hidden": 0,
     "label": "Foundry",
     "links": [
-     {
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Casting Treatment Master",
-      "link_count": 1,
-      "onboard": 0,
-      "type": "Card Break"
-     },
-     {
-      "hidden": 0,
-      "is_query_report": 0,
-      "label": "Casting Treatment Master",
-      "link_count": 0,
-      "link_to": "Casting Treatment Master",
-      "link_type": "DocType",
-      "onboard": 0,
-      "type": "Link"
-     },
      {
       "hidden": 0,
       "is_query_report": 0,
@@ -489,9 +471,95 @@
       "link_type": "DocType",
       "onboard": 0,
       "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Quality Inspection",
+      "link_count": 4,
+      "onboard": 0,
+      "type": "Card Break"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Daily Weight Review",
+      "link_count": 0,
+      "link_to": "Daily Weight Review",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Daily Hardness",
+      "link_count": 0,
+      "link_to": "Daily Hardness",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Daily Spectro Analysis",
+      "link_count": 0,
+      "link_to": "Daily Spectro Analysis",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Moulding Sand Testing",
+      "link_count": 0,
+      "link_to": "Moulding Sand Testing",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Other Masters",
+      "link_count": 3,
+      "onboard": 0,
+      "type": "Card Break"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Casting Treatment Master",
+      "link_count": 0,
+      "link_to": "Casting Treatment Master",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Operator Master",
+      "link_count": 0,
+      "link_to": "Operator Master",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+     },
+     {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Supervisor Master",
+      "link_count": 0,
+      "link_to": "Supervisor Master",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
      }
     ],
-    "modified": "2024-02-13 10:16:05.338629",
+    "modified": "2024-03-04 12:58:33.331374",
     "modified_by": "akshay.m@erpdata.in",
     "module": "Quantbit Foundry ERP",
     "name": "Foundry",

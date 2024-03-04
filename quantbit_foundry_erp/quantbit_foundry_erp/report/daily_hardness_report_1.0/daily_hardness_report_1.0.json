@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-02-26 14:39:16.423365",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Daily Hardness\"],[\"heat_date\",\"Daily Hardness\"],[\"customer_name\",\"Daily Hardness\"],[\"part_code\",\"Daily Hardness\"],[\"part_name\",\"Daily Hardness\"],[\"heat_no\",\"Daily Hardness\"],[\"grade\",\"Daily Hardness\"],[\"master_specification\",\"Daily Hardness\"],[\"reading_11\",\"Daily Hardness\"],[\"reading_12\",\"Daily Hardness\"],[\"reading_13\",\"Daily Hardness\"],[\"reading_14\",\"Daily Hardness\"],[\"reading_15\",\"Daily Hardness\"],[\"actual_hardness\",\"Daily Hardness\"],[\"checked_by\",\"Daily Hardness\"]],\"order_by\":\"`tabDaily Hardness`.`modified` desc\",\"page_length\":20,\"column_widths\":{\"name\":120,\"heat_date\":120,\"customer_name\":200,\"part_code\":158,\"part_name\":151,\"heat_no\":120,\"grade\":120,\"master_specification\":120,\"reading_11\":120,\"reading_12\":120,\"reading_13\":120,\"reading_14\":120,\"reading_15\":120,\"actual_hardness\":120,\"checked_by\":120},\"group_by\":null}",
+ "letter_head": "Header Footer",
+ "modified": "2024-03-04 11:22:46.934759",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Daily Hardness Report 1.0",
+ "owner": "vikas.deshmukh@erpdata.in",
+ "prepared_report": 0,
+ "query": "",
+ "ref_doctype": "Daily Hardness",
+ "report_name": "Daily Hardness Report 1.0",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}
