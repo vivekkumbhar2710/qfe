@@ -232,8 +232,9 @@ class CastingTreatment(Document):
 		for d in casting_item :
 			if d.quantity:
 				total_quantity = frappe.get_value("Casting Details", d.reference_id ,'total_quantity')
-				if d.quantity > total_quantity:
-					frappe.throw(f"You Can Not Set 'Quantity' More Than {total_quantity} ")
+				if total_quantity:
+					if d.quantity > total_quantity:
+						frappe.throw(f"You Can Not Set 'Quantity' More Than {total_quantity} ")
 				if d.casting_weight:
 					d.weight = d.quantity * d.casting_weight
 				if d.pouring and d.reference_id:
@@ -249,7 +250,7 @@ class CastingTreatment(Document):
 
 
 
-						r.total_quantity = total_quantity
+						r.total_quantity = getVal(total_quantity)
 
 
 
@@ -315,7 +316,7 @@ class CastingTreatment(Document):
 		total_pouring_weight = 0
 		for i in casting_details:
 			field_data = i.get(total_field)
-			total_pouring_weight = total_pouring_weight + field_data
+			total_pouring_weight = total_pouring_weight + getVal(field_data)
 		return total_pouring_weight
 
 
@@ -476,8 +477,9 @@ class CastingTreatment(Document):
 	def validate_casting_quantity(self):
 		castingitem = self.get("casting_item")
 		for j in castingitem :
-			if j.treatmentable_quantity < j.quantity :
-				frappe.throw(f"You can not select value more than 'Remaining Treatment Quantity' which is '{j.treatmentable_quantity}' ")
+			if j.pouring:
+				if j.treatmentable_quantity < j.quantity :
+					frappe.throw(f"You can not select value more than 'Remaining Treatment Quantity' which is '{j.treatmentable_quantity}' ")
 
 	@frappe.whitelist()
 	def manifacturing_stock_entry(self):

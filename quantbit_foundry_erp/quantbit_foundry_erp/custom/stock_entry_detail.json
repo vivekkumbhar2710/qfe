@@ -511,7 +511,6 @@
       "module": null,
       "name": "Stock Entry Detail-unit4-reqd",
       "owner": "Administrator",
-      "property": "reqd",
       "property_type": "Check",
       "row_name": null,
       "value": "0"
