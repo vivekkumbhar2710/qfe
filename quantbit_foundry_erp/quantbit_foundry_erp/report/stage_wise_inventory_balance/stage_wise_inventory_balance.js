@@ -86,7 +86,7 @@ frappe.query_reports["Stage Wise Inventory Balance"] = {
 				if(parent_warehouse)
 				{
 					return {
-						filters: { 'company': company , 'parent_warehouse': parent_warehouse, "is_group":0},
+						filters:{'company':company ,'parent_warehouse': parent_warehouse, "is_group":0},
 					}
 				}
 				else
@@ -95,7 +95,6 @@ frappe.query_reports["Stage Wise Inventory Balance"] = {
 						filters: { 'company': company, "is_group":0},
 					}
 				}
-
 			}
 		},
 		{

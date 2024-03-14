@@ -19,3 +19,24 @@ frappe.ui.form.on('Daily Spectro Details', {
 	}
 });
 
+frappe.ui.form.on('Daily Spectro Analysis', {
+    setup: function(frm) {
+        
+        var company_field = 'company';
+        frm.set_query("supervisor_name", function(doc) {
+            return {
+                filters: [
+                    ["Lab Supervisor Master", "company", '=', frm.doc.company],
+                ]
+            };
+        });
+        frm.set_query("shift", function(doc) {
+		return {
+			filters: [
+        			["Shift Master", "company", '=', frm.doc.company]
+				]
+			};
+    	});
+    }
+});
+

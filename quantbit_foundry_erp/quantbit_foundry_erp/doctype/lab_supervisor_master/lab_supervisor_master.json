@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "supervisor_name",
   "column_break_qotzb",
   "column_break_yhj3y"
@@ -27,11 +28,17 @@
   {
    "fieldname": "column_break_yhj3y",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-02-29 12:09:08.811447",
+ "modified": "2024-03-08 13:41:48.026923",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Lab Supervisor Master",

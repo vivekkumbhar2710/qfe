@@ -1,292 +1,326 @@
 {
-    "actions": [],
-    "allow_rename": 1,
-    "autoname": "format:{pattern}",
-    "creation": "2023-09-21 15:31:27.008348",
-    "default_view": "List",
-    "doctype": "DocType",
-    "editable_grid": 1,
-    "engine": "InnoDB",
-    "field_order": [
-     "naming_series",
-     "company",
-     "enable",
-     "column_break_ouo51",
-     "pattern_name",
-     "drawing_number",
-     "quality_type",
-     "column_break_e4cht",
-     "pattern",
-     "pattern_owner",
-     "customer",
-     "customer_name",
-     "section_break_pfqez",
-     "mould_qty_per_hour",
-     "mould_stand_weight",
-     "column_break_f22el",
-     "match_plate_size",
-     "box_per_heat",
-     "column_break_oa1ea",
-     "pattern_type",
-     "grade",
-     "section_break_bzfhv",
-     "casting_material_details",
-     "core_material_details",
-     "section_break_y9dui",
-     "box_weight",
-     "column_break_gmwst",
-     "casting_weight",
-     "column_break_g4ri8",
-     "rr_weight",
-     "column_break_fajlq",
-     "no_of_cavities",
-     "section_break_icjml",
-     "molding_sand_details",
-     "casting_treatment_tab",
-     "section_section",
-     "casting_treatment_details"
-    ],
-    "fields": [
-     {
-      "fieldname": "pattern_name",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Pattern id",
-      "options": "Item",
-      "reqd": 1
-     },
-     {
-      "fieldname": "drawing_number",
-      "fieldtype": "Int",
-      "label": "Drawing Number"
-     },
-     {
-      "fieldname": "column_break_ouo51",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "company",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Company",
-      "options": "Company",
-      "reqd": 1
-     },
-     {
-      "fieldname": "pattern_owner",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Pattern Owner",
-      "options": "Pattern Owner",
-      "reqd": 1
-     },
-     {
-      "fieldname": "quality_type",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Quality Type",
-      "options": "Quality Type",
-      "reqd": 1
-     },
-     {
-      "fieldname": "section_break_pfqez",
-      "fieldtype": "Section Break",
-      "label": "Production Details"
-     },
-     {
-      "fieldname": "mould_qty_per_hour",
-      "fieldtype": "Float",
-      "label": "Mould Qty Per Hour",
-      "precision": "2"
-     },
-     {
-      "fieldname": "mould_stand_weight",
-      "fieldtype": "Float",
-      "label": "Mould Stand Weight"
-     },
-     {
-      "fieldname": "match_plate_size",
-      "fieldtype": "Link",
-      "label": "Match Plate Size",
-      "options": "Match Plate Size"
-     },
-     {
-      "fieldname": "column_break_f22el",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "box_per_heat",
-      "fieldtype": "Int",
-      "label": "Box Per Heat"
-     },
-     {
-      "fieldname": "pattern_type",
-      "fieldtype": "Link",
-      "label": "Pattern Type",
-      "options": "Pattern Type"
-     },
-     {
-      "fieldname": "section_break_y9dui",
-      "fieldtype": "Section Break",
-      "label": "Weight Details"
-     },
-     {
-      "fieldname": "box_weight",
-      "fieldtype": "Float",
-      "label": "Total Box Weight",
-      "reqd": 1
-     },
-     {
-      "fieldname": "casting_weight",
-      "fieldtype": "Float",
-      "label": "Total Casting Weight Per Box",
-      "read_only": 1,
-      "reqd": 1
-     },
-     {
-      "fieldname": "column_break_gmwst",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "rr_weight",
-      "fieldtype": "Float",
-      "label": "RR Weight Per Box",
-      "read_only": 1,
-      "reqd": 1
-     },
-     {
-      "fieldname": "no_of_cavities",
-      "fieldtype": "Int",
-      "label": "No. of Cavities Per Box",
-      "read_only": 1,
-      "reqd": 1
-     },
-     {
-      "fieldname": "section_break_bzfhv",
-      "fieldtype": "Section Break"
-     },
-     {
-      "fieldname": "casting_material_details",
-      "fieldtype": "Table",
-      "label": "Casting Material Details",
-      "options": "Casting Material Details"
-     },
-     {
-      "fieldname": "core_material_details",
-      "fieldtype": "Table",
-      "label": "Core Material Details",
-      "options": "Core Material Details"
-     },
-     {
-      "fieldname": "naming_series",
-      "fieldtype": "Select",
-      "label": "Series",
-      "options": "PTRN-"
-     },
-     {
-      "fieldname": "casting_treatment_tab",
-      "fieldtype": "Tab Break",
-      "label": "Casting Treatment"
-     },
-     {
-      "fieldname": "casting_treatment_details",
-      "fieldtype": "Table",
-      "label": "Casting Treatment Details",
-      "options": "Casting Treatment Details"
-     },
-     {
-      "fieldname": "grade",
-      "fieldtype": "Link",
-      "label": "Grade",
-      "options": "Grade Master",
-      "read_only": 1
-     },
-     {
-      "fieldname": "column_break_g4ri8",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "column_break_fajlq",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "column_break_e4cht",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "column_break_oa1ea",
-      "fieldtype": "Column Break"
-     },
-     {
-      "default": "1",
-      "fieldname": "enable",
-      "fieldtype": "Check",
-      "label": "Is Pattern Enable"
-     },
-     {
-      "fieldname": "section_break_icjml",
-      "fieldtype": "Section Break"
-     },
-     {
-      "fieldname": "molding_sand_details",
-      "fieldtype": "Table",
-      "label": "Molding Sand Details",
-      "options": "Molding Sand Details"
-     },
-     {
-      "fieldname": "section_section",
-      "fieldtype": "Section Break",
-      "label": "****Note = In Table \"Casting Treatment Details\"  Need To Add Casting Treatment In Correct Sequence, This Sequence Is Used For Routing \ud83d\udd00."
-     },
-     {
-      "fetch_from": "pattern_name.item_name",
-      "fieldname": "pattern",
-      "fieldtype": "Data",
-      "label": "Pattern"
-     },
-     {
-      "fieldname": "customer",
-      "fieldtype": "Link",
-      "label": "Customer",
-      "options": "Customer"
-     },
-     {
-      "fetch_from": "customer.customer_name",
-      "fieldname": "customer_name",
-      "fieldtype": "Data",
-      "label": "Customer Name",
-      "read_only": 1
-     }
-    ],
-    "index_web_pages_for_search": 1,
-    "links": [
-     {
-      "link_doctype": "Item",
-      "link_fieldname": "item_name"
-     }
-    ],
-    "modified": "2024-02-02 17:17:06.810464",
-    "modified_by": "Administrator",
-    "module": "Quantbit Foundry ERP",
-    "name": "Pattern Master",
-    "naming_rule": "Expression",
-    "owner": "Administrator",
-    "permissions": [
-     {
-      "create": 1,
-      "delete": 1,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "System Manager",
-      "share": 1,
-      "write": 1
-     }
-    ],
-    "search_fields": "pattern_name",
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": []
-   }
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{pattern}",
+ "creation": "2023-09-21 15:31:27.008348",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "company",
+  "enable",
+  "column_break_ouo51",
+  "pattern_name",
+  "drawing_number",
+  "quality_type",
+  "column_break_e4cht",
+  "pattern",
+  "pattern_owner",
+  "customer",
+  "customer_name",
+  "section_break_pfqez",
+  "mould_qty_per_hour",
+  "mould_stand_weight",
+  "column_break_f22el",
+  "match_plate_size",
+  "box_per_heat",
+  "column_break_oa1ea",
+  "pattern_type",
+  "grade",
+  "column_break_ajhxe",
+  "pattern_life",
+  "column_break_leicv",
+  "pattern_life_finish",
+  "column_break_dz5p7",
+  "pattern_life_remaining",
+  "section_break_bzfhv",
+  "casting_material_details",
+  "core_material_details",
+  "section_break_y9dui",
+  "box_weight",
+  "column_break_gmwst",
+  "casting_weight",
+  "column_break_g4ri8",
+  "rr_weight",
+  "column_break_fajlq",
+  "no_of_cavities",
+  "section_break_icjml",
+  "molding_sand_details",
+  "casting_treatment_tab",
+  "section_section",
+  "casting_treatment_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "pattern_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pattern id",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "drawing_number",
+   "fieldtype": "Int",
+   "label": "Drawing Number"
+  },
+  {
+   "fieldname": "column_break_ouo51",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pattern_owner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pattern Owner",
+   "options": "Pattern Owner",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quality_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Quality Type",
+   "options": "Quality Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_pfqez",
+   "fieldtype": "Section Break",
+   "label": "Production Details"
+  },
+  {
+   "fieldname": "mould_qty_per_hour",
+   "fieldtype": "Float",
+   "label": "Mould Qty Per Hour",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mould_stand_weight",
+   "fieldtype": "Float",
+   "label": "Mould Stand Weight"
+  },
+  {
+   "fieldname": "match_plate_size",
+   "fieldtype": "Link",
+   "label": "Match Plate Size",
+   "options": "Match Plate Size"
+  },
+  {
+   "fieldname": "column_break_f22el",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "box_per_heat",
+   "fieldtype": "Int",
+   "label": "Box Per Heat"
+  },
+  {
+   "fieldname": "pattern_type",
+   "fieldtype": "Link",
+   "label": "Pattern Type",
+   "options": "Pattern Type"
+  },
+  {
+   "fieldname": "section_break_y9dui",
+   "fieldtype": "Section Break",
+   "label": "Weight Details"
+  },
+  {
+   "fieldname": "box_weight",
+   "fieldtype": "Float",
+   "label": "Total Box Weight",
+   "reqd": 1
+  },
+  {
+   "fieldname": "casting_weight",
+   "fieldtype": "Float",
+   "label": "Total Casting Weight Per Box",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gmwst",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rr_weight",
+   "fieldtype": "Float",
+   "label": "RR Weight Per Box",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "no_of_cavities",
+   "fieldtype": "Int",
+   "label": "No. of Cavities Per Box",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_bzfhv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "casting_material_details",
+   "fieldtype": "Table",
+   "label": "Casting Material Details",
+   "options": "Casting Material Details"
+  },
+  {
+   "fieldname": "core_material_details",
+   "fieldtype": "Table",
+   "label": "Core Material Details",
+   "options": "Core Material Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PTRN-"
+  },
+  {
+   "fieldname": "casting_treatment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Casting Treatment"
+  },
+  {
+   "fieldname": "casting_treatment_details",
+   "fieldtype": "Table",
+   "label": "Casting Treatment Details",
+   "options": "Casting Treatment Details"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Grade Master",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_g4ri8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fajlq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_e4cht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oa1ea",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable",
+   "fieldtype": "Check",
+   "label": "Is Pattern Enable"
+  },
+  {
+   "fieldname": "section_break_icjml",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "molding_sand_details",
+   "fieldtype": "Table",
+   "label": "Molding Sand Details",
+   "options": "Molding Sand Details"
+  },
+  {
+   "fieldname": "section_section",
+   "fieldtype": "Section Break",
+   "label": "****Note = In Table \"Casting Treatment Details\"  Need To Add Casting Treatment In Correct Sequence, This Sequence Is Used For Routing \ud83d\udd00."
+  },
+  {
+   "fetch_from": "pattern_name.item_name",
+   "fieldname": "pattern",
+   "fieldtype": "Data",
+   "label": "Pattern"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ajhxe",
+   "fieldtype": "Section Break",
+   "label": "Pattern Life"
+  },
+  {
+   "fieldname": "pattern_life",
+   "fieldtype": "Float",
+   "label": "Pattern Life (Please set pattern life as no. of items can be produced from pattern)"
+  },
+  {
+   "fieldname": "column_break_leicv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pattern_life_finish",
+   "fieldtype": "Float",
+   "label": "Pattern Life Finish"
+  },
+  {
+   "fieldname": "column_break_dz5p7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pattern_life_remaining",
+   "fieldtype": "Float",
+   "label": "Pattern Life Remaining"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Item",
+   "link_fieldname": "item_name"
+  }
+ ],
+ "modified": "2024-03-12 17:02:18.684270",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Pattern Master",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "pattern_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -139,7 +139,7 @@ frappe.ui.form.on('Casting Treatment', {
 		frm.set_query("item_code","pattern_casting_item", function(doc) {
 			return {
 				filters: [
-					["Item", 'company', '=', frm.doc.company],
+					["Item", 'custom_company', '=', frm.doc.company],
 					['Item', 'custom_is_finished_foundry_casting_items', '=',1]
 				]
 			};

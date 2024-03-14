@@ -22,7 +22,7 @@ frappe.ui.form.on('Daily Weight Review', {
                 }
 			});
      } 
-}); 
+});  
 
 frappe.ui.form.on('Pouring Details', {
 	part_code:function(frm)

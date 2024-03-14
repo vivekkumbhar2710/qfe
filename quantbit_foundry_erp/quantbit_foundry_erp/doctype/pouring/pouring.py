@@ -566,6 +566,14 @@ class Pouring(Document):
 								
 							},),
 
+	@frappe.whitelist()
+	def maintain_pattern_life(self):
+		for i in self.get('pattern_details'):
+			life = 0
+			for j in self.get('casting_details', filters = {'pattern': i.pattern_code}):
+				life = life + j.total_quantity
+
+			pass
 
 
 		

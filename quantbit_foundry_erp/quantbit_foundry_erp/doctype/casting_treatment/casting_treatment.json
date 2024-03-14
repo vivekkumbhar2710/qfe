@@ -192,6 +192,7 @@
    "options": "Pouring Multi select"
   },
   {
+   "depends_on": "eval:doc.casting_treatment_without_pouring == 0;",
    "fieldname": "casting_item",
    "fieldtype": "Table",
    "label": "Casting Item",
@@ -333,9 +334,9 @@
    "options": "Item"
   },
   {
+   "depends_on": "eval:doc.casting_treatment_without_pouring == 1;",
    "fieldname": "pattern_casting_item",
    "fieldtype": "Table",
-   "hidden": 1,
    "label": "Pattern Casting Item",
    "options": "Casting Treatment Pattern Casting Item"
   }
@@ -348,7 +349,7 @@
    "link_fieldname": "custom_casting_treatment"
   }
  ],
- "modified": "2024-03-04 13:05:15.133836",
+ "modified": "2024-03-14 10:19:49.110731",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment",

@@ -33,3 +33,42 @@ frappe.ui.form.on('Daily Hardness', {
         });
     }
 });
+
+frappe.ui.form.on('Daily Hardness', {
+    refresh: function(frm) {
+        // Trigger calculation on any of the five fields change
+        ['reading_11', 'reading_12', 'reading_13', 'reading_14', 'reading_15'].forEach(field => {
+            frm.fields_dict[field].$input.on('change', function() {
+                calculateMinMax(frm);
+            });
+        });
+    }
+});
+
+function calculateMinMax(frm) {
+    var values = [];
+    
+    ['reading_11', 'reading_12', 'reading_13', 'reading_14', 'reading_15'].forEach(field => {
+        var value = frm.doc[field] || 0;
+        values.push(value);
+    });
+
+    var nonZeroValues = values.filter(val => val !== 0);
+
+    nonZeroValues.sort((a, b) => a - b);
+
+    var concatenated_val = '';
+
+    if (nonZeroValues.length > 0) {
+      
+        var min_val = nonZeroValues[0];
+        var max_val = nonZeroValues[nonZeroValues.length - 1];
+
+        concatenated_val = min_val.toString() + '-' + max_val.toString();
+    } else {
+        concatenated_val = '0-0';
+    }
+
+    frm.set_value('actual_hardness', concatenated_val);
+}
+

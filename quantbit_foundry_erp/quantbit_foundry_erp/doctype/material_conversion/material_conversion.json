@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-03-06 10:09:56.170881",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "column_break_qizii",
+  "column_break_y2fa1",
+  "column_break_muap1",
+  "section_break_me5ih",
+  "company",
+  "column_break_sulcp",
+  "posting_date",
+  "column_break_bbofe",
+  "operator_id",
+  "column_break_7i5ka",
+  "operator_name",
+  "input_material_for_material_conversion_section",
+  "input_material",
+  "section_break_ml9ms",
+  "input_total_quantity",
+  "column_break_yxaea",
+  "column_break_iwud5",
+  "column_break_dgmtx",
+  "output_material_for_material_conversion_section",
+  "output_material",
+  "section_break_aacch",
+  "output_total_quantity",
+  "column_break_pzxzm",
+  "column_break_gwn7y",
+  "column_break_wvomx",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MC - .######."
+  },
+  {
+   "fieldname": "column_break_qizii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_y2fa1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_me5ih",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sulcp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "column_break_bbofe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "operator_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Operator Id",
+   "options": "Operator Master"
+  },
+  {
+   "fieldname": "column_break_7i5ka",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "operator_id.operator_name",
+   "fieldname": "operator_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Operator Name"
+  },
+  {
+   "fieldname": "input_material_for_material_conversion_section",
+   "fieldtype": "Section Break",
+   "label": "Input Material For Material Conversion"
+  },
+  {
+   "fieldname": "input_material",
+   "fieldtype": "Table",
+   "label": "Input Material",
+   "options": "Input Material For Material Conversion"
+  },
+  {
+   "fieldname": "output_material_for_material_conversion_section",
+   "fieldtype": "Section Break",
+   "label": "Output Material For Material Conversion"
+  },
+  {
+   "fieldname": "output_material",
+   "fieldtype": "Table",
+   "label": "Output Material",
+   "options": "Output Material For Material Conversion"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Material Conversion",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "input_total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity"
+  },
+  {
+   "fieldname": "output_total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity"
+  },
+  {
+   "fieldname": "column_break_yxaea",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dgmtx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pzxzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gwn7y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ml9ms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_aacch",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_iwud5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wvomx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_muap1",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-08 19:11:40.082098",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Material Conversion",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
