@@ -11,13 +11,14 @@ def getVal(val):
         return val if val is not None else 0
 
 class CastingTreatment(Document):
-
+	
 
 	def before_save(self):
 		self.update_raw()
 		self.validate_total_quentity()
 		self.validate_rejections()
 		self.validate_casting_quantity()
+		self.additional_cost()
 
 	def before_submit(self):
 		self.manifacturing_stock_entry()
@@ -278,13 +279,15 @@ class CastingTreatment(Document):
 			ok_quantity = getVal(qd.ok_quantity)
 			cr_quantity = getVal(qd.cr_quantity)
 			rw_quantity = getVal(qd.rw_quantity)
+			fr_quantity = getVal(qd.fr_quantity)
 			casting_weight = getVal(qd.casting_weight)
-			qd.total_quantity = ok_quantity + cr_quantity + rw_quantity
+			qd.total_quantity = ok_quantity + cr_quantity + rw_quantity + fr_quantity
 
 
 			qd.ok_quantity_weight = casting_weight * ok_quantity
 			qd.cr_quantity_weight = casting_weight * cr_quantity
 			qd.rw_quantiry_weight = casting_weight * rw_quantity
+			qd.fr_quantity_weight = casting_weight * fr_quantity
 			qd.weight             = casting_weight * qd.total_quantity
 
 
@@ -293,6 +296,7 @@ class CastingTreatment(Document):
 		self.sum_of_ok_quantity = self.calculating_total_weight("quantity_details" ,"ok_quantity")
 		self.sum_of_cr_quantity = self.calculating_total_weight("quantity_details" ,"cr_quantity")
 		self.sum_of_rw_quantity = self.calculating_total_weight("quantity_details" ,"rw_quantity")
+		self.sum_of_fr_quantity = self.calculating_total_weight("quantity_details" ,"fr_quantity")
 
 		self.get_rejections()
 
@@ -325,6 +329,8 @@ class CastingTreatment(Document):
 		cttwrejected = frappe.get_value("Foundry Setting",self.company,"ct_tw_rejected")
 		CR_rejections = frappe.get_value("Casting Treatment Master",self.casting_treatment,"crt_warehouse")
 		RW_rejections = frappe.get_value("Casting Treatment Master",self.casting_treatment,"rwt_warehouse")
+		FR_rejections = frappe.get_value("Casting Treatment Master",self.casting_treatment,"frt_warehouse")
+
 
 		quantity_details = self.get('quantity_details')
 		for qty_d in quantity_details:
@@ -350,6 +356,18 @@ class CastingTreatment(Document):
 									"target_warehouse":RW_rejections if RW_rejections else cttwrejected,
 									"reference_id":qty_d.reference_id,		
 								},),
+			if qty_d.fr_quantity:
+				self.append("rejected_items_reasons",
+							{
+									'item_code': qty_d.item_code ,
+									'item_name': qty_d.item_name,
+									'pouring': qty_d.pouring,
+									'rejection_type':"FR",
+									"qty": qty_d.fr_quantity,
+									"target_warehouse":FR_rejections if FR_rejections else cttwrejected,
+									"reference_id":qty_d.reference_id,		
+								},),
+
 	@frappe.whitelist()
 	def validate_rejections(self):
 		for qnt_dtls in self.get('quantity_details'):
@@ -369,6 +387,14 @@ class CastingTreatment(Document):
 				if rw_quantity != qnt_dtls.rw_quantity :
 					frappe.throw(f'Please define Correct Qty of rejection of Item {qnt_dtls.item_code}-{qnt_dtls.item_name} off Pouring ID {qnt_dtls.pouring} in table "Rejected Items Reasons"')
 
+			if qnt_dtls.fr_quantity :
+				fr_quantity = 0 
+				for rir in self.get('rejected_items_reasons' , filters={"item_code": qnt_dtls.item_code , "pouring": qnt_dtls.pouring , "rejection_type" : "FR" , "reference_id":qnt_dtls.reference_id}):
+					fr_quantity	= fr_quantity + rir.qty
+
+				if fr_quantity != qnt_dtls.fr_quantity :
+					frappe.throw(f'Please define Correct Qty of rejection of Item {qnt_dtls.item_code}-{qnt_dtls.item_name} off Pouring ID {qnt_dtls.pouring} in table "Rejected Items Reasons"')
+
 
 
 
@@ -376,15 +402,15 @@ class CastingTreatment(Document):
 	def update_get_rejections(self):
 		quantity_details = self.get('quantity_details')
 		rejected_items_reasons = self.get('rejected_items_reasons')
-		cr_list , rw_list = [] , []
+		cr_list , rw_list , fr_list = [] , [] , []
 		for i in quantity_details:
 			cr_qty = 0
-			rw_qty = 0	
+			rw_qty = 0
+			fr_qty = 0	
 			if i.cr_quantity:
 				for j in self.get('rejected_items_reasons', filters = {'item_code': i.item_code ,'reference_id':i.reference_id ,'pouring': i.pouring ,'rejection_type': 'CR'}):
 					cr_qty = cr_qty + j.qty
 
-				# frappe.msgprint(str(i.cr_quantity)+'=='+str(cr_qty))
 				if i.cr_quantity > cr_qty :
 					cr_list.append({'item_code': i.item_code ,
 									'item_name': i.item_name,
@@ -397,7 +423,6 @@ class CastingTreatment(Document):
 				for j in self.get('rejected_items_reasons', filters = {'item_code': i.item_code ,'reference_id':i.reference_id ,'pouring': i.pouring, 'rejection_type': 'RW'}):
 					rw_qty = rw_qty + j.qty
 
-				# frappe.msgprint(str(i.rw_quantity)+'=='+str(rw_qty))	
 				if i.rw_quantity > rw_qty :
 					rw_list.append({'item_code': i.item_code ,
 									'item_name': i.item_name,
@@ -406,9 +431,21 @@ class CastingTreatment(Document):
 									"qty": i.rw_quantity - rw_qty ,
 									"target_warehouse": j.target_warehouse,
 									"reference_id":i.reference_id,})
+					
+			if i.fr_quantity:
+				for j in self.get('rejected_items_reasons', filters = {'item_code': i.item_code ,'reference_id':i.reference_id ,'pouring': i.pouring ,'rejection_type': 'FR'}):
+					fr_qty = fr_qty + j.qty
+
+				if i.fr_quantity > fr_qty :
+					fr_list.append({'item_code': i.item_code ,
+									'item_name': i.item_name,
+									'pouring': i.pouring,
+									'rejection_type':"FR",
+									"qty": i.fr_quantity - fr_qty,
+									"target_warehouse": j.target_warehouse,
+									"reference_id":i.reference_id,})
 
 			
-		# frappe.msgprint(str(cr_list)+'=='+str(rw_list))
 		if cr_list:
 			for x in cr_list:
 				self.append("rejected_items_reasons", 	{
@@ -417,7 +454,8 @@ class CastingTreatment(Document):
 														'pouring': x['pouring'],
 														'rejection_type': x['rejection_type'],
 														'qty': x['qty'],
-														'reference_id': x['reference_id']
+														"target_warehouse":x['target_warehouse'],
+														'reference_id': x['reference_id'],
 														})
 
 		if rw_list:
@@ -428,43 +466,24 @@ class CastingTreatment(Document):
 														'pouring': y['pouring'],
 														'rejection_type': y['rejection_type'],
 														'qty': y['qty'],
+														"target_warehouse":y['target_warehouse'],
 														'reference_id': y['reference_id']
 														})
-		# for r in rejected_items_reasons :
-		# 	quantity_details = self.get('quantity_details', filters = {'item_code': r.item_code ,'reference_id':r.reference_id ,'pouring': r.pouring})
-		# 	for q in quantity_details:
-		# 		pass
-				# if r.rejection_type == 'CR' and getVal(r.qty) < getVal(q.cr_quantity):
-				# 	self.append("rejected_items_reasons",
-				# 			{
-				# 					'item_code': r.item_code ,
-				# 					'item_name': r.item_name,
-				# 					'pouring': r.pouring,
-				# 					'rejection_type':"CR",
-				# 					# "qty": q.cr_quantity - r.qty,
-				# 					"target_warehouse" : r.target_warehouse,
-				# 					"reference_id":r.reference_id,
-				# 				},),
-				# if r.rejection_type == "RW" and getVal(r.qty) < getVal(q.rw_quantity):
-				# 	self.append("rejected_items_reasons",
-				# 			{
-				# 					'item_code': r.item_code ,
-				# 					'item_name': r.item_name,
-				# 					'pouring': r.pouring,
-				# 					'rejection_type':"CR",
-				# 					# "qty": q.rw_quantity - r.qty,
-				# 					"target_warehouse" : r.target_warehouse,
-				# 					"reference_id":r.reference_id,	
-				# 				},),
-
-
 				
-	# @frappe.whitelist()
-	# def update_quentities_at_pouring(self):
-	# 	for o in self.get('quantity_details'):
-	# 		if o.total_quantity:
-	# 			frappe.get_all('Casting Details',
-	# 			   						filters = {"parent" : o.pouring, "item_code": o.item_code, })
+		if fr_list:
+			for z in fr_list:
+				self.append("rejected_items_reasons", 	{
+														'item_code': z['item_code'],
+														'item_name': z['item_name'],
+														'pouring': z['pouring'],
+														'rejection_type': z['rejection_type'],
+														'qty': z['qty'],
+														"target_warehouse":z['target_warehouse'],
+														'reference_id': z['reference_id']
+														})
+
+
+
 	@frappe.whitelist()
 	def calculate_total_weight_quentity(self):
 		self.total_quantity = self.calculating_total_weight("casting_item" ,"quantity")
@@ -492,6 +511,7 @@ class CastingTreatment(Document):
 			se = frappe.new_doc("Stock Entry")
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company
+			se.set_posting_time = True
 			se.posting_date = self.treatment_date
 			
 			all_core = self.get("quantity_details" ,  filters={"item_code": cd.item_code ,"ok_quantity" : ["!=",0],"reference_id" : cd.reference_id})
@@ -520,7 +540,7 @@ class CastingTreatment(Document):
 							"t_warehouse": cd.target_warehouse,
 							"is_finished_item": True
 						},)
-				additional_cost_details = self.get("additional_cost_details")
+				additional_cost_details = self.get("additional_cost_details",filters = {'additional_cost_for_ok_quantity' : False })
 				if additional_cost_details:
 					for acd in additional_cost_details:
 						se.append(
@@ -531,6 +551,18 @@ class CastingTreatment(Document):
 									"amount": (acd.amount* core.ok_quantity) / self.sum_of_ok_quantity,
 
 								},)
+						
+			additional_cost_operation_cost = self.get("additional_cost_details",filters = {'additional_cost_for_ok_quantity' : True ,"reference_id" : cd.reference_id})
+			if additional_cost_operation_cost:
+				for acoc in additional_cost_operation_cost:
+					se.append(
+							"additional_costs",
+							{
+								"expense_account":acoc.expense_head_account,
+								"description": acoc.discription,
+								"amount": acoc.amount,
+
+							},)
 
 			se.custom_casting_treatment = self.name	
 			if all_core:
@@ -545,6 +577,7 @@ class CastingTreatment(Document):
 		se = frappe.new_doc("Stock Entry")
 		se.stock_entry_type = "Material Transfer"
 		se.company = self.company
+		se.set_posting_time = True
 		se.posting_date = self.treatment_date
 		if self.casting_treatment_without_pouring:
 			for y in self.get("pattern_casting_item"):
@@ -629,7 +662,7 @@ class CastingTreatment(Document):
 					d.source_warehouse = source_warehouse
 					d.target_warehouse = target_warehouse
 					d.casting_weight = items_weight
-					d.reference_id = None
+					d.reference_id = name
 				else:
 					d.pattern_id = None
 					d.source_warehouse = None
@@ -726,6 +759,34 @@ class CastingTreatment(Document):
 		if available_quantity < quantity:
 			frappe.throw("You can not select 'Quantity' more than 'Quantity Available In Warehouse'   ")
 
+	@frappe.whitelist()
+	def additional_cost(self):
+		additional_cost_details = self.get('additional_cost_details', filters = {'additional_cost_for_ok_quantity' : False })
+		a_c_d = self.get('additional_cost_details')
+		a_c_d.clear()
+		table = 'pattern_casting_item' if self.casting_treatment_without_pouring else 'casting_item'
+		for cd in self.get(table):      
+			all_core = self.get("quantity_details" ,  filters={"item_code": cd.item_code ,"ok_quantity" : ["!=",0],"reference_id" : cd.reference_id})
+			for core in all_core:
+				if table == 'pattern_casting_item':
+					pattern = cd.pattern_id
+				else :
+					pattern = frappe.get_value("Casting Details",{"parent": str(cd.pouring) , 'item_code': cd.item_code , 'name': cd.reference_id}, "pattern")
+
+				if pattern :
+					casting_treatment_rate = frappe.get_value("Casting Treatment Details" ,{"parent": pattern , 'casting_items_code': cd.item_code , 'casting_treatment': self.casting_treatment} , 'casting_treatment_rate')
+					expense_account =frappe.get_value("Foundry Setting",self.company,"expense_account_for_wages")
+					if casting_treatment_rate:
+						self.append("additional_cost_details",{
+											'discription': f'This Is Cost of Casting Item Code {cd.item_code} for Casting Treatment {self.casting_treatment}',
+											'expense_head_account':expense_account,
+											'amount': getVal(casting_treatment_rate) * getVal(core.ok_quantity),
+											'additional_cost_for_ok_quantity' : True,
+											'reference_id':cd.reference_id,
+										},),
+
+		for d in additional_cost_details:
+			self.append("additional_cost_details",d),
 	#set available qty in child table
 	# @frappe.whitelist()
 	# def set_available_qty_in_pcidetails(self):

@@ -4,6 +4,29 @@
 import frappe
 from frappe.model.document import Document
 
+def getVal(val):
+        return val if val is not None else 0
+
+def ItemName(item_code):
+	return frappe.get_value('Item', item_code , 'item_name')
+
+def time_difference(in_hour, in_min, in_am_pm, out_hour, out_min, out_am_pm, in_date=0, out_date=0):
+    if in_am_pm.upper() == 'PM' and in_hour != 12:
+        in_hour += 12
+    if out_am_pm.upper() == 'PM' and out_hour != 12:
+        out_hour += 12
+
+    in_minutes = in_date * 24 * 60 + in_hour * 60 + in_min
+    out_minutes = out_date * 24 * 60 + out_hour * 60 + out_min
+    time_diff = out_minutes - in_minutes
+
+    hours = time_diff // 60
+    minutes = time_diff % 60
+
+    return hours, minutes
+
+
+
 class Pouring(Document):
 	def before_save(self):
 		self.validate_poring_weight()
@@ -17,6 +40,7 @@ class Pouring(Document):
 		self.create_rr_item_retain_items()
 		self.validate_total_charge_mix()
 		self.calculate_normal_loss()
+		self.calculate_pouring_duration()
 		if int(self.power_reading_initial) == 0:
 			frappe.throw('Please Fill Power Reading')
 		if int(self.power_reading_final) == 0:
@@ -30,6 +54,11 @@ class Pouring(Document):
 		self.manifacturing_retained_items()
 		self.calculating_power_consumption_amount()
 		self.casting_treatment_analysis_details()
+		self.normal_loss_material_issue()
+		self.maintain_pattern_life()
+
+	def before_cancel(self):
+		self.cancel_maintain_pattern_life()
 
 
 
@@ -305,6 +334,7 @@ class Pouring(Document):
 			se = frappe.new_doc("Stock Entry")
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company
+			se.set_posting_time = True
 			se.posting_date = self.heat_date
 			for g in self.get("change_mix_details" , filters = {"quantity" :['!=',0]}):
 				se.append(
@@ -363,6 +393,7 @@ class Pouring(Document):
 			se = frappe.new_doc("Stock Entry")
 			se.stock_entry_type = "Manufacture"
 			se.company = self.company
+			se.set_posting_time = True
 			se.posting_date = self.heat_date
 			for p in self.get("change_mix_details" , filters = {"quantity" :['!=',0]}):
 				se.append(
@@ -395,6 +426,30 @@ class Pouring(Document):
 			se.insert()
 			se.save()
 			se.submit()
+
+	@frappe.whitelist()
+	def normal_loss_material_issue(self):
+		if self.normal_loss and self.total_consumed_weight:
+			se = frappe.new_doc("Stock Entry")
+			se.stock_entry_type = "Material Issue"
+			se.company = self.company
+			se.set_posting_time = True
+			se.posting_date = self.heat_date
+			for p in self.get("change_mix_details" , filters = {"quantity" :['!=',0]}):
+				se.append(
+						"items",
+						{
+							"item_code": p.item_code,
+							"qty":  (self.normal_loss * p.quantity) / self.total_consumed_weight,
+							"s_warehouse": p.warehouse,
+						},)
+			se.custom_pouring = self.name
+			if se.items:	
+				se.insert()
+				se.save()
+				se.submit()
+
+
 
 
 	@frappe.whitelist()
@@ -438,34 +493,38 @@ class Pouring(Document):
 	def create_rr_item_retain_items(self):
 		rr_item = frappe.get_value("Grade Master",self.grade,"scrap_item_code")
 		rr_item_warehouse = frappe.get_value("Grade Master",self.grade,"default_target_warehouse")
-		if not rr_item:
-			frappe.throw('Please Set RR item In Grade Master')
-
-		retained_items = self.get("retained_items", filters={"rr_item":1})
-		if not retained_items:
-			self.append("retained_items",{
-								'item_code': rr_item,
-								'target_warehouse': rr_item_warehouse,
-								'total_quantity': self.total_rr_weight,
-								'rr_item' : True
-							},),
-		else:
-			for g in retained_items:
-				g.total_quantity = self.total_rr_weight
+		# if not rr_item:
+		# 	frappe.throw('Please Set RR item In Grade Master')
+		if rr_item:
+			retained_items = self.get("retained_items", filters={"rr_item":1})
+			if not retained_items:
+				self.append("retained_items",{
+									'item_code': rr_item,
+									'item_name': ItemName(rr_item),
+									'target_warehouse': rr_item_warehouse,
+									'total_quantity': self.total_rr_weight,
+									'rr_item' : True
+								},),
+			else:
+				for g in retained_items:
+					g.total_quantity = self.total_rr_weight
 
 		heal_item = frappe.get_value("Grade Master",self.grade,"heal_item_code")
 		heal_item_warehouse = frappe.get_value("Grade Master",self.grade,"default_target_warehouse_heal")
-		if not heal_item:
-			frappe.throw('Please Set Heal item In Grade Master')
+		# if not heal_item:
+		# 	frappe.throw('Please Set Heal item In Grade Master')
 
-		heal_metal = self.get("retained_items", filters={"item_code":heal_item})
-		if not heal_metal:
-			self.append("retained_items",{
-								'item_code': heal_item,
-								'target_warehouse': heal_item_warehouse,
-								'total_quantity': 0,
-								
-							},),
+		if heal_item:
+
+			heal_metal = self.get("retained_items", filters={"item_code":heal_item})
+			if not heal_metal:
+				self.append("retained_items",{
+									'item_code': heal_item,
+									'item_name': ItemName(heal_item),
+									'target_warehouse': heal_item_warehouse,
+									'total_quantity': 0,
+									
+								},),
 
 
 	
@@ -475,6 +534,8 @@ class Pouring(Document):
 
 		self.total_rr_weight = self.calculating_total_weight("casting_details","rr_weight_total")
 		self.total_sand_weight = self.calculating_total_weight("molding_sand_details","quantity")
+
+		self.create_rr_item_retain_items()
 
 	def calculate_normal_loss(self):
 		total_sum =0
@@ -498,7 +559,7 @@ class Pouring(Document):
 	@frappe.whitelist()
 	def set_last_power_consumption(self):
 		power_consumption = frappe.get_all('Pouring',
-                                        filters ={'docstatus':1 ,},
+                                        filters ={'docstatus':1 ,'heat_date':['<=',self.heat_date]},
                                         fields = ['name','power_reading_final'] ,order_by='creation DESC',limit=1)
 		if power_consumption :
 			for p in power_consumption:
@@ -571,11 +632,35 @@ class Pouring(Document):
 		for i in self.get('pattern_details'):
 			life = 0
 			for j in self.get('casting_details', filters = {'pattern': i.pattern_code}):
-				life = life + j.total_quantity
+				life = life + getVal(j.total_quantity)
 
-			pass
+			pattern_doc =frappe.get_doc("Pattern Master",i.pattern_code)
+			pattern_life_finish = pattern_doc.pattern_life_finish
+			life_value_set = getVal(pattern_life_finish) + life
+			pattern_doc.pattern_life_finish = life_value_set
+			pattern_doc.pattern_life_remaining = getVal(pattern_doc.pattern_life) - life_value_set
+			if pattern_doc.pattern_life_remaining < 0:
+				frappe.msgprint(f"The Life Of Pattern {i.pattern_code} is Finish")
+			else:
+				pattern_doc.save()
 
+	@frappe.whitelist()
+	def cancel_maintain_pattern_life(self):
+		for i in self.get('pattern_details'):
+			life = 0
+			for j in self.get('casting_details', filters = {'pattern': i.pattern_code}):
+				life = life + getVal(j.total_quantity)
 
+			pattern_doc =frappe.get_doc("Pattern Master",i.pattern_code)
+			pattern_life_finish = pattern_doc.pattern_life_finish
+			life_value_set = getVal(pattern_life_finish) - life
+			pattern_doc.pattern_life_finish = life_value_set
+			pattern_doc.pattern_life_remaining = getVal(pattern_doc.pattern_life) + life_value_set
+			pattern_doc.save()
+
+	@frappe.whitelist()
+	def calculate_pouring_duration(self):
+		self.total_time_in_hour , self.total_time_in_minute = time_difference(self.hr_s, self.min_s, self.ampm_s, self.hr_e, self.min_e, self.ampm_e)
 		
 
 

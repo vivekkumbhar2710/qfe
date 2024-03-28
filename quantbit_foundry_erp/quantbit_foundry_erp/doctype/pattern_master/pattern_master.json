@@ -280,7 +280,8 @@
   {
    "fieldname": "pattern_life_finish",
    "fieldtype": "Float",
-   "label": "Pattern Life Finish"
+   "label": "Pattern Life Finish",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_dz5p7",
@@ -289,7 +290,8 @@
   {
    "fieldname": "pattern_life_remaining",
    "fieldtype": "Float",
-   "label": "Pattern Life Remaining"
+   "label": "Pattern Life Remaining",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -299,7 +301,7 @@
    "link_fieldname": "item_name"
   }
  ],
- "modified": "2024-03-12 17:02:18.684270",
+ "modified": "2024-03-16 11:09:30.082600",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Pattern Master",

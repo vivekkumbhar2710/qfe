@@ -20,7 +20,9 @@
   "column_break_z77ua",
   "raw_item_name",
   "column_break_hvoaj",
-  "required_quantity"
+  "required_quantity",
+  "column_break_24klx",
+  "casting_treatment_rate"
  ],
  "fields": [
   {
@@ -107,12 +109,21 @@
    "fieldtype": "Link",
    "label": "Finished Source Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_24klx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "casting_treatment_rate",
+   "fieldtype": "Float",
+   "label": "Casting Treatment Rate (**** Define rate for unit item to do the casting treatment)"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-14 13:02:37.199471",
+ "modified": "2024-03-16 12:02:39.059021",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Details",

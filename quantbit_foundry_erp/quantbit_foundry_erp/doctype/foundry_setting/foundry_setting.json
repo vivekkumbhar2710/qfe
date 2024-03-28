@@ -18,6 +18,8 @@
   "column_break_j0a4l",
   "sw_sand",
   "casting_treatment__default_warehouse_section",
+  "expense_account_for_wages",
+  "section_break_oth6t",
   "ct_tw_casting",
   "column_break_pru0d",
   "ct_sw_raw",
@@ -165,11 +167,21 @@
    "fieldtype": "Link",
    "label": "Default Target Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "expense_account_for_wages",
+   "fieldtype": "Link",
+   "label": "Expense Account For Wages",
+   "options": "Account"
+  },
+  {
+   "fieldname": "section_break_oth6t",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-01 15:55:03.472208",
+ "modified": "2024-03-16 17:29:42.626419",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Foundry Setting",

@@ -15,7 +15,9 @@
   "column_break_brhhj",
   "crt_warehouse",
   "column_break_bywmo",
-  "rwt_warehouse"
+  "rwt_warehouse",
+  "column_break_3mpcs",
+  "frt_warehouse"
  ],
  "fields": [
   {
@@ -66,11 +68,21 @@
    "in_list_view": 1,
    "label": "Default RW Target Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_3mpcs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "frt_warehouse",
+   "fieldtype": "Link",
+   "label": "Default RW Target Warehouse",
+   "options": "Warehouse"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-14 10:37:49.411868",
+ "modified": "2024-03-22 14:59:41.910769",
  "modified_by": "Administrator",
  "module": "Quantbit Foundry ERP",
  "name": "Casting Treatment Master",

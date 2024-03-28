@@ -22,5 +22,13 @@
   "modified": "2023-12-15 11:00:47.056501",
   "name": "RW",
   "type": "RW"
+ },
+ {
+  "company": "Alpha Foundries Pvt. Ltd.",
+  "docstatus": 0,
+  "doctype": "Rejection Type Master",
+  "modified": "2024-03-22 15:12:06.522758",
+  "name": "FR",
+  "type": "FR"
  }
 ]
