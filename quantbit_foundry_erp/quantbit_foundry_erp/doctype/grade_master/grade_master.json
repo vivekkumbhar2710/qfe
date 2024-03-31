@@ -1,166 +1,167 @@
 {
-    "actions": [],
-    "allow_rename": 1,
-    "autoname": "field:grade_name",
-    "creation": "2023-10-30 18:29:21.220180",
-    "default_view": "List",
-    "doctype": "DocType",
-    "editable_grid": 1,
-    "engine": "InnoDB",
-    "field_order": [
-     "naming_series",
-     "grade_name",
-     "column_break_vbln4",
-     "company",
-     "section_break_vfhff",
-     "grade_type",
-     "grade_items_details",
-     "default_scrap_item_details_section",
-     "scrap_item_code",
-     "column_break_9m5sk",
-     "scrap_item_name",
-     "column_break_wk1zb",
-     "default_target_warehouse",
-     "section_break_ujc0i",
-     "heal_item_code",
-     "column_break_krsaq",
-     "heal_item_name",
-     "column_break_rx40o",
-     "default_target_warehouse_heal"
-    ],
-    "fields": [
-     {
-      "fieldname": "grade_items_details",
-      "fieldtype": "Table",
-      "label": "Grade Items Details",
-      "options": "Grade Items Details"
-     },
-     {
-      "fieldname": "naming_series",
-      "fieldtype": "Select",
-      "label": "Series",
-      "options": "GRADE-"
-     },
-     {
-      "fieldname": "grade_type",
-      "fieldtype": "Link",
-      "label": "Grade Type",
-      "options": "Grade Type"
-     },
-     {
-      "fieldname": "column_break_vbln4",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "company",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Company",
-      "options": "Company",
-      "reqd": 1
-     },
-     {
-      "fieldname": "section_break_vfhff",
-      "fieldtype": "Section Break"
-     },
-     {
-      "fieldname": "grade_name",
-      "fieldtype": "Data",
-      "label": "Grade Name",
-      "reqd": 1,
-      "unique": 1
-     },
-     {
-      "fieldname": "default_scrap_item_details_section",
-      "fieldtype": "Section Break",
-      "label": "Default Scrap Item Details"
-     },
-     {
-      "fieldname": "scrap_item_code",
-      "fieldtype": "Link",
-      "label": "Scrap Item Code",
-      "options": "Item",
-      "reqd": 1
-     },
-     {
-      "fetch_from": "scrap_item_code.item_name",
-      "fieldname": "scrap_item_name",
-      "fieldtype": "Data",
-      "label": "Scrap Item Name",
-      "reqd": 1
-     },
-     {
-      "fieldname": "default_target_warehouse",
-      "fieldtype": "Link",
-      "label": "Default Target Warehouse",
-      "options": "Warehouse",
-      "reqd": 1
-     },
-     {
-      "fieldname": "column_break_9m5sk",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "column_break_wk1zb",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "section_break_ujc0i",
-      "fieldtype": "Section Break"
-     },
-     {
-      "fieldname": "heal_item_code",
-      "fieldtype": "Link",
-      "label": "Heal Item Code",
-      "options": "Item",
-      "reqd": 1
-     },
-     {
-      "fieldname": "column_break_krsaq",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fetch_from": "heal_item_code.item_name",
-      "fieldname": "heal_item_name",
-      "fieldtype": "Data",
-      "label": "Heal Item Name",
-      "reqd": 1
-     },
-     {
-      "fieldname": "column_break_rx40o",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "default_target_warehouse_heal",
-      "fieldtype": "Link",
-      "label": "Default Target Warehouse heal",
-      "options": "Warehouse",
-      "reqd": 1
-     }
-    ],
-    "index_web_pages_for_search": 1,
-    "links": [],
-    "modified": "2024-01-13 10:46:11.501242",
-    "modified_by": "Administrator",
-    "module": "Quantbit Foundry ERP",
-    "name": "Grade Master",
-    "naming_rule": "By fieldname",
-    "owner": "Administrator",
-    "permissions": [
-     {
-      "create": 1,
-      "delete": 1,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "System Manager",
-      "share": 1,
-      "write": 1
-     }
-    ],
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": []
-   }
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:grade_name",
+ "creation": "2023-10-30 18:29:21.220180",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "grade_name",
+  "column_break_vbln4",
+  "company",
+  "section_break_vfhff",
+  "grade_type",
+  "grade_items_details",
+  "default_scrap_item_details_section",
+  "scrap_item_code",
+  "column_break_9m5sk",
+  "scrap_item_name",
+  "column_break_wk1zb",
+  "default_target_warehouse",
+  "section_break_ujc0i",
+  "heal_item_code",
+  "column_break_krsaq",
+  "heal_item_name",
+  "column_break_rx40o",
+  "default_target_warehouse_heal"
+ ],
+ "fields": [
+  {
+   "allow_bulk_edit": 1,
+   "fieldname": "grade_items_details",
+   "fieldtype": "Table",
+   "label": "Grade Items Details",
+   "options": "Grade Items Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "GRADE-"
+  },
+  {
+   "fieldname": "grade_type",
+   "fieldtype": "Link",
+   "label": "Grade Type",
+   "options": "Grade Type"
+  },
+  {
+   "fieldname": "column_break_vbln4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_vfhff",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "grade_name",
+   "fieldtype": "Data",
+   "label": "Grade Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "default_scrap_item_details_section",
+   "fieldtype": "Section Break",
+   "label": "Default Scrap Item Details"
+  },
+  {
+   "fieldname": "scrap_item_code",
+   "fieldtype": "Link",
+   "label": "Scrap Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "scrap_item_code.item_name",
+   "fieldname": "scrap_item_name",
+   "fieldtype": "Data",
+   "label": "Scrap Item Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_target_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Target Warehouse",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9m5sk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wk1zb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ujc0i",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "heal_item_code",
+   "fieldtype": "Link",
+   "label": "Heal Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_krsaq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "heal_item_code.item_name",
+   "fieldname": "heal_item_name",
+   "fieldtype": "Data",
+   "label": "Heal Item Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rx40o",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_target_warehouse_heal",
+   "fieldtype": "Link",
+   "label": "Default Target Warehouse heal",
+   "options": "Warehouse",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-03-31 12:43:11.785980",
+ "modified_by": "Administrator",
+ "module": "Quantbit Foundry ERP",
+ "name": "Grade Master",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
